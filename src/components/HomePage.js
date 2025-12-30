@@ -202,6 +202,61 @@ const DailyVotion = () => {
           </button>
         </div>
       </div>
+
+      {/* Restored homepage content below */}
+      <div style={{
+        width: '100vw',
+        background: "url('/JTVCF/for background picture/3.webp') center center/cover no-repeat",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '32px 0',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        <div style={{
+          width: '90vw',
+          maxWidth: 400,
+          background: 'rgba(255,255,255,0.92)',
+          borderRadius: 16,
+          padding: 20,
+          fontSize: 15,
+          color: '#333',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
+          marginBottom: 24,
+          textAlign: 'center',
+        }}>
+          <span style={{fontWeight: 700, fontSize: 18, color: '#fc4a1a', marginBottom: 8, display: 'block'}}>Greetings in Christ!</span>
+          <br />
+          From all of us at Jesus the True Vine Christian Fellowship, Taguig City, we warmly welcome you to <b>DailyVotion: An Interactive Digital Devotional Prayer Platform.</b> May the grace, peace, and love of our Lord Jesus Christ be with you as you begin or continue your spiritual journey with us.
+        </div>
+        <img src={"/JTVCF/gallery/ministry or organization/15.jpg"} alt="Top" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <img src={"/JTVCF/gallery/about us/13.jpg"} alt="Middle" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <img src={"/JTVCF/gallery/about us/7.jpg"} alt="Bottom" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+      </div>
+      <div style={{
+        width: '100vw',
+        background: "url('/JTVCF/for background picture/3.webp') center center/cover no-repeat",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '32px 0',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        <img src={'/JTVCF/home page/2.jpg'} alt="Top left" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <img src={'/JTVCF/home page/1.jpg'} alt="Top right" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <img src={'/JTVCF/gallery/ministry or organization/6.jpg'} alt="Middle left" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <img src={'/JTVCF/gallery/about us/2.jpg'} alt="Bottom left" style={{width: '90vw', maxWidth: 320, height: 'auto', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.09)', margin: '12px 0', objectFit: 'cover'}} />
+        <div style={{width: '90vw', maxWidth: 400, background: 'rgba(255,255,255,0.92)', borderRadius: 16, padding: 20, fontSize: 15, color: '#333', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', margin: '24px 0 0 0', textAlign: 'center'}}>
+          <p>
+            As you use this platform, may your heart be filled with the joy of God’s Word, your spirit be renewed through prayer, and your faith be strengthened each day. Remember that devotion is not just an act — it is a daily walk with God, a conversation with our Creator, and a reflection of His goodness in our lives.
+          </p>
+          <p>
+            Use DailyVotion to record your reflections, lift up prayer requests, and share testimonies so we may encourage one another.
+          </p>
+        </div>
+      </div>
     </>
   );
 };
