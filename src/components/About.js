@@ -368,6 +368,47 @@ function About() {
             max-width: 400px;
           }
         }
+
+        /* --- MOBILE LAYOUT --- */
+        @media (max-width: 700px) {
+          .aboutpage-gallery {
+            flex-direction: column;
+            width: 100vw;
+            max-width: 100vw;
+            height: auto;
+            gap: 0.5rem;
+            padding: 0 0.5rem;
+          }
+          .aboutpage-collage {
+            width: 100vw;
+            min-width: 0;
+            max-width: 100vw;
+            height: 220px;
+            margin: 0 auto 1.5rem auto;
+            top: 0;
+          }
+          .aboutpage-text {
+            width: 100vw;
+            min-width: 0;
+            max-width: 100vw;
+            height: auto;
+            margin: 0 auto;
+            padding: 1.2rem 1rem;
+            align-items: center;
+          }
+          .aboutpage-text h2,
+          .aboutpage-text p {
+            text-align: center;
+          }
+        }
+        @media (max-width: 500px) {
+          .aboutpage-collage {
+            height: 160px;
+          }
+          .aboutpage-text {
+            padding: 1rem 0.3rem;
+          }
+        }
       `}</style>
       <TopBar />
       <div className="aboutpage-bubbles">
