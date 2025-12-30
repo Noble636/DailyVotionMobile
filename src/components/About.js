@@ -142,7 +142,7 @@ function About() {
         }
         .aboutpage-collage-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          grid-template-columns: 1fr 1fr;
           gap: 0.5rem;
           width: 95vw;
           max-width: 400px;
