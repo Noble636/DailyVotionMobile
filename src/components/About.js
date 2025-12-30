@@ -163,9 +163,9 @@ function About() {
         .TopBar,
         .topbar-container {
           background-color: #008b8b;
-          height: 56px;
-          min-height: 56px;
-          padding: 0 20px;
+          height: 48px;
+          min-height: 48px;
+          padding: 0 16px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -181,6 +181,21 @@ function About() {
         .topbar-logo {
           height: 40px;
           width: auto;
+          display: block;
+        }
+
+        .topbar-logo-float {
+          position: static;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          height: 48px;
+        }
+
+        .topbar-logo-float-img {
+          height: 32px;
+          width: auto;
+          margin: 0;
           display: block;
         }
 
