@@ -154,6 +154,7 @@ function About() {
           aspect-ratio: 4/3;
           height: 120px;         /* Fixed height for all images */
           border-radius: 12px;
+          
           object-fit: cover;
           box-shadow: 0 4px 16px rgba(0,139,139,0.12);
           background: #e0f7fa;

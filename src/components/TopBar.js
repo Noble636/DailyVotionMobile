@@ -24,15 +24,11 @@ const TopBar = ({ menuItems }) => {
       <style>{`
         .topbar-container {
           background-color: #008b8b;
-          padding: 0 20px; /* Remove vertical padding */
+          padding: 10px 20px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           position: relative;
-          min-height: 56px;
-          height: 56px;
-          width: 100vw;
-          box-sizing: border-box;
         }
         .topbar-logo {
           color: white;
@@ -40,18 +36,18 @@ const TopBar = ({ menuItems }) => {
           font-size: 18px;
         }
         .topbar-logo-float {
-          position: static; /* Remove absolute positioning */
+          position: absolute;
+          top: -20px;
+          left: 10px;
+          z-index: 200;
           display: flex;
           align-items: center;
           text-decoration: none;
-          height: 56px;
         }
         .topbar-logo-float-img {
-          height: 40px; /* Adjust as needed */
+          height: 90px;
           width: auto;
           filter: drop-shadow(0 8px 32px rgba(0,139,139,0.22));
-          margin: 0;
-          display: block;
         }
         .topbar-menu-btn {
           background: none;
