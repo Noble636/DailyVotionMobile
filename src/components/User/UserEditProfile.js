@@ -18,7 +18,6 @@ function UserEditProfile() {
   const [profilePic, setProfilePic] = useState(null);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
