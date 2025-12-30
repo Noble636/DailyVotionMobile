@@ -144,7 +144,7 @@ function About() {
         .aboutpage-collage-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 0.5rem;
+          gap: 0;
           width: 95vw;
           max-width: 400px;
           margin: 0 auto;
