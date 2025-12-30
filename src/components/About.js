@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-
 import TopBar from "./TopBar";
-import "../css/About.css";
 
 const imageBase = "/JTVCF/gallery/about us/";
 const collageImages = [
