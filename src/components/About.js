@@ -185,18 +185,14 @@ function About() {
         }
 
         .topbar-logo-float {
-          position: static;
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-          height: 56px;
+          /* position: absolute; */
+          /* top: -20px; */
+          /* left: 10px; */
+          /* z-index: 200; */
         }
 
         .topbar-logo-float-img {
-          height: 40px;
-          width: auto;
-          margin: 0;
-          display: block;
+          /* height: 90px; */
         }
 
         .topbar-menu {
