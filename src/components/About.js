@@ -34,232 +34,6 @@ function About() {
           opacity: 1;
           transform: translateY(0);
         }
-        .aboutpage-collage {
-          position: relative;
-          width: 600px;
-          height: 900px;
-          flex-shrink: 0;
-          top: 40px;
-        }
-        .aboutpage-img-large {
-          position: absolute;
-          top: 40px;
-          left: 20px;
-          width: 240px;
-          height: 160px;
-          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
-          border-radius: 18px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.12);
-          z-index: 2;
-        }
-        .aboutpage-img-large2 {
-          position: absolute;
-          top: 220px;
-          left: 260px;
-          width: 200px;
-          height: 120px;
-          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
-          border-radius: 16px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.12);
-          z-index: 1;
-        }
-        .aboutpage-img-medium {
-          position: absolute;
-          top: 180px;
-          left: 60px;
-          width: 140px;
-          height: 100px;
-          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
-          border-radius: 14px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 3;
-        }
-        .aboutpage-img-medium2 {
-          position: absolute;
-          top: 80px;
-          left: 320px;
-          width: 120px;
-          height: 90px;
-          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 4;
-        }
-        .aboutpage-img-small {
-          position: absolute;
-          top: 0px;
-          left: 260px;
-          width: 80px;
-          height: 60px;
-          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
-          border-radius: 10px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 5;
-        }
-        .aboutpage-img-small2 {
-          position: absolute;
-          top: 320px;
-          left: 120px;
-          width: 100px;
-          height: 70px;
-          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
-          border-radius: 10px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 6;
-        }
-        .aboutpage-topbar {
-          background-color: #008b8b;
-          padding: 14px 32px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100vw;
-          left: 0;
-          right: 0;
-          box-sizing: border-box;
-          margin: 0;
-          position: relative;
-        }
-        .aboutpage-logo {
-          color: #fff;
-          font-weight: bold;
-          font-size: 1.3rem;
-        }
-        .aboutpage-menu-btn {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 8px;
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-        }
-        .aboutpage-menu-icon {
-          display: block;
-          width: 28px;
-          height: 4px;
-          background: #fff;
-          border-radius: 2px;
-          position: relative;
-        }
-        .aboutpage-menu-icon::before,
-        .aboutpage-menu-icon::after {
-          content: '';
-          display: block;
-          width: 28px;
-          height: 4px;
-          background: #fff;
-          border-radius: 2px;
-          position: absolute;
-          left: 0;
-          transition: 0.2s;
-        }
-        .aboutpage-menu-icon::before {
-          top: -10px;
-        }
-        .aboutpage-menu-icon::after {
-          top: 10px;
-        }
-        .aboutpage-dropdown-menu {
-          position: absolute;
-          top: 54px;
-          right: 32px;
-          background: #008b8b;
-          border-radius: 8px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.18);
-          z-index: 100;
-          min-width: 180px;
-        }
-        .aboutpage-dropdown-menu ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-        }
-        .aboutpage-dropdown-menu li {
-          padding: 12px 20px;
-          color: #fff;
-          cursor: pointer;
-          border-bottom: 1px solid #006d6d;
-          transition: background 0.2s;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        .aboutpage-dropdown-menu li:last-child {
-          border-bottom: none;
-        }
-        .aboutpage-dropdown-menu li:hover {
-          background: #006d6d;
-        }
-        .aboutpage-link-btn {
-          background: none;
-          border: none;
-          color: #fff;
-          font-size: 1rem;
-          cursor: pointer;
-          width: 100%;
-          text-align: left;
-          padding: 0;
-        }
-        .aboutpage-gallery {
-          display: flex;
-          flex-direction: row;
-          gap: 2rem;
-          margin: 0 auto;
-          width: 900px;
-          max-width: 100vw;
-          align-items: flex-start;
-          position: relative;
-          top: 40px;
-          justify-content: center;
-        }
-        .aboutpage-collage {
-          position: relative;
-          width: 600px;
-          height: 900px;
-          flex-shrink: 0;
-          top: 40px;
-        }
-        .aboutpage-img-placeholder {
-          width: 160px;
-          height: 120px;
-          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.08);
-        }
-        .aboutpage-text {
-          background: rgba(255,255,255,0.55);
-          border-radius: 40px 40px 18px 18px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
-          padding: 0.2rem 2rem 0.2rem 2rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          min-height: 180px;
-          align-items: flex-start;
-          width: 350px;
-          margin: 0;
-          margin-top: 0;
-          z-index: 1;
-        }
-        .aboutpage-text h2 {
-          color: #008b8b;
-          margin-bottom: 1rem;
-          text-align: left;
-        }
-        .aboutpage-text p {
-          font-size: 1.1rem;
-          color: #333;
-          margin-bottom: 1rem;
-          text-align: left;
-        }
-        .aboutpage-text ul {
-          margin: 0;
-          padding-left: 1.2rem;
-          color: #008b8b;
-          font-size: 1rem;
-        }
         .aboutpage-container {
           font-family: Arial, sans-serif;
           background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
@@ -297,109 +71,61 @@ function About() {
             opacity: 0;
           }
         }
-        .aboutpage-container {
-          font-family: Arial, sans-serif;
-          background-color: #b3e5fc;
-          min-height: 100vh;
+        .aboutpage-gallery {
           display: flex;
           flex-direction: column;
-        }
-        .aboutpage-topbar {
-          background-color: #008b8b;
-          padding: 10px 20px;
-          display: flex;
-          justify-content: space-between;
+          width: 100vw;
+          max-width: 100vw;
+          gap: 0;
           align-items: center;
-        }
-        .aboutpage-logo {
-          color: white;
-          font-weight: bold;
-          font-size: 18px;
-        }
-        .aboutpage-topbar ul {
-          list-style: none;
-          display: flex;
-          gap: 20px;
-          margin: 0;
+          justify-content: flex-start;
           padding: 0;
         }
-        .aboutpage-topbar li a {
-          color: white;
-          text-decoration: none;
-          font-weight: 500;
-          transition: 0.3s;
+        .aboutpage-collage {
+          width: 100vw;
+          max-width: 100vw;
+          height: 220px;
+          margin: 0 auto;
+          top: 0;
+          position: relative;
+          overflow: hidden;
         }
-        .aboutpage-topbar li a:hover {
-          text-decoration: underline;
-          text-shadow: 0 0 8px white;
+        .aboutpage-img-float {
+          object-fit: cover;
+          position: absolute;
         }
-        .aboutpage-main {
-          flex: 1;
-          display: flex;
-          justify-content: center;
+        .aboutpage-text {
+          width: 100vw;
+          max-width: 100vw;
+          margin: 0 auto;
+          padding: 1.2rem 1rem;
           align-items: center;
-          padding: 40px;
+          background: rgba(255,255,255,0.55);
+          border-radius: 40px 40px 18px 18px;
+          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          z-index: 1;
         }
-        .aboutpage-box {
-          background-color: white;
-          padding: 30px;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          max-width: 600px;
+        .aboutpage-text h2,
+        .aboutpage-text p {
           text-align: center;
         }
-        .aboutpage-box h2 {
-          margin-bottom: 20px;
+        .aboutpage-text h2 {
           color: #008b8b;
+          margin-bottom: 1rem;
         }
-        @media (max-width: 1200px) {
-          .aboutpage-gallery {
-            width: 100vw;
-            gap: 1rem;
-          }
-          .aboutpage-collage {
-            width: 45vw;
-            min-width: 220px;
-            max-width: 400px;
-          }
-          .aboutpage-text {
-            width: 45vw;
-            min-width: 220px;
-            max-width: 400px;
-          }
+        .aboutpage-text p {
+          font-size: 1.1rem;
+          color: #333;
+          margin-bottom: 1rem;
         }
-
-        /* --- MOBILE LAYOUT --- */
-        @media (max-width: 700px) {
-          .aboutpage-gallery {
-            flex-direction: column;
-            width: 100vw;
-            max-width: 100vw;
-            height: auto;
-            gap: 0.5rem;
-            padding: 0 0.5rem;
-          }
-          .aboutpage-collage {
-            width: 100vw;
-            min-width: 0;
-            max-width: 100vw;
-            height: 220px;
-            margin: 0 auto 1.5rem auto;
-            top: 0;
-          }
-          .aboutpage-text {
-            width: 100vw;
-            min-width: 0;
-            max-width: 100vw;
-            height: auto;
-            margin: 0 auto;
-            padding: 1.2rem 1rem;
-            align-items: center;
-          }
-          .aboutpage-text h2,
-          .aboutpage-text p {
-            text-align: center;
-          }
+        .aboutpage-text ul {
+          margin: 0;
+          padding-left: 1.2rem;
+          color: #008b8b;
+          font-size: 1rem;
         }
         @media (max-width: 500px) {
           .aboutpage-collage {
@@ -425,8 +151,8 @@ function About() {
           />
         ))}
       </div>
-      <div className="aboutpage-gallery" style={{ display: "flex", flexDirection: "row", width: "100vw", maxWidth: "1100px", height: "calc(100vh - 80px)", margin: "0 auto", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <div className="aboutpage-collage" style={{ position: "relative", width: 480, height: "calc(100vh - 120px)", minHeight: 400, maxHeight: "calc(100vh - 120px)", marginRight: 32, overflow: "hidden" }}>
+      <div className="aboutpage-gallery">
+        <div className="aboutpage-collage">
           <img src={imageBase + "1.jpg"} alt="About 1" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 40, left: 40, maxWidth: 220, maxHeight: 140, zIndex: 5, borderRadius: "18px", boxShadow: "0 8px 32px rgba(0,139,139,0.18)", objectFit: "cover", transform: "rotate(-7deg)" }} />
           <img src={imageBase + "2.jpg"} alt="About 2" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 0, left: 180, maxWidth: 180, maxHeight: 120, zIndex: 6, borderRadius: "16px", boxShadow: "0 6px 24px rgba(0,139,139,0.15)", objectFit: "cover", transform: "rotate(8deg)" }} />
           <img src={imageBase + "3.jpg"} alt="About 3" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 120, left: 120, maxWidth: 200, maxHeight: 140, zIndex: 7, borderRadius: "20px", boxShadow: "0 6px 24px rgba(0,139,139,0.15)", objectFit: "cover", transform: "rotate(-12deg)" }} />
@@ -441,7 +167,7 @@ function About() {
           <img src={imageBase + "12.jpg"} alt="About 12" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 440, left: 180, maxWidth: 80, maxHeight: 60, zIndex: 16, borderRadius: "10px", boxShadow: "0 4px 16px rgba(0,139,139,0.12)", objectFit: "cover", transform: "rotate(6deg)" }} />
           <img src={imageBase + "13.jpg"} alt="About 13" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 500, left: 220, maxWidth: 60, maxHeight: 50, zIndex: 17, borderRadius: "8px", boxShadow: "0 4px 16px rgba(0,139,139,0.12)", objectFit: "cover", transform: "rotate(-9deg)" }} />
         </div>
-        <div className="aboutpage-text about-float-animate" style={{ width: 480, height: "calc(100vh - 120px)", minHeight: 400, maxHeight: "calc(100vh - 120px)", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", marginLeft: 32 }}>
+        <div className="aboutpage-text about-float-animate">
           <h2>About Us</h2>
           <p>
             At Daily Votion, we believe that spiritual growth should be personal, accessible, and rooted in community. Our platform offers an interactive space where individuals can engage with daily devotionals, share personal prayers, and connect with others in faith. Whether you're starting your spiritual journey or deepening your walk with God, Daily Votion provides tools to reflect, pray, and grow every day. With features like guided devotionals, prayer walls, and community support, we aim to inspire and encourage you—one day, one prayer, one step at a time.
