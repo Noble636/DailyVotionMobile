@@ -41,7 +41,7 @@ function About() {
           display: flex;
           flex-direction: column;
           position: relative;
-          overflow: hidden;
+          overflow-x: hidden;
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -77,18 +77,18 @@ function About() {
           width: 100vw;
           max-width: 100vw;
           gap: 0;
-          align-items: center;
+          align-items: stretch;
           justify-content: flex-start;
           padding: 0;
+          overflow: visible;
         }
         .aboutpage-collage {
           width: 100vw;
           max-width: 100vw;
           height: 220px;
           margin: 0 auto;
-          top: 0;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
         }
         .aboutpage-img-float {
           object-fit: cover;
@@ -98,6 +98,7 @@ function About() {
           width: 100vw;
           max-width: 100vw;
           margin: 0 auto;
+          margin-top: 1.5rem;
           padding: 1.2rem 1rem;
           align-items: center;
           background: rgba(255,255,255,0.55);
