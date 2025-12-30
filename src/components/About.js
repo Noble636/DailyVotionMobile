@@ -1,27 +1,10 @@
 import React, { useEffect } from "react";
-
 import TopBar from "./TopBar";
-import "../css/About.css";
 
 const imageBase = "/JTVCF/gallery/about us/";
-const collageImages = [
-  { src: "1.jpg", style: { top: 40, left: 40, width: 220, height: 140, zIndex: 2 } },
-  { src: "2.jpg", style: { top: 0, left: 300, width: 100, height: 70, zIndex: 5 } },
-  { src: "3.jpg", style: { top: 100, left: 420, width: 120, height: 90, zIndex: 4 } },
-  { src: "4.jpg", style: { top: 200, left: 80, width: 140, height: 100, zIndex: 3 } },
-  { src: "5.jpg", style: { top: 260, left: 320, width: 180, height: 110, zIndex: 1 } },
-  { src: "6.jpg", style: { top: 340, left: 180, width: 120, height: 80, zIndex: 6 } },
-  { src: "7.jpg", style: { top: 160, left: 220, width: 100, height: 70, zIndex: 7 } },
-  { src: "8.jpg", style: { top: 320, left: 40, width: 110, height: 80, zIndex: 8 } },
-  { src: "9.jpg", style: { top: 380, left: 400, width: 90, height: 60, zIndex: 9 } },
-  { src: "10.jpg", style: { top: 60, left: 560, width: 90, height: 60, zIndex: 10 } },
-  { src: "11.jpg", style: { top: 220, left: 540, width: 80, height: 50, zIndex: 11 } },
-  { src: "12.jpg", style: { top: 320, left: 540, width: 80, height: 50, zIndex: 12 } },
-  { src: "13.jpg", style: { top: 400, left: 260, width: 70, height: 50, zIndex: 13 } },
-];
 
 function About() {
-  React.useEffect(() => {
+  useEffect(() => {
     const animatedEls = document.querySelectorAll('.about-float-animate');
     const onScroll = () => {
       animatedEls.forEach(el => {
@@ -40,6 +23,352 @@ function About() {
 
   return (
     <div className="aboutpage-container">
+      <style>{`
+        .about-float-animate {
+          opacity: 0;
+          transform: translateY(60px);
+          transition: opacity 1.3s cubic-bezier(.22, 1, .36, 1), transform 1.3s cubic-bezier(.22, 1, .36, 1);
+          will-change: opacity, transform;
+        }
+        .about-float-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .aboutpage-collage {
+          position: relative;
+          width: 600px;
+          height: 900px;
+          flex-shrink: 0;
+          top: 40px;
+        }
+        .aboutpage-img-large {
+          position: absolute;
+          top: 40px;
+          left: 20px;
+          width: 240px;
+          height: 160px;
+          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
+          border-radius: 18px;
+          box-shadow: 0 4px 16px rgba(0,139,139,0.12);
+          z-index: 2;
+        }
+        .aboutpage-img-large2 {
+          position: absolute;
+          top: 220px;
+          left: 260px;
+          width: 200px;
+          height: 120px;
+          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
+          border-radius: 16px;
+          box-shadow: 0 4px 16px rgba(0,139,139,0.12);
+          z-index: 1;
+        }
+        .aboutpage-img-medium {
+          position: absolute;
+          top: 180px;
+          left: 60px;
+          width: 140px;
+          height: 100px;
+          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
+          border-radius: 14px;
+          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          z-index: 3;
+        }
+        .aboutpage-img-medium2 {
+          position: absolute;
+          top: 80px;
+          left: 320px;
+          width: 120px;
+          height: 90px;
+          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          z-index: 4;
+        }
+        .aboutpage-img-small {
+          position: absolute;
+          top: 0px;
+          left: 260px;
+          width: 80px;
+          height: 60px;
+          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
+          border-radius: 10px;
+          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          z-index: 5;
+        }
+        .aboutpage-img-small2 {
+          position: absolute;
+          top: 320px;
+          left: 120px;
+          width: 100px;
+          height: 70px;
+          background: linear-gradient(135deg, #b2ebf2 60%, #e0f7fa 100%);
+          border-radius: 10px;
+          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          z-index: 6;
+        }
+        .aboutpage-topbar {
+          background-color: #008b8b;
+          padding: 14px 32px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100vw;
+          left: 0;
+          right: 0;
+          box-sizing: border-box;
+          margin: 0;
+          position: relative;
+        }
+        .aboutpage-logo {
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
+        .aboutpage-menu-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+        }
+        .aboutpage-menu-icon {
+          display: block;
+          width: 28px;
+          height: 4px;
+          background: #fff;
+          border-radius: 2px;
+          position: relative;
+        }
+        .aboutpage-menu-icon::before,
+        .aboutpage-menu-icon::after {
+          content: '';
+          display: block;
+          width: 28px;
+          height: 4px;
+          background: #fff;
+          border-radius: 2px;
+          position: absolute;
+          left: 0;
+          transition: 0.2s;
+        }
+        .aboutpage-menu-icon::before {
+          top: -10px;
+        }
+        .aboutpage-menu-icon::after {
+          top: 10px;
+        }
+        .aboutpage-dropdown-menu {
+          position: absolute;
+          top: 54px;
+          right: 32px;
+          background: #008b8b;
+          border-radius: 8px;
+          box-shadow: 0 4px 16px rgba(0,139,139,0.18);
+          z-index: 100;
+          min-width: 180px;
+        }
+        .aboutpage-dropdown-menu ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .aboutpage-dropdown-menu li {
+          padding: 12px 20px;
+          color: #fff;
+          cursor: pointer;
+          border-bottom: 1px solid #006d6d;
+          transition: background 0.2s;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .aboutpage-dropdown-menu li:last-child {
+          border-bottom: none;
+        }
+        .aboutpage-dropdown-menu li:hover {
+          background: #006d6d;
+        }
+        .aboutpage-link-btn {
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 1rem;
+          cursor: pointer;
+          width: 100%;
+          text-align: left;
+          padding: 0;
+        }
+        .aboutpage-gallery {
+          display: flex;
+          flex-direction: row;
+          gap: 2rem;
+          margin: 0 auto;
+          width: 900px;
+          max-width: 100vw;
+          align-items: flex-start;
+          position: relative;
+          top: 40px;
+          justify-content: center;
+        }
+        .aboutpage-collage {
+          position: relative;
+          width: 600px;
+          height: 900px;
+          flex-shrink: 0;
+          top: 40px;
+        }
+        .aboutpage-img-placeholder {
+          width: 160px;
+          height: 120px;
+          background: linear-gradient(135deg, #e0f7fa 60%, #b2ebf2 100%);
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0,139,139,0.08);
+        }
+        .aboutpage-text {
+          background: rgba(255,255,255,0.55);
+          border-radius: 40px 40px 18px 18px;
+          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+          padding: 0.2rem 2rem 0.2rem 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          min-height: 180px;
+          align-items: flex-start;
+          width: 350px;
+          margin: 0;
+          margin-top: 0;
+          z-index: 1;
+        }
+        .aboutpage-text h2 {
+          color: #008b8b;
+          margin-bottom: 1rem;
+          text-align: left;
+        }
+        .aboutpage-text p {
+          font-size: 1.1rem;
+          color: #333;
+          margin-bottom: 1rem;
+          text-align: left;
+        }
+        .aboutpage-text ul {
+          margin: 0;
+          padding-left: 1.2rem;
+          color: #008b8b;
+          font-size: 1rem;
+        }
+        .aboutpage-container {
+          font-family: Arial, sans-serif;
+          background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          overflow: hidden;
+        }
+        .aboutpage-bubbles {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .aboutpage-bubble {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(156, 39, 176, 0.18);
+          animation: bubbleUp 8s linear infinite;
+        }
+        @keyframes bubbleUp {
+          0% {
+            transform: translateY(100vh) scale(1);
+            opacity: 0.7;
+          }
+          80% {
+            opacity: 0.5;
+          }
+          100% {
+            transform: translateY(-10vh) scale(1.2);
+            opacity: 0;
+          }
+        }
+        .aboutpage-container {
+          font-family: Arial, sans-serif;
+          background-color: #b3e5fc;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+        .aboutpage-topbar {
+          background-color: #008b8b;
+          padding: 10px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .aboutpage-logo {
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        .aboutpage-topbar ul {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+        }
+        .aboutpage-topbar li a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          transition: 0.3s;
+        }
+        .aboutpage-topbar li a:hover {
+          text-decoration: underline;
+          text-shadow: 0 0 8px white;
+        }
+        .aboutpage-main {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px;
+        }
+        .aboutpage-box {
+          background-color: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          max-width: 600px;
+          text-align: center;
+        }
+        .aboutpage-box h2 {
+          margin-bottom: 20px;
+          color: #008b8b;
+        }
+        @media (max-width: 1200px) {
+          .aboutpage-gallery {
+            width: 100vw;
+            gap: 1rem;
+          }
+          .aboutpage-collage {
+            width: 45vw;
+            min-width: 220px;
+            max-width: 400px;
+          }
+          .aboutpage-text {
+            width: 45vw;
+            min-width: 220px;
+            max-width: 400px;
+          }
+        }
+      `}</style>
       <TopBar />
       <div className="aboutpage-bubbles">
         {[...Array(12)].map((_, i) => (
