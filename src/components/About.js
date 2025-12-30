@@ -44,6 +44,11 @@ function About() {
           flex-direction: column;
           align-items: center;
           padding-top: 0; /* Removed space for the fixed top bar */
+          margin-top: 0;
+        }
+        body {
+          margin: 0;
+          padding: 0;
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -162,7 +167,7 @@ function About() {
         .aboutpage-topbar,
         .TopBar,
         .topbar-container {
-          background-color: #008b8b;
+          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           height: 48px;
           min-height: 48px;
           padding: 0 16px;
