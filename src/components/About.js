@@ -80,15 +80,15 @@ function About() {
           align-items: stretch;
           justify-content: flex-start;
           padding: 0;
-          overflow: visible;
         }
         .aboutpage-collage {
           width: 100vw;
           max-width: 100vw;
-          height: 220px;
+          height: 340px; /* Increased height to fit all images */
           margin: 0 auto;
           position: relative;
-          overflow: visible;
+          overflow: hidden; /* Hide overflowing images */
+          background: transparent;
         }
         .aboutpage-img-float {
           object-fit: cover;
@@ -98,7 +98,6 @@ function About() {
           width: 100vw;
           max-width: 100vw;
           margin: 0 auto;
-          margin-top: 1.5rem;
           padding: 1.2rem 1rem;
           align-items: center;
           background: rgba(255,255,255,0.55);
@@ -130,7 +129,7 @@ function About() {
         }
         @media (max-width: 500px) {
           .aboutpage-collage {
-            height: 160px;
+            height: 220px;
           }
           .aboutpage-text {
             padding: 1rem 0.3rem;
