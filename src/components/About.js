@@ -43,7 +43,7 @@ function About() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding-top: 56px; /* Add space for the fixed top bar */
+          padding-top: 0; /* Removed space for the fixed top bar */
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -162,25 +162,40 @@ function About() {
         .aboutpage-topbar,
         .TopBar,
         .topbar-container {
-          width: 100vw;
-          max-width: 100vw;
-          min-height: 56px;
+          background-color: #008b8b;
           height: 56px;
-          background: #008b8b;
+          min-height: 56px;
+          padding: 0 20px;
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          position: fixed;
+          align-items: center;
+          position: relative;
+          width: 100vw;
+          box-sizing: border-box;
+          margin: 0;
           top: 0;
           left: 0;
           z-index: 10;
-          padding: 0 1rem;
-          box-sizing: border-box;
         }
 
         .topbar-logo {
           height: 40px;
           width: auto;
+          display: block;
+        }
+
+        .topbar-logo-float {
+          position: static;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          height: 56px;
+        }
+
+        .topbar-logo-float-img {
+          height: 40px;
+          width: auto;
+          margin: 0;
           display: block;
         }
 
