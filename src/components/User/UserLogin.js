@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TopBar from "../TopBar";
 
 function UserLogin() {
   const [email, setEmail] = useState("");
@@ -38,30 +37,8 @@ function UserLogin() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0;
-  width: 100vw;
-  overflow-x: hidden;
-}
-.userlogin-mobile-topbar-space {
-  width: 100vw;
-  min-height: 60px;
-}
-.userlogin-mobile-img-wrap {
-  width: 100vw;
-  display: flex;
   justify-content: center;
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-.userlogin-mobile-img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 24px rgba(0,139,139,0.13), 0 2px 8px rgba(44,62,80,0.10);
-  border: 4px solid #fff;
-  background: #e0f7fa;
+  padding: 0;
 }
 .userlogin-mobile-card {
   background: #fff;
@@ -73,7 +50,6 @@ function UserLogin() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto 1.2rem auto;
 }
 .userlogin-title {
   color: #008b8b;
@@ -153,21 +129,8 @@ function UserLogin() {
   .userlogin-title {
     font-size: 1.3rem;
   }
-  .userlogin-mobile-img {
-    width: 80px;
-    height: 80px;
-  }
 }
       `}</style>
-      <TopBar />
-      <div className="userlogin-mobile-topbar-space" />
-      <div className="userlogin-mobile-img-wrap">
-        <img
-          src={process.env.PUBLIC_URL + "/JTVCF/home page/logo v3.png"}
-          alt="DailyVotion Logo"
-          className="userlogin-mobile-img"
-        />
-      </div>
       <form className="userlogin-mobile-card userlogin-form" onSubmit={handleLogin}>
         <div className="userlogin-title">User Login</div>
         <input
