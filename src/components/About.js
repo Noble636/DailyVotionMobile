@@ -210,10 +210,10 @@ function About() {
         }
       `}</style>
       <TopBar />
-      <div className="aboutpage-topbar">
-        <span className="aboutpage-logo">Your Logo or Title</span>
-        {/* Add your menu button or links here if needed */}
-      </div>
+      <header className="aboutpage-topbar">
+        <img src="/JTVCF/home page/logo v3.png" alt="Logo" style={{ height: "40px", width: "auto" }} />
+        {/* Menu button or links */}
+      </header>
       <div className="aboutpage-bubbles">
         {[...Array(12)].map((_, i) => (
           <div
