@@ -1,22 +1,132 @@
 import React, { useEffect } from "react";
+
+
 import TopBar from "./TopBar";
+import styled, { createGlobalStyle } from "styled-components";
 
 const imageBase = "/JTVCF/gallery/about us/";
-const collageImages = [
-  { src: "1.jpg", style: { top: 40, left: 40, width: 220, height: 140, zIndex: 2 } },
-  { src: "2.jpg", style: { top: 0, left: 300, width: 100, height: 70, zIndex: 5 } },
-  { src: "3.jpg", style: { top: 100, left: 420, width: 120, height: 90, zIndex: 4 } },
-  { src: "4.jpg", style: { top: 200, left: 80, width: 140, height: 100, zIndex: 3 } },
-  { src: "5.jpg", style: { top: 260, left: 320, width: 180, height: 110, zIndex: 1 } },
-  { src: "6.jpg", style: { top: 340, left: 180, width: 120, height: 80, zIndex: 6 } },
-  { src: "7.jpg", style: { top: 160, left: 220, width: 100, height: 70, zIndex: 7 } },
-  { src: "8.jpg", style: { top: 320, left: 40, width: 110, height: 80, zIndex: 8 } },
-  { src: "9.jpg", style: { top: 380, left: 400, width: 90, height: 60, zIndex: 9 } },
-  { src: "10.jpg", style: { top: 60, left: 560, width: 90, height: 60, zIndex: 10 } },
-  { src: "11.jpg", style: { top: 220, left: 540, width: 80, height: 50, zIndex: 11 } },
-  { src: "12.jpg", style: { top: 320, left: 540, width: 80, height: 50, zIndex: 12 } },
-  { src: "13.jpg", style: { top: 400, left: 260, width: 70, height: 50, zIndex: 13 } },
-];
+
+// Styled-components for About page
+const GlobalStyle = createGlobalStyle`
+  .about-float-animate {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1.3s cubic-bezier(.22, 1, .36, 1), transform 1.3s cubic-bezier(.22, 1, .36, 1);
+    will-change: opacity, transform;
+  }
+  .about-float-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .aboutpage-bubbles {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .aboutpage-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(156, 39, 176, 0.18);
+    animation: bubbleUp 8s linear infinite;
+  }
+  @keyframes bubbleUp {
+    0% {
+      transform: translateY(100vh) scale(1);
+      opacity: 0.7;
+    }
+    80% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+`;
+
+const AboutContainer = styled.div`
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+`;
+
+const Gallery = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  max-width: 1100px;
+  height: calc(100vh - 80px);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 2rem;
+  position: relative;
+  top: 40px;
+  @media (max-width: 1200px) {
+    width: 100vw;
+    gap: 1rem;
+  }
+`;
+
+const Collage = styled.div`
+  position: relative;
+  width: 480px;
+  height: calc(100vh - 120px);
+  min-height: 400px;
+  max-height: calc(100vh - 120px);
+  margin-right: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+  @media (max-width: 1200px) {
+    width: 45vw;
+    min-width: 220px;
+    max-width: 400px;
+  }
+`;
+
+const AboutText = styled.div`
+  background: rgba(255,255,255,0.55);
+  border-radius: 40px 40px 18px 18px;
+  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+  padding: 0.2rem 2rem 0.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 480px;
+  height: calc(100vh - 120px);
+  min-height: 400px;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+  margin-left: 32px;
+  z-index: 1;
+  @media (max-width: 1200px) {
+    width: 45vw;
+    min-width: 220px;
+    max-width: 400px;
+  }
+  h2 {
+    color: #008b8b;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+`;
+
 
 function About() {
   React.useEffect(() => {
@@ -37,134 +147,9 @@ function About() {
   }, []);
 
   return (
-    <div className="aboutpage-container">
-      <style>{`
-  .aboutpage-topbar {
-    background-color: #008b8b;
-    padding: 14px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100vw;
-    left: 0;
-    right: 0;
-    box-sizing: border-box;
-    margin: 0;
-    position: relative;
-  }
-  .aboutpage-logo {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.3rem;
-  }
-  .aboutpage-menu-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-  }
-  .aboutpage-menu-icon {
-    display: block;
-    width: 28px;
-    height: 4px;
-    background: #fff;
-    border-radius: 2px;
-    position: relative;
-  }
-  .aboutpage-menu-icon::before,
-  .aboutpage-menu-icon::after {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 4px;
-    background: #fff;
-    border-radius: 2px;
-    position: absolute;
-    left: 0;
-    transition: 0.2s;
-  }
-  .aboutpage-menu-icon::before {
-    top: -10px;
-  }
-  .aboutpage-menu-icon::after {
-    top: 10px;
-  }
-  .aboutpage-dropdown-menu {
-    position: absolute;
-    top: 54px;
-    right: 32px;
-    background: #008b8b;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,139,139,0.18);
-    z-index: 100;
-    min-width: 180px;
-  }
-  .aboutpage-dropdown-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .aboutpage-dropdown-menu li {
-    padding: 12px 20px;
-    color: #fff;
-    cursor: pointer;
-    border-bottom: 1px solid #006d6d;
-    transition: background 0.2s;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .aboutpage-dropdown-menu li:last-child {
-    border-bottom: none;
-  }
-  .aboutpage-dropdown-menu li:hover {
-    background: #006d6d;
-  }
-  .aboutpage-link-btn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    padding: 0;
-  }
-`}</style>
-      <div className="aboutpage-topbar">
-        <div className="aboutpage-logo">Daily Votion</div>
-        <button
-          className="aboutpage-menu-btn"
-          onClick={() => {
-            const menu = document.getElementById("aboutpage-dropdown-menu");
-            if (menu) menu.style.display = menu.style.display === "block" ? "none" : "block";
-          }}
-          aria-label="Menu"
-        >
-          <span className="aboutpage-menu-icon"></span>
-        </button>
-        <nav
-          id="aboutpage-dropdown-menu"
-          className="aboutpage-dropdown-menu"
-          style={{ display: "none" }}
-        >
-          <ul>
-            <li>
-              <a className="aboutpage-link-btn" href="/">Home</a>
-            </li>
-            <li>
-              <a className="aboutpage-link-btn" href="/about">About</a>
-            </li>
-            <li>
-              <a className="aboutpage-link-btn" href="/gallery">Gallery</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <AboutContainer>
+      <GlobalStyle />
+      <TopBar />
       <div className="aboutpage-bubbles">
         {[...Array(12)].map((_, i) => (
           <div
@@ -179,8 +164,8 @@ function About() {
           />
         ))}
       </div>
-      <div className="aboutpage-gallery" style={{ display: "flex", flexDirection: "row", width: "100vw", maxWidth: "1100px", height: "calc(100vh - 80px)", margin: "0 auto", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <div className="aboutpage-collage" style={{ position: "relative", width: 480, height: "calc(100vh - 120px)", minHeight: 400, maxHeight: "calc(100vh - 120px)", marginRight: 32, overflow: "hidden" }}>
+      <Gallery>
+        <Collage>
           <img src={imageBase + "1.jpg"} alt="About 1" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 40, left: 40, maxWidth: 220, maxHeight: 140, zIndex: 5, borderRadius: "18px", boxShadow: "0 8px 32px rgba(0,139,139,0.18)", objectFit: "cover", transform: "rotate(-7deg)" }} />
           <img src={imageBase + "2.jpg"} alt="About 2" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 0, left: 180, maxWidth: 180, maxHeight: 120, zIndex: 6, borderRadius: "16px", boxShadow: "0 6px 24px rgba(0,139,139,0.15)", objectFit: "cover", transform: "rotate(8deg)" }} />
           <img src={imageBase + "3.jpg"} alt="About 3" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 120, left: 120, maxWidth: 200, maxHeight: 140, zIndex: 7, borderRadius: "20px", boxShadow: "0 6px 24px rgba(0,139,139,0.15)", objectFit: "cover", transform: "rotate(-12deg)" }} />
@@ -194,8 +179,8 @@ function About() {
           <img src={imageBase + "11.jpg"} alt="About 11" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 440, left: 320, maxWidth: 80, maxHeight: 60, zIndex: 15, borderRadius: "10px", boxShadow: "0 4px 16px rgba(0,139,139,0.12)", objectFit: "cover", transform: "rotate(-5deg)" }} />
           <img src={imageBase + "12.jpg"} alt="About 12" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 440, left: 180, maxWidth: 80, maxHeight: 60, zIndex: 16, borderRadius: "10px", boxShadow: "0 4px 16px rgba(0,139,139,0.12)", objectFit: "cover", transform: "rotate(6deg)" }} />
           <img src={imageBase + "13.jpg"} alt="About 13" className="aboutpage-img-float about-float-animate" style={{ position: "absolute", top: 500, left: 220, maxWidth: 60, maxHeight: 50, zIndex: 17, borderRadius: "8px", boxShadow: "0 4px 16px rgba(0,139,139,0.12)", objectFit: "cover", transform: "rotate(-9deg)" }} />
-        </div>
-        <div className="aboutpage-text about-float-animate" style={{ width: 480, height: "calc(100vh - 120px)", minHeight: 400, maxHeight: "calc(100vh - 120px)", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", marginLeft: 32 }}>
+        </Collage>
+        <AboutText className="about-float-animate">
           <h2>About Us</h2>
           <p>
             At Daily Votion, we believe that spiritual growth should be personal, accessible, and rooted in community. Our platform offers an interactive space where individuals can engage with daily devotionals, share personal prayers, and connect with others in faith. Whether you're starting your spiritual journey or deepening your walk with God, Daily Votion provides tools to reflect, pray, and grow every day. With features like guided devotionals, prayer walls, and community support, we aim to inspire and encourage you—one day, one prayer, one step at a time.
@@ -221,9 +206,9 @@ function About() {
           >
             View Gallery
           </button>
-        </div>
-      </div>
-    </div>
+        </AboutText>
+      </Gallery>
+    </AboutContainer>
   );
 }
 
