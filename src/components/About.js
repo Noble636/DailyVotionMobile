@@ -158,9 +158,12 @@ function About() {
           box-shadow: 0 4px 16px rgba(0,139,139,0.12);
           background: #e0f7fa;
         }
-        .TopBar, .topbar, .aboutpage-topbar {
+        .aboutpage-topbar,
+        .TopBar,
+        .topbar-container {
           width: 100vw;
           max-width: 100vw;
+          min-height: 56px;
           height: 56px;
           background: #008b8b;
           display: flex;
