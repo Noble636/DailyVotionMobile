@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TopBar from "../TopBar";
+import TopBar from "./TopBar";
 
 const imageBase = "/JTVCF/gallery/about us/";
 
