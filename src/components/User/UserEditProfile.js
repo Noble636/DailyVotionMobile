@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './getCroppedImg';
-import "../../css/User/UserEditProfile.css";
 
 function UserEditProfile() {
   const [showImagePopup, setShowImagePopup] = useState(false);
@@ -110,6 +109,292 @@ function UserEditProfile() {
 
   return (
     <div style={bgStyle} className="editprofile-bg">
+      <style>{`
+.editprofile-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+.editprofile-paper {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 32px rgba(0,139,139,0.12);
+  border-radius: 18px;
+  padding: 0.7rem 2rem;  
+  width: 100%;
+  max-width: 340px;      
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.editprofile-title {
+  color: #08a3ad;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+.editprofile-paper form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.editprofile-paper label {
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+.editprofile-paper input[type="text"],
+.editprofile-paper input[type="password"] {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 2px solid #008b8b;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.editprofile-paper input[type="file"] {
+  margin-bottom: 1rem;
+}
+.editprofile-save-btn {
+  background: #43e9f6;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 0;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.editprofile-save-btn:hover {
+  background: #08a3ad;
+}
+.editprofile-password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.editprofile-password-field input[type="password"],
+.editprofile-password-field input[type="text"] {
+  flex: 1;
+}
+.editprofile-eye {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.editprofile-guide {
+  background: rgba(255,255,255,0.8);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,139,139,0.12);
+  padding: 1.5rem 2rem;
+  max-width: 300px;
+  margin-left: 2rem;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.editprofile-guide h3 {
+  color: #008b8b;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+.editprofile-guide ul {
+  margin: 0 0 1rem 1rem;
+  padding: 0;
+}
+.editprofile-guide li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.editprofile-guide p {
+  font-size: 0.95rem;
+  color: #333;
+}
+.editprofile-bg {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+.editprofile-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  margin: 2.5rem auto;
+  gap: 2.5rem;
+}
+.editprofile-formbox {
+  background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
+  border-radius: 22px;
+  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.22), 4px 8px 16px 0 rgba(0,139,180,0.14);
+  padding: 2.5rem 2rem;
+  min-width: 340px;
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  margin-right: 0.5rem;
+  backdrop-filter: blur(14px) saturate(120%);
+}
+.editprofile-formbox form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.editprofile-formbox label {
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+.editprofile-formbox input[type="text"],
+.editprofile-formbox input[type="password"],
+.editprofile-formbox input[type="email"],
+.editprofile-formbox input[type="tel"] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #b3e0f7;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 0.7rem;
+  background: #eaf7fc;
+  margin-bottom: 0.1rem;
+}
+.editprofile-formbox input[type="file"] {
+  margin-bottom: 1rem;
+}
+.editprofile-cancel-btn {
+  margin-top: 0.5rem;
+  background: #eee;
+  color: #008b8b;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.editprofile-password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.editprofile-password-field input[type="password"],
+.editprofile-password-field input[type="text"] {
+  flex: 1;
+}
+.editprofile-eye {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.editprofile-info-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 320px;
+  width: 100%;
+}
+.editprofile-info-guide > div {
+  max-width: 320px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  align-self: center;
+}
+.editprofile-currentinfo {
+  background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,139,180,0.10);
+  padding: 1.2rem 2rem;
+  margin-top: 0.5rem;
+}
+.editprofile-currentinfo h3 {
+  color: #08a3ad;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+.editprofile-currentinfo p {
+  margin: 0.3rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+.editprofile-guidebox {
+  background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,139,180,0.12);
+  padding: 2rem 2rem;
+  max-width: 320px;
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.editprofile-guidebox h3 {
+  color: #08a3ad;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+.editprofile-guidebox p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+.editprofile-warningbox {
+  background: #fff3cd;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(139, 139, 0, 0.10);
+  padding: 1.2rem 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  color: #856404;
+  font-size: 1rem;
+  border: 1px solid #ffeeba;
+}
+@media (max-width: 900px) {
+  .editprofile-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 98vw;
+  }
+  .editprofile-info-guide {
+    margin-top: 2rem;
+    max-width: 98vw;
+  }
+}
+      `}</style>
       <div className="editprofile-flex">
         <div className="editprofile-formbox">
           <h2 className="editprofile-title">Edit Profile</h2>

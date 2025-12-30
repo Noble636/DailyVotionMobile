@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AdminTopBar from "./AdminTopBar";
-import "../../css/Admin/AdminFPW.css";
+// Removed: import "../../css/Admin/AdminFPW.css";
 import { useNavigate } from "react-router-dom";
 
 function AdminFPW() {
@@ -112,6 +112,93 @@ function AdminFPW() {
 
   return (
     <div className="adminfpw-outer">
+      <style>{`
+.adminfpw-outer {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: 100vh !important;
+  overflow: hidden !important;
+  background: #08a3ad;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+}
+.adminfpw-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.adminfpw-form-glass {
+  background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
+  border-radius: 22px;
+  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+  padding: 2.5rem 2rem;
+  min-width: 340px;
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  backdrop-filter: blur(14px) saturate(120%);
+}
+.adminfpw-title {
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.adminfpw-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.adminfpw-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbe7e7;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 0.7rem;
+  background: #f7f8fa;
+  margin-bottom: 0.1rem;
+}
+.adminfpw-submitbtn {
+  background: #08a3ad;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 0;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.adminfpw-submitbtn:hover {
+  background: #006d6d;
+}
+.adminfpw-error {
+  color: #d32f2f;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-align: center;
+  font-size: 1rem;
+}
+.adminfpw-success {
+  color: #006d6d;
+  background: #e0f7fa;
+  border-radius: 7px;
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+      `}</style>
       <AdminTopBar />
       <div className="adminfpw-main">
         <div className="adminfpw-form-glass">

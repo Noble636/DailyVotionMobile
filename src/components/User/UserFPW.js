@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/User/UserFPW.css";
+import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar";
 
 function UserFPW() {
@@ -14,6 +14,7 @@ function UserFPW() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const API_BASE = process.env.REACT_APP_API_BASE || 'https://dailyvotionbackend-91wt.onrender.com';
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,6 +91,7 @@ function UserFPW() {
         return;
       }
       alert('Password changed successfully. You may now log in.');
+      navigate('/login');
     } catch (err) {
       console.error('reset-password error', err);
       setError('Failed to reset password');

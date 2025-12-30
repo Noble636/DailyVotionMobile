@@ -1,11 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminTopBar from "./AdminTopBar";
-import "../../css/Admin/ManageContent.css";
 
 function Popup({ children, onClose }) {
   return (
     <div className="managecontent-popup-overlay">
+      <style>{`
+.managecontent-popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44,62,80,0.25);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.managecontent-popup-box {
+  position: relative;
+  background: rgba(255,255,255,0.98);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.22);
+  padding: 2.5rem 3.5rem 2.5rem 3rem;
+  min-width: 700px;
+  max-width: 1100px;
+  color: #2d3e50;
+  font-size: 1.13rem;
+  border: 2px solid #008b8b;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+      `}</style>
       <div className="managecontent-popup-box">
         <button
           style={{
@@ -116,6 +140,336 @@ function ManageContent() {
         backgroundPosition: "center",
       }}
     >
+      <style>{`
+.managecontent-fresh-container {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  color: #123;
+  background-color: rgba(247,249,252,0.85);
+}
+.managecontent-fresh-main {
+  padding: 0.5rem 2vw 1.25rem !important;
+  min-height: calc(100vh - 64px) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.managecontent-fresh-title {
+  color: #fff !important;
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50;
+  margin: 2rem 0 1rem 0;
+  letter-spacing: 1px;
+}
+.managecontent-fresh-sections {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center !important;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin-top: 0.5rem !important;
+}
+.managecontent-fresh-delivery {
+  margin-top: 0.5rem !important;
+}
+.managecontent-fresh-sections .box {
+  display: flex !important;
+  flex-direction: column !important;
+  background: rgba(255,255,255,0.82) !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  box-shadow: 0 6px 28px rgba(44,62,80,0.12) !important;
+  min-height: 160px !important;
+  max-height: calc(100vh - 200px) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+  outline: 1px solid rgba(255,255,255,0.06) !important;
+}
+.managecontent-fresh-sections .box h2,
+.managecontent-fresh-sections .box ul {
+  display: block !important;
+  color: inherit !important;
+}
+.managecontent-fresh-main,
+.managecontent-fresh-sections {
+  height: auto;
+  box-sizing: border-box;
+}
+.managecontent-fresh-reflections {
+  flex: 0 0 28%;
+  min-width: 220px;
+  max-width: 360px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+.managecontent-fresh-delivery {
+  flex: 0 1 34%;
+  min-width: 300px;
+  max-width: 520px;
+  max-height: calc(100vh - 200px);
+  box-sizing: border-box;
+}
+.managecontent-fresh-users {
+  flex: 0 0 34%;
+  min-width: 260px;
+  max-width: 520px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto !important;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+.managecontent-fresh-reflections ul,
+.managecontent-fresh-delivery ul,
+.managecontent-fresh-users ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.managecontent-fresh-reflections h2,
+.managecontent-fresh-delivery h2,
+.managecontent-fresh-users h2 {
+  margin: 0 0 0.75rem 0;
+  color: #006d6d;
+  font-size: 1.05rem;
+}
+.managecontent-fresh-users ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+.managecontent-fresh-user-item {
+  background: rgba(255,255,255,0.85);
+  border: 2px solid #008b8b;
+  border-left: 4px solid #008b8b;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  margin-bottom: 0.85rem;
+}
+.managecontent-fresh-user-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,139,139,0.18);
+  border-color: #006d6d;
+}
+.managecontent-fresh-user-item label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.managecontent-fresh-user-name,
+.managecontent-fresh-user-email {
+  margin-left: 0 !important;
+  display: block;
+}
+.managecontent-fresh-user-item label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.managecontent-fresh-user-item label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.managecontent-fresh-user-label-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.managecontent-fresh-user-name {
+  font-weight: 600;
+  color: #003c3c;
+  margin: 0;
+  line-height: 1.1;
+}
+.managecontent-fresh-user-email {
+  font-size: 0.92rem;
+  color: #667777;
+  margin: 0;
+  word-break: break-word;
+  opacity: 0.95;
+  line-height: 1.1;
+}
+.managecontent-fresh-user-item input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin-right: 8px;
+  transform: scale(1.04);
+}
+.managecontent-fresh-users ul li:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 980px) {
+  .managecontent-fresh-main {
+    padding-bottom: 1rem;
+  }
+  .managecontent-fresh-sections {
+    align-items: stretch;
+  }
+  .managecontent-fresh-reflections,
+  .managecontent-fresh-delivery,
+  .managecontent-fresh-users {
+    max-height: none;
+    overflow: visible;
+  }
+}
+.managecontent-fresh-reflection-item {
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: #e0f7fa;
+  box-shadow: 0 2px 8px rgba(0,139,139,0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.managecontent-fresh-reflection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #006d6d;
+  font-size: 0.98rem;
+}
+.managecontent-fresh-reflection-content {
+  color: #07484a;
+  font-size: 0.96rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.managecontent-fresh-reflection-date {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.managecontent-fresh-form {
+  display: flex;
+  flex-direction: column;
+}
+.managecontent-fresh-textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #cce4e4;
+  font-size: 1rem;
+  min-height: 120px;
+  resize: vertical;
+}
+.managecontent-fresh-btn {
+  background: #008b8b;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.managecontent-fresh-btn:hover {
+  background: #006d6d;
+}
+.managecontent-fresh-status {
+  margin-top: 1rem;
+  color: #008b8b;
+  font-weight: bold;
+}
+.managecontent-fresh-selectall {
+  margin-bottom: 0.75rem;
+  color: #008b8b;
+  font-weight: 500;
+}
+.managecontent-fresh-user-item {
+  margin-bottom: 0.85rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: #f0f6fa;
+  box-shadow: 0 1px 4px rgba(0,139,139,0.06);
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+}
+.managecontent-fresh-user-item label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.managecontent-fresh-user-name {
+  margin-left: 0;
+  font-weight: 600;
+}
+.managecontent-fresh-user-email {
+  margin-left: 0;
+  color: #666;
+  font-size: 0.95rem;
+  word-break: break-word;
+  opacity: 0.95;
+}
+.managecontent-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+}
+.box,
+.managecontent-fresh-delivery,
+.managecontent-fresh-users {
+  background: rgba(255,255,255,0.82) !important;
+  border-radius: 18px !important;
+  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.18), 4px 8px 16px 0 rgba(0,139,139,0.10) !important;
+  border: 2.5px solid #fff !important;
+  backdrop-filter: blur(8px) saturate(120%) !important;
+}
+.box h2,
+.managecontent-fresh-delivery h2,
+.managecontent-fresh-users h2 {
+  color: #008b8b;
+  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+}
+      `}</style>
       <AdminTopBar
         menuItems={[
           { label: "Dashboard", link: "/admindashboard" },
