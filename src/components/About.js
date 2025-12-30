@@ -37,11 +37,11 @@ function About() {
         .aboutpage-container {
           font-family: Arial, sans-serif;
           background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
-          min-height: 100vh;
+          height: 100vh;
+          overflow-y: auto;
           display: flex;
           flex-direction: column;
           position: relative;
-          overflow-x: hidden;
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -84,10 +84,11 @@ function About() {
         .aboutpage-collage {
           width: 100vw;
           max-width: 100vw;
-          height: 340px; /* Increased height to fit all images */
+          min-height: 60vh;
+          height: 60vh;
           margin: 0 auto;
           position: relative;
-          overflow: hidden; /* Hide overflowing images */
+          overflow: hidden;
           background: transparent;
         }
         .aboutpage-img-float {
@@ -129,7 +130,8 @@ function About() {
         }
         @media (max-width: 500px) {
           .aboutpage-collage {
-            height: 220px;
+            min-height: 40vh;
+            height: 40vh;
           }
           .aboutpage-text {
             padding: 1rem 0.3rem;
