@@ -1,35 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-const albums = [
-  {
-    name: "Bible Reading Guide",
-    folder: "/JTVCF/ALBUM/bible reading guide/",
-    images: [
-      "january.jpg", "february.jpg", "march.jpg", "april.jpg", "july.jpg", "august.jpg", "september.jpg", "october.jpg"
-    ]
-  },
-  {
-    name: "Cell Summit 2024",
-    folder: "/JTVCF/ALBUM/cell summit 2024/",
-    images: Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`)
-  },
-  {
-    name: "JTVCF 37th Anniversary",
-    folder: "/JTVCF/ALBUM/JTVCF 37th anniversary/",
-    images: Array.from({ length: 11 }, (_, i) => `${i + 1}.jpg`)
-  },
-  {
-    name: "Ministry Staff",
-    folder: "/JTVCF/ALBUM/ministry staff/",
-    images: Array.from({ length: 7 }, (_, i) => `${i + 1}.jpg`)
-  },
-  {
-    name: "Water Baptism",
-    folder: "/JTVCF/ALBUM/water baptism/",
-    images: Array.from({ length: 12 }, (_, i) => `${i + 1}.jpg`)
-  }
-];
-
 function Gallery() {
   const [albums, setAlbums] = useState([]);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
@@ -69,141 +39,157 @@ function Gallery() {
   };
 
   return (
-    <div className="gallery-container">
+    <div className="gallery-mobile-container">
       <style>{`
-        .gallery-container {
-          min-height: 100vh;
-          width: 100vw;
-          background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          font-family: Arial, sans-serif;
-        }
-        .gallery-bubbles {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100vw;
-          height: 100vh;
-          pointer-events: none;
-          z-index: 0;
-        }
-        .gallery-bubble {
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(156, 39, 176, 0.18);
-          animation: galleryBubbleUp 8s linear infinite;
-        }
-        @keyframes galleryBubbleUp {
-          0% {
-            transform: translateY(100vh) scale(1);
-            opacity: 0.7;
-          }
-          80% {
-            opacity: 0.5;
-          }
-          100% {
-            transform: translateY(-10vh) scale(1.2);
-            opacity: 0;
-          }
-        }
-        .gallery-back-btn {
-          position: absolute;
-          top: 32px;
-          left: 32px;
-          background: rgba(255,255,255,0.7);
-          border: none;
-          border-radius: 18px;
-          padding: 0.7rem 1.5rem;
-          font-size: 1.1rem;
-          font-weight: bold;
-          color: #008b8b;
-          cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 2;
-        }
-        .gallery-albums {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 2rem;
-          justify-content: center;
-          align-items: center;
-          margin-top: 120px;
-          z-index: 1;
-        }
-        .gallery-album-card {
-          background: rgba(255,255,255,0.55);
-          border-radius: 32px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
-          padding: 2.5rem 3.5rem;
-          cursor: pointer;
-          font-size: 1.3rem;
-          font-weight: bold;
-          color: #008b8b;
-          transition: transform 0.2s, box-shadow 0.2s;
-          text-align: center;
-          z-index: 1;
-        }
-        .gallery-album-card:hover {
-          transform: translateY(-8px) scale(1.04);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
-        }
-        .gallery-album-title {
-          margin-bottom: 0;
-        }
-        .gallery-images {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
-          justify-content: center;
-          align-items: center;
-          margin-top: 120px;
-          z-index: 1;
-        }
-        .gallery-img-thumb {
-          width: 180px;
-          height: 140px;
-          object-fit: cover;
-          border-radius: 18px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          cursor: pointer;
-          transition: transform 0.2s, box-shadow 0.2s;
-          background: #fff;
-        }
-        .gallery-img-thumb:hover {
-          transform: scale(1.08);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
-        }
-        .gallery-fullscreen {
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(40,0,60,0.45);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 100;
-          cursor: pointer;
-        }
-        .gallery-full-img {
-          max-width: 90vw;
-          max-height: 90vh;
-          border-radius: 24px;
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
-          background: #fff;
-        }
+.gallery-mobile-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 0;
+}
+.gallery-mobile-bubbles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+.gallery-mobile-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(156, 39, 176, 0.18);
+  animation: galleryMobileBubbleUp 8s linear infinite;
+}
+@keyframes galleryMobileBubbleUp {
+  0% { transform: translateY(100vh) scale(1); opacity: 0.7; }
+  80% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+.gallery-mobile-back-btn {
+  position: fixed;
+  top: 18px;
+  left: 12px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 18px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #008b8b;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+  z-index: 10;
+}
+.gallery-mobile-back-btn.right {
+  left: auto;
+  right: 12px;
+}
+.gallery-mobile-albums {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 80px;
+  width: 100vw;
+  z-index: 1;
+}
+.gallery-mobile-album-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+  padding: 1.3rem 1.2rem;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #008b8b;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  width: 90vw;
+  max-width: 340px;
+}
+.gallery-mobile-album-card:active,
+.gallery-mobile-album-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+}
+.gallery-mobile-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 80px;
+  width: 100vw;
+  z-index: 1;
+}
+.gallery-mobile-img-thumb {
+  width: 44vw;
+  max-width: 150px;
+  height: 28vw;
+  max-height: 110px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.gallery-mobile-img-thumb:active,
+.gallery-mobile-img-thumb:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+}
+.gallery-mobile-fullscreen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(40,0,60,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+}
+.gallery-mobile-full-img {
+  max-width: 96vw;
+  max-height: 90vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+  background: #fff;
+}
+@media (max-width: 500px) {
+  .gallery-mobile-album-card {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+    font-size: 1rem;
+  }
+  .gallery-mobile-images {
+    gap: 0.3rem;
+  }
+  .gallery-mobile-img-thumb {
+    width: 46vw;
+    max-width: 120px;
+    height: 30vw;
+    max-height: 90px;
+  }
+}
       `}</style>
-      <div className="gallery-bubbles">
-        {[...Array(12)].map((_, i) => (
+      <div className="gallery-mobile-bubbles">
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="gallery-bubble"
+            className="gallery-mobile-bubble"
             style={{
               left: `${Math.random() * 90 + 2}%`,
               width: `${Math.random() * 32 + 18}px`,
@@ -213,35 +199,37 @@ function Gallery() {
           />
         ))}
       </div>
-      <button className="gallery-back-btn" onClick={() => setSelectedAlbum(null)} style={{ display: selectedAlbum !== null ? "block" : "none" }}>
-        ← Back
-      </button>
-      <button
-        className="gallery-back-btn"
-        style={{ top: "32px", right: "32px", left: "auto", background: "rgba(255,255,255,0.7)", display: selectedAlbum === null ? "block" : "none" }}
-        onClick={() => window.location.href = "/about"}
-      >
-        ← Back to About
-      </button>
+      {selectedAlbum !== null ? (
+        <button className="gallery-mobile-back-btn" onClick={() => setSelectedAlbum(null)}>
+          ← Back
+        </button>
+      ) : (
+        <button
+          className="gallery-mobile-back-btn right"
+          onClick={() => window.location.href = "/about"}
+        >
+          ← About
+        </button>
+      )}
       {selectedAlbum === null && (
-        <div className="gallery-albums">
+        <div className="gallery-mobile-albums">
           {albums.map((album, idx) => (
-            <div className="gallery-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
-              <div className="gallery-album-title">{album.name}</div>
+            <div className="gallery-mobile-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
+              {album.name}
             </div>
           ))}
         </div>
       )}
       {selectedAlbum !== null && !fullscreenImg && (
-        <div className="gallery-images" style={{ marginTop: "120px", position: "absolute", left: 0, right: 0 }}>
-          {images.map((img, i) => (
+        <div className="gallery-mobile-images">
+          {images.map((img) => (
             <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
           ))}
         </div>
       )}
       {fullscreenImg && (
-        <div className="gallery-fullscreen" onClick={() => setFullscreenImg(null)}>
-          <img src={fullscreenImg} alt={fullscreenImgName || "Full"} className="gallery-full-img" />
+        <div className="gallery-mobile-fullscreen" onClick={() => setFullscreenImg(null)}>
+          <img src={fullscreenImg} alt={fullscreenImgName || "Full"} className="gallery-mobile-full-img" />
         </div>
       )}
     </div>
@@ -259,7 +247,7 @@ function GalleryImageThumb({ img, onClick }) {
     <img
       src={src}
       alt={img.image_name || "Gallery"}
-      className="gallery-img-thumb"
+      className="gallery-mobile-img-thumb"
       onClick={onClick}
       style={{ cursor: 'pointer' }}
     />
