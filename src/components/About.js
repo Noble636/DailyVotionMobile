@@ -184,17 +184,6 @@ function About() {
           display: block;
         }
 
-        .topbar-logo-float {
-          /* position: absolute; */
-          /* top: -20px; */
-          /* left: 10px; */
-          /* z-index: 200; */
-        }
-
-        .topbar-logo-float-img {
-          /* height: 90px; */
-        }
-
         .topbar-menu {
           /* Style your menu icon/button here */
         }
