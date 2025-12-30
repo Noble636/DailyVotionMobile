@@ -37,11 +37,12 @@ function About() {
         .aboutpage-container {
           font-family: Arial, sans-serif;
           background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
-          height: 100vh;
-          overflow-y: auto;
+          min-height: 100vh;
+          width: 100vw;
+          overflow-x: hidden;
           display: flex;
           flex-direction: column;
-          position: relative;
+          align-items: center;
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -74,35 +75,36 @@ function About() {
         .aboutpage-gallery {
           display: flex;
           flex-direction: column;
+          align-items: center;
           width: 100vw;
           max-width: 100vw;
-          gap: 0;
-          align-items: stretch;
-          justify-content: flex-start;
           padding: 0;
         }
         .aboutpage-collage {
-          width: 100vw;
-          max-width: 100vw;
-          min-height: 60vh;
-          height: 60vh;
-          margin: 0 auto;
+          width: 95vw;
+          max-width: 400px;
+          min-width: 220px;
+          height: 220px;
+          margin: 0 auto 1.2rem auto;
           position: relative;
           overflow: hidden;
           background: transparent;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .aboutpage-img-float {
           object-fit: cover;
           position: absolute;
         }
         .aboutpage-text {
-          width: 100vw;
-          max-width: 100vw;
-          margin: 0 auto;
+          width: 95vw;
+          max-width: 400px;
+          margin: 0 auto 2rem auto;
           padding: 1.2rem 1rem;
           align-items: center;
-          background: rgba(255,255,255,0.55);
-          border-radius: 40px 40px 18px 18px;
+          background: rgba(255,255,255,0.85);
+          border-radius: 32px;
           box-shadow: 0 4px 16px rgba(0,139,139,0.10);
           display: flex;
           flex-direction: column;
@@ -130,11 +132,12 @@ function About() {
         }
         @media (max-width: 500px) {
           .aboutpage-collage {
-            min-height: 40vh;
-            height: 40vh;
+            height: 160px;
+            max-width: 98vw;
           }
           .aboutpage-text {
             padding: 1rem 0.3rem;
+            max-width: 98vw;
           }
         }
       `}</style>
