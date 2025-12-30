@@ -164,23 +164,24 @@ function About() {
           box-shadow: 0 4px 16px rgba(0,139,139,0.12);
           background: #e0f7fa;
         }
-        .aboutpage-topbar,
-        .TopBar,
-        .topbar-container {
-          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
-          height: 48px;
-          min-height: 48px;
-          padding: 0 16px;
+        .aboutpage-topbar {
+          background-color: #008b8b;
+          padding: 14px 32px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          position: relative;
           width: 100vw;
+          left: 0;
+          right: 0;
           box-sizing: border-box;
           margin: 0;
-          top: 0;
-          left: 0;
-          z-index: 10;
+          position: relative;
+        }
+
+        .aboutpage-logo {
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.3rem;
         }
 
         .topbar-logo {
@@ -209,6 +210,10 @@ function About() {
         }
       `}</style>
       <TopBar />
+      <div className="aboutpage-topbar">
+        <span className="aboutpage-logo">Your Logo or Title</span>
+        {/* Add your menu button or links here if needed */}
+      </div>
       <div className="aboutpage-bubbles">
         {[...Array(12)].map((_, i) => (
           <div
