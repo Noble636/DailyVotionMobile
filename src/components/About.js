@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import TopBar from "./TopBar";
 
 const imageBase = "/JTVCF/gallery/about us/";
 
@@ -23,6 +22,7 @@ function About() {
 
   return (
     <div className="aboutpage-container">
+      {/* Capstone Top Bar CSS */}
       <style>{`
         .about-float-animate {
           opacity: 0;
@@ -208,12 +208,33 @@ function About() {
         .topbar-menu {
           /* Style your menu icon/button here */
         }
+        .aboutpage-topbar ul {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+        }
+        .aboutpage-topbar li a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          transition: 0.3s;
+        }
+        .aboutpage-topbar li a:hover {
+          text-decoration: underline;
+          text-shadow: 0 0 8px white;
+        }
       `}</style>
-      <TopBar />
-      <header className="aboutpage-topbar">
-        <img src="/JTVCF/home page/logo v3.png" alt="Logo" style={{ height: "40px", width: "auto" }} />
-        {/* Menu button or links */}
-      </header>
+      {/* Capstone Top Bar JSX */}
+      <div className="aboutpage-topbar">
+        <div className="aboutpage-logo">Daily Votion</div>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
+      </div>
       <div className="aboutpage-bubbles">
         {[...Array(12)].map((_, i) => (
           <div
