@@ -43,6 +43,7 @@ function About() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          padding-top: 56px; /* Add space for the fixed top bar */
         }
         .aboutpage-bubbles {
           position: absolute;
@@ -156,6 +157,31 @@ function About() {
           object-fit: cover;
           box-shadow: 0 4px 16px rgba(0,139,139,0.12);
           background: #e0f7fa;
+        }
+        .TopBar, .topbar, .aboutpage-topbar {
+          width: 100vw;
+          max-width: 100vw;
+          height: 56px;
+          background: #008b8b;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 10;
+          padding: 0 1rem;
+          box-sizing: border-box;
+        }
+
+        .topbar-logo {
+          height: 40px;
+          width: auto;
+          display: block;
+        }
+
+        .topbar-menu {
+          /* Style your menu icon/button here */
         }
       `}</style>
       <TopBar />
