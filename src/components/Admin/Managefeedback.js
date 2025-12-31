@@ -201,20 +201,30 @@ function Managefeedback() {
 }
 
 @media (max-width: 700px) {
+  .managefeedback-main {
+    width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .managefeedback-title {
+    font-size: 1.3rem;
+    margin-top: 3.2rem;
+    margin-bottom: 1rem;
+  }
   .managefeedback-list {
     min-width: 0;
-    max-width: 99vw;
-    width: 99vw;
-    padding: 1.1rem 0.5rem;
-    border-radius: 10px;
+    max-width: 100vw;
+    width: 100vw;
+    padding: 0.7rem 0.2rem;
+    border-radius: 8px;
+    margin: 0;
   }
   .managefeedback-item {
-    font-size: 0.98rem;
-    padding: 0.5rem 0.5rem;
-    border-radius: 8px;
-  }
-  .managefeedback-container {
-    padding: 0;
+    font-size: 0.97rem;
+    padding: 0.5rem 0.4rem;
+    border-radius: 6px;
+    word-break: break-word;
   }
 }
             `}</style>
