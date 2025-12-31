@@ -233,22 +233,18 @@ function AdminLogin() {
 @media (max-width: 700px) {
   .adminlogin-main {
     max-width: 98vw;
-    padding: 1.2rem 2vw;
-    margin-top: 0.7rem;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
   }
   .adminlogin-paper {
     max-width: 98vw;
+    width: 100%;
     padding: 1.2rem 2vw;
     border-radius: 14px;
-  }
-  .adminlogin-title {
-    font-size: 1.1rem;
-  }
-  .adminlogin-loginbtn,
-  .adminlogin-createbtn {
-    width: 100%;
-    font-size: 1rem;
-    padding: 0.7rem 0;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 }
       `}</style>
