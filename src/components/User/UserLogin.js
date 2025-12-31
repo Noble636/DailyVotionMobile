@@ -96,6 +96,8 @@ function Login() {
           margin-left: auto;
           margin-right: auto;
           padding: 0 2vw;
+          margin-top: 32px;
+          margin-left: 8px; /* Changed from -8px to 8px to nudge right */
         }
         .userlogin-form-glass {
           background: rgba(255,255,255,0.92);
