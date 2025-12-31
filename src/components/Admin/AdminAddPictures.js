@@ -501,6 +501,50 @@ function AdminAddPictures() {
         margin-bottom: 1.2rem;
     }
 }
+@media (max-width: 700px) {
+  .adminaddpics-main {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    align-items: stretch !important;
+    max-width: 99vw !important;
+    padding: 0 0.2rem !important;
+    margin: 2.5rem 0 0 0 !important;
+  }
+  .adminaddpics-card {
+    min-width: 0 !important;
+    max-width: 99vw !important;
+    width: 99vw !important;
+    padding: 1.1rem 0.5rem !important;
+    border-radius: 10px !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .adminaddpics-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+  .adminaddpics-form {
+    gap: 0.5rem !important;
+  }
+  .adminaddpics-input,
+  .adminaddpics-select {
+    font-size: 0.98rem !important;
+    padding: 0.5rem !important;
+  }
+  .adminaddpics-btn {
+    font-size: 0.98rem !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 7px !important;
+  }
+  .adminaddpics-preview-imgbox {
+    width: 60px !important;
+    height: 60px !important;
+    padding: 3px !important;
+  }
+  .adminaddpics-preview-img {
+    max-width: 54px !important;
+    max-height: 54px !important;
+  }
+}
       `}</style>
       <NotificationPopup message={notification} show={showNotification} />
       <AdminTopBar
