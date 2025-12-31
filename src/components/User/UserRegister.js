@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar";
 
 function UserRegister() {
@@ -15,6 +16,8 @@ function UserRegister() {
   const [showAgreementModal, setShowAgreementModal] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [warning, setWarning] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -75,13 +78,13 @@ function UserRegister() {
         setAgreed(false);
         setTimeout(() => {
           setShowSuccessModal(false);
-          window.location.href = "/login";
+          navigate("/login");
         }, 2000);
       } else {
-        alert(data.error || "Registration failed");
+        setWarning(data.error || "Registration failed");
       }
     } catch (err) {
-      alert("Server error. Please try again later.");
+      setWarning("Server error. Please try again later.");
     }
   };
 
@@ -131,74 +134,51 @@ function UserRegister() {
           background: transparent;
         }
         .userregister-main {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          min-height: 80vh;
-          max-width: 1100px;
-          margin: 5.5rem auto 4rem auto;
-          position: relative;
-          gap: 3.5rem;
-        }
-        .userregister-form-glass {
+          margin: 1.2rem auto 0 auto;
+          width: 100%;
+          max-width: 480px;
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-          border-radius: 22px;
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-          padding: 1.5rem 2rem;
-          margin-bottom: 1.5rem;
-          min-width: 340px;
-          max-width: 370px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          z-index: 2;
-          margin-right: 0.5rem;
-          backdrop-filter: blur(14px) saturate(120%);
-          position: relative;
-        }
-        .userregister-form-content {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+          border-radius: 18px;
+          box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,139,139,0.12);
+          padding: 2rem 1.2rem;
+          border: 2px solid #fff;
+          box-sizing: border-box;
         }
         .userregister-title {
           color: #008b8b;
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: bold;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
           text-align: center;
+          text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
         }
         .userregister-form {
-          width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.1rem;
+          width: 100%;
         }
         .userregister-input {
           width: 100%;
-          box-sizing: border-box;
-          border: 1px solid #cbe7e7;
-          border-radius: 7px;
-          font-size: 1rem;
           padding: 0.7rem;
+          border-radius: 8px;
+          border: 1px solid #cce4e4;
+          font-size: 1rem;
           background: #f7f8fa;
-          margin-bottom: 0.1rem;
+          box-sizing: border-box;
         }
-        .userregister-signup-btn {
-          background: #08a3ad;
+        .userregister-btn {
+          background: #008b8b;
           color: #fff;
           border: none;
-          padding: 0.8rem 0;
-          border-radius: 7px;
+          padding: 0.7rem 1.2rem;
+          border-radius: 6px;
           font-size: 1.1rem;
           font-weight: 500;
           cursor: pointer;
-          margin-top: 0.5rem;
           transition: background 0.2s;
         }
-        .userregister-signup-btn:hover {
+        .userregister-btn:hover {
           background: #006d6d;
         }
         .userregister-login-link {
@@ -490,6 +470,7 @@ function UserRegister() {
                 </a>
               </div>
             </form>
+            {warning && <div className="warning-strong">{warning}</div>}
           </div>
         </div>
         <div className="userregister-images">
