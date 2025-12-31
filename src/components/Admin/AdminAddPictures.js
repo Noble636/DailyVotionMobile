@@ -379,171 +379,112 @@ function AdminAddPictures() {
     background: #f7f8fa;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 6px;
+    padding: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
 }
 .adminaddpics-preview-img {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 54px;
+    max-height: 54px;
     border-radius: 6px;
     object-fit: cover;
     display: block;
 }
 /* Unique styles for AdminAddPictures */
 .adminaddpics-container {
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
 }
+
 .adminaddpics-main {
-    display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1100px;
-    margin: 4.5rem auto 0 auto;
-    padding: 0 1.5rem;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: stretch;
+  max-width: 100vw;
+  padding: 0 0.2rem;
+  margin: 2.5rem 0 0 0;
+  width: 100vw;
 }
+
 .adminaddpics-card {
-     background: rgba(255,255,255,0.55);
-     border-radius: 18px;
-     box-shadow: 0 8px 32px rgba(0,139,139,0.10);
-     padding: 2rem 2.2rem;
-     min-width: 340px;
-     max-width: 480px;
-     flex: 1 1 0;
-     display: flex;
-     flex-direction: column;
-     align-items: stretch;
-     margin-bottom: 2rem;
-     border: 2px solid #fff;
-     backdrop-filter: blur(12px);
-     -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+  padding: 1.1rem 0.5rem;
+  min-width: 0;
+  max-width: 100vw;
+  width: 100vw;
+  margin-bottom: 1.2rem;
+  border: 2px solid #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
+
 .adminaddpics-title {
-     color: #fff;
-     font-size: 1.35rem;
-     font-weight: bold;
-     margin-bottom: 1.2rem;
-     text-align: left;
-     text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50, 0 0 2px #fff;
-     -webkit-text-stroke: 1px #fff;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  text-align: left;
+  text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50, 0 0 2px #fff;
+  -webkit-text-stroke: 1px #fff;
 }
+
 .adminaddpics-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
+
 .adminaddpics-label {
-    font-weight: 500;
-    color: #0b6b66;
-    margin-bottom: 0.2rem;
+  font-weight: 500;
+  color: #0b6b66;
+  margin-bottom: 0.2rem;
 }
-.adminaddpics-input {
-    border: 1px solid #cbe7e7;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 0.7rem;
-    margin-bottom: 0.2rem;
-    background: #f7fdfd;
-}
+
+.adminaddpics-input,
 .adminaddpics-select {
-    border: 1px solid #cbe7e7;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 0.7rem;
-    background: #f7fdfd;
-    margin-bottom: 0.2rem;
+  border: 1px solid #cbe7e7;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  padding: 0.5rem;
+  margin-bottom: 0.2rem;
+  background: #f7fdfd;
 }
+
 .adminaddpics-btn {
-    background: #008b8b;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: background 0.18s;
+  background: #008b8b;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.5rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.18s;
 }
 .adminaddpics-btn:hover {
-    background: #006d6d;
+  background: #006d6d;
 }
 .adminaddpics-status {
-    color: #008b8b;
-    font-weight: 500;
-    margin-top: 0.7rem;
-    font-size: 1rem;
-}
-@media (max-width: 900px) {
-    .adminaddpics-main {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: stretch;
-        max-width: 98vw;
-        padding: 0 0.5rem;
-    }
-    .adminaddpics-card {
-        min-width: 0;
-        max-width: 98vw;
-        margin-bottom: 1.2rem;
-    }
-}
-@media (max-width: 700px) {
-  .adminaddpics-main {
-    flex-direction: column !important;
-    gap: 1.2rem !important;
-    align-items: stretch !important;
-    max-width: 99vw !important;
-    padding: 0 0.2rem !important;
-    margin: 2.5rem 0 0 0 !important;
-  }
-  .adminaddpics-card {
-    min-width: 0 !important;
-    max-width: 99vw !important;
-    width: 99vw !important;
-    padding: 1.1rem 0.5rem !important;
-    border-radius: 10px !important;
-    margin-bottom: 1.2rem !important;
-  }
-  .adminaddpics-title {
-    font-size: 1.1rem !important;
-    margin-bottom: 0.7rem !important;
-  }
-  .adminaddpics-form {
-    gap: 0.5rem !important;
-  }
-  .adminaddpics-input,
-  .adminaddpics-select {
-    font-size: 0.98rem !important;
-    padding: 0.5rem !important;
-  }
-  .adminaddpics-btn {
-    font-size: 0.98rem !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 7px !important;
-  }
-  .adminaddpics-preview-imgbox {
-    width: 60px !important;
-    height: 60px !important;
-    padding: 3px !important;
-  }
-  .adminaddpics-preview-img {
-    max-width: 54px !important;
-    max-height: 54px !important;
-  }
+  color: #008b8b;
+  font-weight: 500;
+  margin-top: 0.7rem;
+  font-size: 1rem;
 }
       `}</style>
       <NotificationPopup message={notification} show={showNotification} />
