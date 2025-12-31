@@ -105,6 +105,7 @@ function Userfeedback() {
   margin-top: 1.2rem;
   justify-content: flex-end;
 }
+
 .userfeedback-btn {
   background: #008b8b;
   color: #fff;
@@ -115,9 +116,17 @@ function Userfeedback() {
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .userfeedback-btn:hover {
   background: #006d6d;
 }
+
+.userfeedback-cancel-btn {
+  background: #d32f2f;
+  color: #fff;
+  font-weight: 500;
+}
+
 @media (max-width: 700px) {
   .userfeedback-main {
     max-width: 98vw;
@@ -136,6 +145,20 @@ function Userfeedback() {
     gap: 0.7rem;
     align-items: stretch;
   }
+  .userfeedback-btn,
+  .userfeedback-cancel-btn {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
+.TopBar-fixed, .topbar, .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  background: #008b8b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
       `}</style>
       <TopBar
@@ -160,8 +183,7 @@ function Userfeedback() {
         <div className="userfeedback-btns">
           <button className="userfeedback-btn" onClick={handleSave}>Save</button>
           <button
-            className="userfeedback-btn"
-            style={{ background: '#d32f2f', color: '#fff', border: 'none', borderRadius: '6px', padding: '0.4rem 1rem', fontWeight: '500', cursor: 'pointer', marginLeft: '1rem' }}
+            className="userfeedback-btn userfeedback-cancel-btn"
             onClick={handleCancel}
           >
             Cancel
