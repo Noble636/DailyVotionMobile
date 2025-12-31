@@ -22,9 +22,10 @@ function About() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          max-width: 540px;
           width: 100%;
-          padding: 0 1rem;
           margin: 0 auto;
+          padding: 0 1rem;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -35,17 +36,22 @@ function About() {
           max-width: 500px;
           margin: 1.5rem auto 1rem auto;
           z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .aboutpage-text h2 {
           color: #008b8b;
           margin-bottom: 1rem;
-          text-align: left;
+          text-align: center;
+          width: 100%;
         }
         .aboutpage-text p {
           font-size: 1.1rem;
           color: #333;
           margin-bottom: 1rem;
           text-align: left;
+          width: 100%;
         }
         .aboutpage-gallery {
           display: grid;
@@ -64,11 +70,14 @@ function About() {
           background: #fff;
         }
         @media (max-width: 600px) {
-          .aboutpage-text, .aboutpage-gallery {
+          .aboutpage-content,
+          .aboutpage-text,
+          .aboutpage-gallery {
             max-width: 98vw;
             width: 98vw;
             margin-left: auto;
             margin-right: auto;
+            padding: 0;
           }
           .aboutpage-gallery {
             gap: 0.5rem;
