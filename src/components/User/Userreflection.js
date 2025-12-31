@@ -232,6 +232,15 @@ function UserReflection() {
   font-size: 1rem;
   color: #234;
 }
+.TopBar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  background: #008b8b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 @media (max-width: 700px) {
   .userreflection-main {
     padding: 0.5rem;
@@ -267,13 +276,15 @@ function UserReflection() {
   }
 }
       `}</style>
-      <TopBar
-        title="Reflection & Journal"
-        menuItems={[
-          { label: "Profile", link: "/profile" },
-          { label: "About", link: "/about" },
-        ]}
-      />
+      <div className="TopBar-fixed">
+        <TopBar
+          title="Reflection & Journal"
+          menuItems={[
+            { label: "Profile", link: "/profile" },
+            { label: "About", link: "/about" },
+          ]}
+        />
+      </div>
 
       <div className="userreflection-main">
         {/* 1. Reflection & Journal sent by admin */}
