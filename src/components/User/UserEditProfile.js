@@ -102,9 +102,10 @@ function UserEditProfile() {
 
   const bgStyle = {
     minHeight: '100vh',
-    width: '100vw',
+    width: '100%',
     background: "url('/JTVCF/gallery/about us/13.jpg') center center / cover no-repeat",
-    overflowY: 'auto'
+    overflowY: 'auto',
+    overflowX: 'hidden'
   };
 
   return (
@@ -112,21 +113,22 @@ function UserEditProfile() {
       <style>{`
 .editprofile-bg {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #f7f8fa;
 }
 .editprofile-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  max-width: 100vw;
-  margin: 0;
-  gap: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.editprofile-formbox,
+.editprofile-info-guide {
+  width: 98%;
+  max-width: 420px;
 }
 .editprofile-formbox {
   background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
