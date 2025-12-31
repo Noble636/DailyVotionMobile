@@ -87,8 +87,7 @@ function Login() {
         }
         .userlogin-content {
           margin-top: 32px;
-          margin-left: 16px; /* Nudge right, adjust as needed */
-          margin-right: 0;
+          margin-left: -8px;
           width: 98vw;
           max-width: 400px;
           display: flex;
