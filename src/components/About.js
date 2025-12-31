@@ -18,6 +18,7 @@ function About() {
           overflow: hidden;
         }
         .aboutpage-content {
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -25,8 +26,8 @@ function About() {
           max-width: 480px;
           width: 100%;
           margin: 0 auto;
-          margin-left: 16px;
-          margin-right: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -35,7 +36,7 @@ function About() {
           padding: 1.5rem 1rem;
           width: 100%;
           max-width: 440px;
-          margin: 1.5rem auto 1rem auto;
+          margin: 1.5rem 0 1rem 0;
           z-index: 1;
           display: flex;
           flex-direction: column;
@@ -60,7 +61,7 @@ function About() {
           gap: 0.7rem;
           width: 100%;
           max-width: 440px;
-          margin: 0 auto 2rem auto;
+          margin: 0 0 2rem 0;
         }
         .aboutpage-img {
           width: 100%;
@@ -75,18 +76,15 @@ function About() {
         }
         @media (max-width: 600px) {
           .aboutpage-content {
-            max-width: 98vw;
-            width: 98vw;
-            margin-left: 8px;
-            margin-right: 8px;
-            padding: 0;
+            max-width: 100vw;
+            width: 100vw;
+            padding-left: 8px;
+            padding-right: 8px;
           }
           .aboutpage-text,
           .aboutpage-gallery {
             max-width: 100vw;
             width: 100vw;
-            margin-left: 0;
-            margin-right: 0;
             padding: 0;
           }
           .aboutpage-gallery {
