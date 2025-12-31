@@ -73,7 +73,7 @@ function Login() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
+          justify-content: center; /* Center vertically */
           position: relative;
         }
         .userlogin-content {
@@ -85,7 +85,6 @@ function Login() {
           margin: 0 auto;
           padding: 0 16px;
           box-sizing: border-box;
-          margin-top: 80px; /* Push below TopBar/logo */
         }
         .userlogin-form-glass {
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
@@ -99,6 +98,7 @@ function Login() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          box-sizing: border-box;
         }
         .userlogin-form-content {
           width: 100%;
@@ -219,6 +219,10 @@ function Login() {
           font-size: 1rem;
         }
         @media (max-width: 600px) {
+          .userlogin-outer {
+            min-width: 0;
+            padding: 0;
+          }
           .userlogin-content,
           .userlogin-form-glass {
             max-width: 98vw;
@@ -226,9 +230,6 @@ function Login() {
             margin-left: auto;
             margin-right: auto;
             padding: 0 2vw;
-          }
-          .userlogin-content {
-            margin-top: 70px; /* slightly less on mobile */
           }
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
