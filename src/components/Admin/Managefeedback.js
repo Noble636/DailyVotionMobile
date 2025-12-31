@@ -136,30 +136,30 @@ function Managefeedback() {
 
 .managefeedback-list {
   background: rgba(255, 255, 255, 0.55);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 139, 139, 0.13), 0 2px 8px rgba(44, 62, 80, 0.10);
-  padding: 2rem 1.5rem;
-  min-width: 340px;
-  max-width: 440px;
-  border: 2px solid #fff;
-  margin: 0 auto 2rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 139, 139, 0.10);
+  padding: 0.7rem 0.2rem;
+  width: 100vw;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 1rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid #fff;
 }
 
 .managefeedback-item {
   background: #e0f7fa;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 139, 139, 0.07);
   border: 2px solid #008b8b;
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
+  padding: 0.5rem 0.4rem;
+  font-size: 0.97rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  word-break: break-word;
 }
 
 .managefeedback-user {
@@ -191,11 +191,11 @@ function Managefeedback() {
 
 .managefeedback-title {
   color: #fff !important;
-  font-size: 2.3rem;
+  font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
   text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50, 0 0 2px #fff;
-  margin: 2rem 0 1rem 0;
+  margin: 3.2rem 0 1rem 0;
   letter-spacing: 1px;
   -webkit-text-stroke: 1px #fff;
 }
