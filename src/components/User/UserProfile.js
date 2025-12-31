@@ -247,10 +247,11 @@ function UserProfile() {
         }
         .userprofile-buttons {
           display: flex;
-          flex-wrap: wrap;
+          flex-direction: column;
           gap: 0.7rem;
           width: 100%;
           justify-content: center;
+          align-items: center;
           margin-bottom: 1.5rem;
         }
         .userprofile-btn {
@@ -265,9 +266,9 @@ function UserProfile() {
           box-shadow: 0 2px 8px rgba(0,139,139,0.10);
           transition: background 0.2s, box-shadow 0.2s;
           min-width: 90px;
-          width: 45%;
-          max-width: 160px;
-          margin: 0 2% 0 2%;
+          width: 100%;
+          max-width: 400px;
+          margin: 0;
         }
         .userprofile-verse {
           margin: 0.5rem auto 0 auto;
