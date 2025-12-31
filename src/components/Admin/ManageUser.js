@@ -465,6 +465,31 @@ body, #root {
   margin-bottom: 0.7rem;
   letter-spacing: 0.5px;
 }
+
+.manageuser-back-btn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  background: #008b8b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+  transition: background 0.2s;
+}
+.manageuser-back-btn:hover {
+  background: #006d6d;
+}
+@media (max-width: 700px) {
+  .manageuser-back-btn {
+    width: 90vw;
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+}
       `}</style>
       <AdminTopBar />
       <div className="manageuser-main-fresh">
