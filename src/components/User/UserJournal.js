@@ -640,6 +640,108 @@ function UserJournal() {
 .journalpage-img-bg .journalpage-title {
   color: #fff !important;
 }
+@media (max-width: 700px) {
+  .journalpage-container {
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .journalpage-main {
+    padding: 1rem 0.2rem 1.5rem 0.2rem;
+    border-radius: 0;
+    margin-top: 24px;
+  }
+  .journalpage-title {
+    font-size: 1.2rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .journalpage-soap-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 100vw;
+    width: 100%;
+    align-items: stretch;
+    margin-bottom: 1.2rem;
+  }
+  .journalpage-soap-col {
+    min-width: 0;
+    width: 100%;
+    align-items: stretch;
+  }
+  .journalpage-section-box textarea,
+  .journalpage-section-textarea {
+    font-size: 1rem;
+    padding: 0.7rem;
+    height: 180px;
+  }
+  .journalpage-date {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100vw;
+    margin-bottom: 0.7rem;
+  }
+  .journalpage-bottom-actions > div {
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+  }
+  .journalpage-save-btn,
+  .journalpage-bible-btn,
+  .journalpage-cancel-btn {
+    width: 100%;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 0.7rem 0;
+    border-radius: 8px;
+  }
+  .journalpage-img-bg {
+    min-height: 80px;
+    padding: 0.7rem 0 0 0;
+    background-size: cover;
+  }
+  .journal-bibleguide-popup-movable {
+    width: 98vw !important;
+    min-width: 0 !important;
+    left: 1vw !important;
+    top: 10vh !important;
+    max-width: 98vw !important;
+  }
+  .journal-bibleguide-header {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .journal-bibleguide-listitem {
+    gap: 10px !important;
+    padding: 6px !important;
+  }
+  .journal-bibleguide-listitem img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .journal-bibleguide-listitem span {
+    font-size: 0.95rem !important;
+  }
+  .journalpage-bible-popup {
+    width: 98vw !important;
+    min-width: 0 !important;
+    left: 1vw !important;
+    top: 10vh !important;
+    max-width: 98vw !important;
+    height: 70vh !important;
+  }
+  .bible-header {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .bible-info-card {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    max-width: 95vw;
+  }
+}
       `}</style>
         {showSavePopup && (
           <div className="journal-save-popup">
