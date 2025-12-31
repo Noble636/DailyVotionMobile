@@ -75,6 +75,7 @@ function Login() {
           align-items: center;
           justify-content: flex-start;
           position: relative;
+          /* No width or min-width here! */
         }
         .userlogin-content {
           display: flex;
@@ -82,8 +83,9 @@ function Login() {
           align-items: center;
           width: 100%;
           max-width: 440px;
-          margin: 0 auto;
+          margin: 2.5rem auto 0 auto;
           padding: 0 16px;
+          box-sizing: border-box;
         }
         .userlogin-form-glass {
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
@@ -92,7 +94,7 @@ function Login() {
           padding: 2.5rem 2rem 2rem 2rem;
           width: 100%;
           max-width: 400px;
-          margin: 2rem auto 1rem auto;
+          margin: 0 auto 1rem auto;
           z-index: 2;
           display: flex;
           flex-direction: column;
@@ -208,6 +210,29 @@ function Login() {
         }
         .userlogin-createbtn:hover {
           background: #006d6d;
+        }
+        .userlogin-warning {
+          color: #d32f2f;
+          margin-bottom: 1rem;
+          font-weight: 500;
+          text-align: center;
+          font-size: 1rem;
+        }
+        @media (max-width: 600px) {
+          .userlogin-content,
+          .userlogin-form-glass {
+            max-width: 98vw;
+            width: 98vw;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 4vw;
+          }
+          .userlogin-form-glass {
+            padding: 2rem 1rem 1.5rem 1rem;
+          }
+          .userlogin-title {
+            font-size: 1.4rem;
+          }
         }
       `}</style>
       <TopBar
