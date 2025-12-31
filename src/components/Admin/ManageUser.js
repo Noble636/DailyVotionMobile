@@ -8,7 +8,38 @@ function Popup({ message, onOk, onCancel, okText = "OK", cancelText = "Cancel" }
       <div className="manageuser-popup-box" style={{ minWidth: 280, maxWidth: 340 }}>
         <div style={{ marginBottom: "1rem", fontSize: "1.08rem", color: "#222" }}>{message}</div>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-          <button onClick={onOk} style={{ background: '#08a3ad', color: '#fff', border: 'none', borderRadius: 6, padding: '0.5rem 1.2rem', fontWeight: 500, fontSize: '1rem', cursor: 'pointer' }}>{okText}</button>
+          {cancelText && (
+            <button
+              onClick={onCancel}
+              style={{
+                background: "#e0e0e0",
+                color: "#008b8b",
+                border: "none",
+                borderRadius: 6,
+                padding: "0.5rem 1.2rem",
+                fontWeight: 500,
+                fontSize: "1rem",
+                cursor: "pointer",
+              }}
+            >
+              {cancelText}
+            </button>
+          )}
+          <button
+            onClick={onOk}
+            style={{
+              background: "#08a3ad",
+              color: "#fff",
+              border: "none",
+              borderRadius: 6,
+              padding: "0.5rem 1.2rem",
+              fontWeight: 500,
+              fontSize: "1rem",
+              cursor: "pointer",
+            }}
+          >
+            {okText}
+          </button>
         </div>
       </div>
     </div>
