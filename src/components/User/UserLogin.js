@@ -75,7 +75,6 @@ function Login() {
           align-items: center;
           justify-content: flex-start;
           position: relative;
-          overflow-x: hidden;
         }
         .userlogin-content {
           display: flex;
@@ -210,49 +209,6 @@ function Login() {
         .userlogin-createbtn:hover {
           background: #006d6d;
         }
-        .userlogin-images {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 0.7rem;
-          width: 100%;
-          max-width: 400px;
-          margin: 0.5rem auto 2rem auto;
-        }
-        .userlogin-img {
-          width: 100%;
-          aspect-ratio: 1.2/1;
-          object-fit: cover;
-          border-radius: 14px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          background: #eee;
-        }
-        .userlogin-images img:nth-child(2) {
-          margin-top: -18px;
-        }
-        .userlogin-warning {
-          color: #d32f2f;
-          margin-bottom: 1rem;
-          font-weight: 500;
-          text-align: center;
-          font-size: 1rem;
-        }
-        @media (max-width: 600px) {
-          .userlogin-content,
-          .userlogin-form-glass,
-          .userlogin-images {
-            max-width: 98vw;
-            width: 98vw;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0;
-          }
-          .userlogin-images {
-            gap: 0.5rem;
-          }
-          .userlogin-images img:nth-child(2) {
-            margin-top: -10px;
-          }
-        }
       `}</style>
       <TopBar
         logo="DailyVotion"
@@ -344,11 +300,6 @@ function Login() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="userlogin-images">
-          <img src="/JTVCF/for background picture/3.jpg" alt="Image 1" className="userlogin-img" />
-          <img src="/JTVCF/for background picture/1.jpg" alt="Image 2" className="userlogin-img" />
-          <img src="/JTVCF/gallery/ministry or organization/3.jpg" alt="Image 3" className="userlogin-img" />
         </div>
       </div>
     </div>
