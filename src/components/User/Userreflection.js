@@ -6,6 +6,7 @@ function UserReflection() {
   const [reflections, setReflections] = useState([]);
   const [sentNotice, setSentNotice] = useState(false);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -56,8 +57,7 @@ function UserReflection() {
           .then((res) => res.json())
           .then((data) => setReflections(data || []));
       })
-      .catch(() => {
-      });
+      .catch(() => {});
   };
 
   return (
@@ -79,122 +79,66 @@ function UserReflection() {
   50% { background-position: 100% 100%; }
   100% { background-position: 0% 0%; }
 }
-.userreflection-container > .topbar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  z-index: 999;
-  box-sizing: border-box;
-}
-.userreflection-container {
-  padding-top: 56px;
-}
 .userreflection-main {
   margin: 1.4rem auto 0;
   width: 100%;
   max-width: 1200px;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
   padding: 1.25rem;
   box-sizing: border-box;
-  align-items: stretch;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
+.userreflection-verse-card,
+.userreflection-form,
 .userreflection-left {
-  flex: 0 0 480px;
-  display: flex;
-  flex-direction: column;
   background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
   border-radius: 22px;
-  padding: 2.5rem 2rem;
   box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
   box-sizing: border-box;
   border: 2.5px solid #fff;
-  min-width: 340px;
   max-width: 480px;
   width: 100%;
   align-items: center;
   z-index: 2;
   backdrop-filter: blur(14px) saturate(120%);
-  min-height: 500px;
-}
-.userreflection-left-title {
-  color: #008b8b;
-  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
-}
-.userreflection-left-list {
-  overflow-y: auto;
-  flex: 1 1 auto;
-  padding-right: 8px;
-  max-height: calc(100vh - 220px);
-  box-sizing: border-box;
-}
-.userreflection-response-meta { justify-content: flex-end; }
-.userreflection-right {
-  flex: 1 1 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-sizing: border-box;
-  min-width: 420px;
+  margin: 0 auto;
 }
 .userreflection-verse-card {
-  background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-  border-radius: 22px;
-  padding: 2.5rem 2rem;
-  padding-top: 0.5rem !important;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-  box-sizing: border-box;
-  border: 2.5px solid #fff;
-  min-width: 480px;
-  max-width: 480px;
-  flex: 0 0 480px;
+  padding: 2.5rem 2rem 1.5rem 2rem;
   min-height: 150px;
-  max-height: 150px;
-  height: 150px !important;
-  width: 100%;
-  align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(14px) saturate(120%);
   min-height: 230px;
-  height: 250px;
+  height: auto;
 }
 .userreflection-verse-title {
   color: #008b8b;
   font-weight: 700;
   margin-bottom: 0.5rem;
   font-size: 2rem;
-  padding-top: 3.0rem;
+  padding-top: 1.0rem;
   text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+  text-align: center;
 }
 .userreflection-verse-text {
   font-size: 1.18rem;
   color: #234;
   margin-bottom: 0.6rem;
+  text-align: center;
 }
 .userreflection-verse-meta {
   display: flex;
   justify-content: space-between;
   color: #6b6b6b;
   font-size: 0.92rem;
+  width: 100%;
 }
 .userreflection-form {
-  background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-  border-radius: 22px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-  padding: 2.5rem 2rem;
-  min-width: 340px;
-  max-width: 480px;
-  width: 100%;
+  padding: 2rem 2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(14px) saturate(120%);
-  box-sizing: border-box;
-  border: 2.5px solid #fff;
 }
 .userreflection-form-label {
   font-weight: 600;
@@ -214,6 +158,8 @@ function UserReflection() {
   display: flex;
   justify-content: flex-end;
   margin-top: 0.5rem;
+  gap: 1rem;
+  width: 100%;
 }
 .userreflection-btn {
   background: #008b8b;
@@ -221,6 +167,15 @@ function UserReflection() {
   border: none;
   border-radius: 8px;
   padding: 0.6rem 1.1rem;
+  cursor: pointer;
+}
+.userreflection-cancel-btn {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-weight: 500;
   cursor: pointer;
 }
 .userreflection-sent {
@@ -232,13 +187,85 @@ function UserReflection() {
   width: max-content;
   margin-top: 0.25rem;
 }
-.userreflection-left-list::-webkit-scrollbar { width: 10px; }
-.userreflection-left-list::-webkit-scrollbar-thumb { background: rgba(0,139,139,0.18); border-radius: 8px; }
-.userreflection-left-list::-webkit-scrollbar-track { background: transparent; }
-@media (max-width: 1000px) {
-  .userreflection-main { flex-direction: column; padding: 1rem; gap: 1rem; }
-  .userreflection-left, .userreflection-right { flex: 0 0 100%; max-width: 100%; }
-  .userreflection-textarea { min-height: 100px; }
+.userreflection-left {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem 1.5rem 2rem;
+  min-width: 240px;
+  min-height: 200px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+.userreflection-left-title {
+  color: #008b8b;
+  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+.userreflection-left-list {
+  overflow-y: auto;
+  flex: 1 1 auto;
+  padding-right: 8px;
+  max-height: 220px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.userreflection-response-item {
+  margin-bottom: 1.2rem;
+  background: #f7f8fa;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,139,139,0.07);
+}
+.userreflection-response-meta {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.92rem;
+  color: #888;
+  margin-bottom: 0.2rem;
+}
+.userreflection-response-admin {
+  font-size: 1rem;
+  color: #006d6d;
+  margin-bottom: 0.2rem;
+}
+.userreflection-response-text {
+  font-size: 1rem;
+  color: #234;
+}
+@media (max-width: 700px) {
+  .userreflection-main {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  .userreflection-verse-card,
+  .userreflection-form,
+  .userreflection-left {
+    max-width: 98vw;
+    min-width: 0;
+    width: 100%;
+    border-radius: 14px;
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .userreflection-verse-title {
+    font-size: 1.3rem;
+    padding-top: 0.7rem;
+  }
+  .userreflection-verse-text {
+    font-size: 1rem;
+  }
+  .userreflection-form {
+    padding: 1.2rem 4vw 1rem 4vw;
+  }
+  .userreflection-left {
+    padding: 1.2rem 4vw 1rem 4vw;
+    max-height: 220px;
+  }
+  .userreflection-left-list {
+    max-height: 120px;
+    padding-right: 0;
+  }
 }
       `}</style>
       <TopBar
@@ -275,14 +302,13 @@ function UserReflection() {
             className="userreflection-textarea"
             rows={6}
           />
-          <div className="userreflection-form-actions" style={{ display: 'flex', gap: '1rem' }}>
+          <div className="userreflection-form-actions">
             <button type="submit" className="userreflection-btn">
               Submit Reflection
             </button>
             <button
               type="button"
               className="userreflection-cancel-btn"
-              style={{ background: '#d32f2f', color: '#fff', border: 'none', borderRadius: '6px', padding: '0.4rem 1rem', fontWeight: '500', cursor: 'pointer' }}
               onClick={() => window.location.href = '/profile'}
             >
               Cancel
@@ -292,7 +318,7 @@ function UserReflection() {
         </form>
 
         {/* 3. Previous Reflections */}
-        <aside className="userreflection-left" style={{ maxWidth: 480, width: "100%" }}>
+        <aside className="userreflection-left">
           <h3 className="userreflection-left-title">Previous Reflections</h3>
           <div className="userreflection-left-list">
             {loading ? (
@@ -315,7 +341,7 @@ function UserReflection() {
                   </div>
                 </div>
               ))
-            }
+            )}
           </div>
         </aside>
       </div>
