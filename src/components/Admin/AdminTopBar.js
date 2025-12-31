@@ -24,18 +24,15 @@ function TopBar({ menuItems }) {
     <header className="topbar-container">
       <style>{`
 .topbar-container {
-  position: fixed !important;
-  top: 0;
-  left: 0;
+  background-color: #008b8b;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
   width: 100vw;
   z-index: 9999 !important;
-  background: #008b8b;
   box-sizing: border-box;
-}
-.topbar-logo {
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
 }
 .topbar-logo-float {
   position: absolute;
@@ -154,15 +151,12 @@ function TopBar({ menuItems }) {
         <span className="topbar-menu-icon"></span>
       </button>
 
-      {/* Remove top bar logout button, only show in dropdown */}
-
       {menuOpen && (
         <div className="topbar-dropdown-menu">
           <ul>
             {items.map((item, idx) => (
               <li key={idx}><a href={item.link}>{item.label}</a></li>
             ))}
-            {/* Logout button below About, styled like other items */}
             <li>
               <button
                 style={{
@@ -188,85 +182,3 @@ function TopBar({ menuItems }) {
 }
 
 export default TopBar;
-
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-function AdminTopBar() {
-  const navigate = useNavigate();
-
-  return (
-    <header className="admin-topbar-fixed">
-      <div className="admin-topbar-title" onClick={() => navigate("/admindashboard")}>
-        Admin Panel
-      </div>
-      <nav className="admin-topbar-menu">
-        <button className="admin-topbar-menu-item" onClick={() => navigate("/adminlogin")}>Login</button>
-        <button className="admin-topbar-menu-item" onClick={() => navigate("/adminregister")}>Register</button>
-        <button className="admin-topbar-menu-item" onClick={() => navigate("/")}>User Site</button>
-      </nav>
-      <style>{`
-.admin-topbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 64px;
-  background: #008b8b;
-  color: #fff;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  font-size: 1.2rem;
-}
-.admin-topbar-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  cursor: pointer;
-  letter-spacing: 1px;
-  user-select: none;
-}
-.admin-topbar-menu {
-  display: flex;
-  gap: 1.2rem;
-}
-.admin-topbar-menu-item {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 500;
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-  transition: background 0.2s;
-}
-.admin-topbar-menu-item:hover {
-  background: #006d6d;
-}
-@media (max-width: 700px) {
-  .admin-topbar-fixed {
-    height: 54px;
-    padding: 0 0.7rem;
-    font-size: 1rem;
-  }
-  .admin-topbar-title {
-    font-size: 1.05rem;
-  }
-  .admin-topbar-menu {
-    gap: 0.5rem;
-  }
-  .admin-topbar-menu-item {
-    font-size: 0.95rem;
-    padding: 0.2rem 0.5rem;
-  }
-}
-      `}</style>
-    </header>
-  );
-}
-
-export default AdminTopBar;
