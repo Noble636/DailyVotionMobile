@@ -144,6 +144,7 @@ function Userfeedback() {
 }
       `}</style>
       <TopBar
+        title="Feedback"
         menuItems={[
           { label: "Profile", link: "/profile" },
           { label: "Journal", link: "/journal" },
