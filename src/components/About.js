@@ -86,6 +86,22 @@ function About() {
             padding-right: 0.2rem;
           }
         }
+        .topbar-container, .aboutpage-topbar {
+          min-height: 60px !important;
+          padding-top: 10px !important;
+          padding-bottom: 10px !important;
+          background: #008b8b !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: flex-start !important;
+        }
+        .topbar-logo, .aboutpage-logo img {
+          height: 48px !important;
+          max-height: 48px !important;
+          width: auto !important;
+          display: block !important;
+          margin: 0 !important;
+        }
       `}</style>
       <div className="aboutpage-aboutus">
         <h2>About Us</h2>
