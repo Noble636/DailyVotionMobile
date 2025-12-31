@@ -16,16 +16,18 @@ function About() {
           flex-direction: column;
           position: relative;
           overflow: hidden;
+          padding-left: 8px;
+          padding-right: 8px;
         }
         .aboutpage-content {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          max-width: 540px;
+          max-width: 480px;
           width: 100%;
           margin: 0 auto;
-          padding: 0 1rem;
+          padding: 0;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -33,7 +35,7 @@ function About() {
           box-shadow: 0 4px 16px rgba(0,139,139,0.10);
           padding: 1.5rem 1rem;
           width: 100%;
-          max-width: 500px;
+          max-width: 440px;
           margin: 1.5rem auto 1rem auto;
           z-index: 1;
           display: flex;
@@ -58,7 +60,7 @@ function About() {
           grid-template-columns: 1fr 1fr;
           gap: 0.7rem;
           width: 100%;
-          max-width: 500px;
+          max-width: 440px;
           margin: 0 auto 2rem auto;
         }
         .aboutpage-img {
@@ -69,7 +71,14 @@ function About() {
           box-shadow: 0 2px 8px rgba(0,139,139,0.10);
           background: #fff;
         }
+        .aboutpage-text button {
+          margin-top: 0.5rem !important;
+        }
         @media (max-width: 600px) {
+          .aboutpage-container {
+            padding-left: 4px;
+            padding-right: 4px;
+          }
           .aboutpage-content,
           .aboutpage-text,
           .aboutpage-gallery {
