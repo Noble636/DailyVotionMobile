@@ -97,7 +97,7 @@ const DailyVotion = () => {
     },
     bibleReference: {
       fontSize: 16,
-      color: '#888',
+      color: '#222', // darker color
       marginBottom: 24,
       textAlign: 'center',
     },
