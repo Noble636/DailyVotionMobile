@@ -26,7 +26,6 @@ function AdminLogin() {
         if (data.id) {
           localStorage.setItem("adminId", data.id);
         }
-        // Remember Me logic
         if (rememberMe) {
           localStorage.setItem('adminRememberMe', 'true');
           localStorage.setItem('adminRememberedUser', email);
@@ -45,7 +44,6 @@ function AdminLogin() {
     }
   };
 
-  // Autofill remembered credentials on mount
   React.useEffect(() => {
     const remembered = localStorage.getItem('adminRememberMe') === 'true';
     if (remembered) {
@@ -55,7 +53,6 @@ function AdminLogin() {
     }
   }, []);
 
-  // Remove remembered credentials immediately when unchecked
   React.useEffect(() => {
     if (!rememberMe) {
       localStorage.removeItem('adminRememberMe');
@@ -72,54 +69,37 @@ function AdminLogin() {
   background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
   background-size: 200% 200%;
   animation: userlogin-colorwave 12s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   box-sizing: border-box;
+  padding-top: 64px;
 }
 @keyframes userlogin-colorwave {
   0% { background-position: 0% 0%; }
   50% { background-position: 100% 100%; }
   100% { background-position: 0% 0%; }
 }
-.adminlogin-box {
-  background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-  border-radius: 22px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-  padding: 2.5rem 2rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(14px) saturate(120%);
-  box-sizing: border-box;
-}
 .adminlogin-main {
-  flex: 1;
+  margin: 1.2rem auto 0 auto;
+  width: 100%;
+  max-width: 480px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
 }
 .adminlogin-paper {
   background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
   border-radius: 22px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-  backdrop-filter: blur(14px) saturate(120%);
-  border: none;
-  min-width: 380px;
-  max-width: 500px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,139,139,0.12);
+  padding: 2rem 1.2rem;
   width: 100%;
-  padding: 2.5rem 2rem;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 .adminlogin-title {
   color: #008b8b;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
   text-align: center;
@@ -133,14 +113,13 @@ function AdminLogin() {
 .adminlogin-paper form input[type="email"],
 .adminlogin-paper form input[type="text"] {
   width: 100%;
-  min-width: 260px;
-  max-width: 420px;
   box-sizing: border-box;
   border: 1px solid #cbe7e7;
   border-radius: 8px;
   font-size: 1.08rem;
   padding: 0.85rem 1rem;
   margin-bottom: 0.1rem;
+  background: #f7f8fa;
 }
 .adminlogin-password-field {
   position: relative;
@@ -158,6 +137,7 @@ function AdminLogin() {
   border-radius: 7px;
   font-size: 1rem;
   padding: 0.7rem;
+  background: #f7f8fa;
 }
 .adminlogin-eye {
   position: absolute;
@@ -239,56 +219,33 @@ function AdminLogin() {
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
-.adminlogin-menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
+.adminlogin-warning {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  text-align: center;
+  font-size: 1rem;
 }
-.adminlogin-menu-icon {
-  display: block;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  position: relative;
-}
-.adminlogin-menu-icon::before,
-.adminlogin-menu-icon::after {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  transition: 0.2s;
-}
-.adminlogin-menu-icon::before { top: -10px; }
-.adminlogin-menu-icon::after { top: 10px; }
-.adminlogin-dropdown-menu {
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  background: #008b8b;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,139,139,0.18);
-  z-index: 100;
-  min-width: 160px;
-}
-.adminlogin-dropdown-menu li {
-  padding: 12px 20px;
-  color: #fff;
-  cursor: pointer;
-  border-bottom: 1px solid #006d6d;
-}
-.adminlogin-dropdown-menu li:hover { background: #006d6d; }
-@media (max-width: 600px) {
-  .adminlogin-paper { padding: 1.5rem; max-width: 92%; }
+@media (max-width: 700px) {
+  .adminlogin-main {
+    max-width: 98vw;
+    padding: 1.2rem 2vw;
+    margin-top: 0.7rem;
+  }
+  .adminlogin-paper {
+    max-width: 98vw;
+    padding: 1.2rem 2vw;
+    border-radius: 14px;
+  }
+  .adminlogin-title {
+    font-size: 1.1rem;
+  }
+  .adminlogin-loginbtn,
+  .adminlogin-createbtn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
 }
       `}</style>
       <AdminTopBar />
