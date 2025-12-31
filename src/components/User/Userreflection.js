@@ -250,7 +250,49 @@ function UserReflection() {
       />
 
       <div className="userreflection-main">
-        <aside className="userreflection-left">
+        {/* 1. Reflection & Journal sent by admin */}
+        <div className="userreflection-verse-card">
+          <div className="userreflection-verse-title">Reflection & Journal</div>
+          <div className="userreflection-verse-text">
+            {latestReflection ? (
+              latestReflection.message
+            ) : (
+              <span style={{ color: "#888" }}>No reflection sent by admin yet.</span>
+            )}
+          </div>
+          <div className="userreflection-verse-meta">
+            <span>Sent by: Admin</span>
+            <span>{latestReflection ? new Date(latestReflection.sent_at).toLocaleString() : ""}</span>
+          </div>
+        </div>
+
+        {/* 2. Write your reflection */}
+        <form className="userreflection-form" onSubmit={handleSubmit}>
+          <textarea
+            value={reflectionText}
+            onChange={(e) => setReflectionText(e.target.value)}
+            placeholder="Write your reflection..."
+            className="userreflection-textarea"
+            rows={6}
+          />
+          <div className="userreflection-form-actions" style={{ display: 'flex', gap: '1rem' }}>
+            <button type="submit" className="userreflection-btn">
+              Submit Reflection
+            </button>
+            <button
+              type="button"
+              className="userreflection-cancel-btn"
+              style={{ background: '#d32f2f', color: '#fff', border: 'none', borderRadius: '6px', padding: '0.4rem 1rem', fontWeight: '500', cursor: 'pointer' }}
+              onClick={() => window.location.href = '/profile'}
+            >
+              Cancel
+            </button>
+          </div>
+          {sentNotice && <div className="userreflection-sent">Reflection submitted — thank you.</div>}
+        </form>
+
+        {/* 3. Previous Reflections */}
+        <aside className="userreflection-left" style={{ maxWidth: 480, width: "100%" }}>
           <h3 className="userreflection-left-title">Previous Reflections</h3>
           <div className="userreflection-left-list">
             {loading ? (
@@ -273,50 +315,9 @@ function UserReflection() {
                   </div>
                 </div>
               ))
-            )}
+            }
           </div>
         </aside>
-
-        <section className="userreflection-right">
-          <div className="userreflection-verse-card">
-            <div className="userreflection-verse-title">Reflection & Journal</div>
-            <div className="userreflection-verse-text">
-              {latestReflection ? (
-                latestReflection.message
-              ) : (
-                <span style={{ color: "#888" }}>No reflection sent by admin yet.</span>
-              )}
-            </div>
-            <div className="userreflection-verse-meta">
-              <span>Sent by: Admin</span>
-              <span>{latestReflection ? new Date(latestReflection.sent_at).toLocaleString() : ""}</span>
-            </div>
-          </div>
-
-          <form className="userreflection-form" onSubmit={handleSubmit}>
-            <textarea
-              value={reflectionText}
-              onChange={(e) => setReflectionText(e.target.value)}
-              placeholder="Write your reflection..."
-              className="userreflection-textarea"
-              rows={6}
-            />
-            <div className="userreflection-form-actions" style={{ display: 'flex', gap: '1rem' }}>
-              <button type="submit" className="userreflection-btn">
-                Submit Reflection
-              </button>
-              <button
-                type="button"
-                className="userreflection-cancel-btn"
-                style={{ background: '#d32f2f', color: '#fff', border: 'none', borderRadius: '6px', padding: '0.4rem 1rem', fontWeight: '500', cursor: 'pointer' }}
-                onClick={() => window.location.href = '/profile'}
-              >
-                Cancel
-              </button>
-            </div>
-            {sentNotice && <div className="userreflection-sent">Reflection submitted — thank you.</div>}
-          </form>
-        </section>
       </div>
     </div>
   );
