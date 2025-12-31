@@ -71,68 +71,61 @@ function Login() {
   return (
     <div className="userlogin-outer">
       <style>{`
-        html.userlogin-no-scroll, body.userlogin-no-scroll {
-          height: 100vh !important;
-          overflow: hidden !important;
+        body, html {
+          margin: 0;
+          padding: 0;
+          background: #08a3ad;
+          font-family: Arial, sans-serif;
         }
         .userlogin-outer {
-          font-family: Arial, sans-serif;
-          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           min-height: 100vh;
-          display: block;
+          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
         }
         .userlogin-content {
+          flex: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 100%;
-          max-width: 440px;
-          margin: 48px auto 0 auto;
-          padding: 0 16px;
+          justify-content: flex-start;
+          padding: 24px 0 0 0;
+          width: 100vw;
           box-sizing: border-box;
         }
         .userlogin-form-glass {
-          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-          border-radius: 22px;
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-          padding: 2.5rem 2rem 2rem 2rem;
-          width: 100%;
+          background: rgba(255,255,255,0.92);
+          border-radius: 16px;
+          box-shadow: 0 4px 24px 0 rgba(0,0,0,0.13);
+          padding: 20px 12px 16px 12px;
+          width: 94vw;
           max-width: 400px;
-          margin: 0 auto 1rem auto;
-          z-index: 2;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          box-sizing: border-box;
-        }
-        .userlogin-form-content {
-          width: 100%;
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
         .userlogin-title {
           color: #222;
-          font-size: 2rem;
+          font-size: 1.3rem;
           font-weight: bold;
-          margin-bottom: 2rem;
+          margin-bottom: 1.2rem;
           text-align: center;
         }
         .userlogin-form {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.8rem;
         }
         .userlogin-input {
           width: 100%;
-          box-sizing: border-box;
           border: 1px solid #cbe7e7;
           border-radius: 7px;
           font-size: 1rem;
           padding: 0.7rem;
           background: #f7f8fa;
-          margin-bottom: 0.1rem;
         }
         .userlogin-password-row {
           position: relative;
@@ -193,13 +186,13 @@ function Login() {
           width: 100%;
           height: 1px;
           background: #eee;
-          margin: 1.5rem 0;
+          margin: 1.2rem 0;
         }
         .userlogin-register-row {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.7rem;
+          gap: 0.5rem;
         }
         .userlogin-createbtn {
           background: #08a3ad;
@@ -234,6 +227,7 @@ function Login() {
           }
           .userlogin-content {
             margin-top: 32px;
+            margin-left: -8px; /* Add this line to nudge left */
           }
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
