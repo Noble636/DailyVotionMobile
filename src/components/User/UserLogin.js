@@ -87,7 +87,8 @@ function Login() {
         }
         .userlogin-content {
           margin-top: 32px;
-          margin-left: -8px;
+          margin-left: 24px; /* Nudge right, adjust as needed */
+          margin-right: 0;
           width: 98vw;
           max-width: 400px;
           display: flex;
@@ -238,10 +239,7 @@ function Login() {
             margin-right: auto;
             padding: 0 2vw;
           }
-          .userlogin-content {
-            margin-top: 32px;
-            margin-left: -8px;
-          }
+            
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
             border-radius: 14px;
