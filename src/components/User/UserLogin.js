@@ -86,9 +86,7 @@ function Login() {
           overflow-x: hidden;
         }
         .userlogin-content {
-          margin-top: 32px;
-          margin-left: 24px; /* Nudge right, adjust as needed */
-          margin-right: 0;
+          margin: 32px auto 0 auto; /* Top, auto (center), Bottom, auto (center) */
           width: 98vw;
           max-width: 400px;
           display: flex;
