@@ -75,7 +75,6 @@ function Login() {
           align-items: center;
           justify-content: flex-start;
           position: relative;
-          /* No width or min-width here! */
         }
         .userlogin-content {
           display: flex;
@@ -83,9 +82,10 @@ function Login() {
           align-items: center;
           width: 100%;
           max-width: 440px;
-          margin: 2.5rem auto 0 auto;
+          margin: 0 auto;
           padding: 0 16px;
           box-sizing: border-box;
+          margin-top: 80px; /* Push below TopBar/logo */
         }
         .userlogin-form-glass {
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
@@ -225,13 +225,17 @@ function Login() {
             width: 98vw;
             margin-left: auto;
             margin-right: auto;
-            padding: 0 4vw;
+            padding: 0 2vw;
+          }
+          .userlogin-content {
+            margin-top: 70px; /* slightly less on mobile */
           }
           .userlogin-form-glass {
-            padding: 2rem 1rem 1.5rem 1rem;
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+            border-radius: 14px;
           }
           .userlogin-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
           }
         }
       `}</style>
