@@ -87,6 +87,8 @@ function Login() {
         }
         .userlogin-content {
           margin-top: 32px;
+          margin-left: 12px; /* Nudge right, adjust as needed (e.g., 12px, 16px) */
+          margin-right: 0;
           max-width: 100%;
           width: 100%;
           display: flex;
@@ -95,8 +97,6 @@ function Login() {
           justify-content: flex-start;
           padding: 24px 0 0 0;
           box-sizing: border-box;
-          margin-left: 0;
-          margin-right: 0;
         }
         .userlogin-form-glass {
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
