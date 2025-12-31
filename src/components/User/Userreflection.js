@@ -17,7 +17,7 @@ function UserReflection() {
     fetch(`https://dailyvotionbackend-91wt.onrender.com/api/user/${userId}/reflections`)
       .then((res) => res.json())
       .then((data) => {
-        setReflections(data || []);
+        setReflections(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -27,8 +27,8 @@ function UserReflection() {
 
   const myResponses = reflections
     .filter((r) => r.response)
-    .map((r) => ({
-      id: r.id,
+    .map((r, idx) => ({
+      id: r.id || idx, // fallback to index if id is missing
       adminMessage: r.message || r.adminMessage || "",
       adminName: "Admin",
       sent_at: r.sent_at,
@@ -55,7 +55,7 @@ function UserReflection() {
         setTimeout(() => setSentNotice(false), 2500);
         fetch(`https://dailyvotionbackend-91wt.onrender.com/api/user/${userId}/reflections`)
           .then((res) => res.json())
-          .then((data) => setReflections(data || []));
+          .then((data) => setReflections(Array.isArray(data) ? data : []));
       })
       .catch(() => {});
   };
@@ -108,7 +108,6 @@ function UserReflection() {
 }
 .userreflection-verse-card {
   padding: 2.5rem 2rem 1.5rem 2rem;
-  min-height: 150px;
   min-height: 230px;
   height: auto;
 }
@@ -289,7 +288,7 @@ function UserReflection() {
           </div>
           <div className="userreflection-verse-meta">
             <span>Sent by: Admin</span>
-            <span>{latestReflection ? new Date(latestReflection.sent_at).toLocaleString() : ""}</span>
+            <span>{latestReflection && latestReflection.sent_at ? new Date(latestReflection.sent_at).toLocaleString() : ""}</span>
           </div>
         </div>
 
