@@ -55,121 +55,28 @@ function Userfeedback() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
   box-sizing: border-box;
-  padding-top: 70px;
+  padding-top: 64px;
 }
 @keyframes userlogin-colorwave {
   0% { background-position: 0% 0%; }
   50% { background-position: 100% 100%; }
   100% { background-position: 0% 0%; }
 }
-.userfeedback-container > .topbar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  z-index: 999;
-  box-sizing: border-box;
-}
 .userfeedback-main {
-  margin-top: 2.5rem;
+  margin-top: 1.2rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-  border-radius: 22px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-  padding: 2.5rem 2rem;
-  border: 2.5px solid #fff;
-}
-.userfeedback-topbar {
-  background-color: #008b8b;
-  padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  width: 100vw;
-  left: 0;
-  right: 0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,139,139,0.12);
+  padding: 2rem 1.2rem;
+  border: 2px solid #fff;
   box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  display: none;
-}
-.userfeedback-logo {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-.userfeedback-menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-.userfeedback-menu-icon {
-  display: block;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  position: relative;
-}
-.userfeedback-menu-icon span {
-  position: absolute;
-  left: 0;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-}
-.userfeedback-menu-icon span:first-child {
-  top: -8px;
-}
-.userfeedback-menu-icon span:last-child {
-  top: 8px;
-}
-.userfeedback-dropdown-menu {
-  position: absolute;
-  top: 54px;
-  right: 32px;
-  background: #008b8b;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,139,139,0.18);
-  z-index: 100;
-  min-width: 180px;
-}
-.userfeedback-dropdown-menu ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.userfeedback-link-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  padding: 10px 16px;
-  border-radius: 6px;
-  margin: 2px 0;
-  transition: background 0.2s, text-shadow 0.2s, text-decoration 0.2s;
-}
-.userfeedback-link-btn:hover {
-  background: #006d6d;
-  text-decoration: underline;
-  text-shadow: 0 0 8px #fff, 0 0 16px #008b8b;
 }
 .userfeedback-title {
   color: #008b8b;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
@@ -179,19 +86,18 @@ function Userfeedback() {
   color: #333;
   margin-bottom: 1rem;
   font-size: 1rem;
+  text-align: center;
 }
 .userfeedback-textarea {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
+  width: 100%;
   margin-top: 1.2rem;
   padding: 0.7rem;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #cce4e4;
   font-size: 1rem;
   min-height: 80px;
   resize: vertical;
+  box-sizing: border-box;
 }
 .userfeedback-btns {
   display: flex;
@@ -204,13 +110,42 @@ function Userfeedback() {
   color: #fff;
   border: none;
   padding: 0.5rem 1.2rem;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
 .userfeedback-btn:hover {
   background: #006d6d;
+}
+.userfeedback-cancel-btn {
+  background: #d32f2f;
+  color: #fff;
+  font-weight: 500;
+}
+@media (max-width: 700px) {
+  .userfeedback-main {
+    max-width: 98vw;
+    padding: 1.2rem 2vw;
+    border-radius: 12px;
+    margin-top: 0.7rem;
+  }
+  .userfeedback-title {
+    font-size: 1.1rem;
+  }
+  .userfeedback-explanation {
+    font-size: 0.95rem;
+  }
+  .userfeedback-btns {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+  .userfeedback-btn,
+  .userfeedback-cancel-btn {
+    width: 100%;
+    margin-left: 0 !important;
+  }
 }
       `}</style>
       <TopBar
@@ -236,8 +171,7 @@ function Userfeedback() {
         <div className="userfeedback-btns">
           <button className="userfeedback-btn" onClick={handleSave}>Save</button>
           <button
-            className="userfeedback-btn"
-            style={{ background: '#d32f2f', color: '#fff', border: 'none', borderRadius: '6px', padding: '0.4rem 1rem', fontWeight: '500', cursor: 'pointer', marginLeft: '1rem' }}
+            className="userfeedback-btn userfeedback-cancel-btn"
             onClick={handleCancel}
           >
             Cancel
