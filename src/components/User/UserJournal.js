@@ -636,7 +636,13 @@ function UserJournal() {
   padding: 1rem 0;
   width: 100%;
   color: #fff;
-  margin-top: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 .journalpage-img-bg .journalpage-guide-main,
 .journalpage-img-bg .journalpage-guide-text {
@@ -735,6 +741,7 @@ function UserJournal() {
         style={{
           background: "url('/JTVCF/for background picture/5.jpg') center top / cover no-repeat",
           padding: "1rem 0 0 0",
+          marginTop: 0,
           marginBottom: "0",
           minHeight: "120px",
           display: "flex",
