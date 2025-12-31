@@ -176,143 +176,104 @@ function UserProfile() {
       }}
     >
       <style>{`
-        .userprofile-content.no-journal {
-          background: linear-gradient(90deg, #e0f7fa 0%, #b2ebf2 100%);
-          border: 1.5px solid #08a3ad;
-          border-radius: 8px;
-          color: #008b8b;
-          font-weight: 600;
-          padding: 0.7rem 1rem;
-          margin: 0.5rem 0;
-          text-align: center;
-          box-shadow: 0 2px 8px rgba(8,163,173,0.10);
-        }
-        .userprofile-outer {
-          padding: 120px 0 32px 0;
-        }
         .userprofile-bg {
           font-family: Arial, sans-serif;
-          height: 100vh;
+          min-height: 100vh;
           width: 100vw;
           background: center center / cover no-repeat;
           display: flex;
           flex-direction: column;
-          overflow: hidden;
+          overflow-x: hidden;
         }
         .userprofile-main {
           display: flex;
-          flex-direction: row;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-          gap: 2.5rem;
-          padding: 2rem 0 3rem 0;
-          margin-top: 50px;
-          width: 100%;
-          min-height: 88vh;
+          justify-content: flex-start;
+          width: 100vw;
+          min-height: 100vh;
+          padding: 0;
+          margin: 0;
+          gap: 0;
+          box-sizing: border-box;
+        }
+        .userprofile-left,
+        .userprofile-right {
+          width: 98vw;
+          max-width: 98vw;
+          min-width: 0;
+          margin: 0 auto 18px auto;
+          background: rgba(255,255,255,0.85);
+          border-radius: 14px;
+          box-shadow: 0 4px 18px rgba(0,139,139,0.10);
+          padding: 1.2rem 0.7rem 1.2rem 0.7rem;
           box-sizing: border-box;
         }
         .userprofile-left {
+          align-items: center;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          background: rgba(255,255,255,0.7);
-          border-radius: 18px;
-          box-shadow: 0 8px 32px rgba(0,139,139,0.12);
-          padding: 2rem 3rem 3rem 3rem;
-          min-width: 340px;
-          max-width: 400px;
-          box-sizing: border-box;
-          height: 88vh;
-          flex: 1;
+          height: auto;
+          min-height: 0;
+          max-width: 98vw;
         }
         .userprofile-avatar-section {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
         }
         .userprofile-avatar {
-          width: 110px;
-          height: 110px;
+          width: 90px;
+          height: 90px;
           border-radius: 50%;
           object-fit: cover;
-          margin-bottom: 1rem;
+          margin-bottom: 0.7rem;
           border: 2px solid #008b8b;
         }
         .userprofile-name {
           margin: 0;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           font-weight: bold;
           color: #008b8b;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.3rem;
           text-align: center;
         }
         .userprofile-username {
-          font-size: 1rem;
+          font-size: 0.95rem;
           color: #555;
-          margin-bottom: 1rem;
+          margin-bottom: 0.7rem;
           text-align: center;
         }
         .userprofile-buttons {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-rows: auto auto;
-          gap: 1.2rem 1.5rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.7rem;
           width: 100%;
-          margin-bottom: 3.5rem;
+          justify-content: center;
+          margin-bottom: 1.5rem;
         }
         .userprofile-btn {
           background: #008b8b;
           color: #fff;
           border: none;
           border-radius: 6px;
-          font-size: 0.93rem;
+          font-size: 0.95rem;
           font-weight: 500;
-          padding: 0.5rem 0.2rem;
+          padding: 0.5rem 0.7rem;
           cursor: pointer;
           box-shadow: 0 2px 8px rgba(0,139,139,0.10);
           transition: background 0.2s, box-shadow 0.2s;
-          min-width: 0;
-          width: 100%;
-          max-width: 100px;
-          justify-self: center;
-        }
-        .userprofile-btn:nth-child(1) {
-          grid-row: 1;
-          grid-column: 1;
-        }
-        .userprofile-btn:nth-child(2) {
-          grid-row: 1;
-          grid-column: 2;
-        }
-        .userprofile-btn:nth-child(3) {
-          grid-row: 1;
-          grid-column: 3;
-        }
-        .userprofile-btn:nth-child(4),
-        .userprofile-btn:nth-child(5) {
-          margin-top: 0.7rem;
-          grid-row: 2;
-          grid-column: 1 / span 2;
-          justify-self: center;
-          width: 70%;
-          margin-right: 1rem;
-        }
-        .userprofile-btn:nth-child(5) {
-          grid-row: 2;
-          grid-column: 2 / span 2;
-          justify-self: center;
-          width: 70%;
-          margin-left: 1rem;
+          min-width: 90px;
+          width: 45%;
+          max-width: 160px;
+          margin: 0 2% 0 2%;
         }
         .userprofile-verse {
-          margin-top: -2.5rem;
-          width: 100% !important;
+          margin: 0.5rem auto 0 auto;
+          width: 100%;
           max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
-          margin-bottom: 0;
-          padding: 1.2rem 2rem;
+          padding: 1rem 0.5rem;
           box-sizing: border-box;
           text-align: center;
           word-break: break-word;
@@ -320,36 +281,27 @@ function UserProfile() {
           white-space: pre-line;
         }
         .userprofile-box.userprofile-verse {
-          min-height: 170px;
+          min-height: 120px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
         }
         .userprofile-right {
-          display: flex;
-          flex-direction: column;
-          min-width: 350px;
-          max-width: 850px;
-          width: 100%;
-          background: rgba(255,255,255,0.7);
-          border-radius: 18px;
-          box-shadow: 0 8px 32px rgba(0,139,139,0.12);
-          padding: 2rem 0.2rem 3rem 0.2rem;
-          box-sizing: border-box;
-          gap: 1.5rem;
-          max-height: 88vh;
-          height: 88vh;
-          overflow-y: auto;
+          gap: 1.2rem;
+          max-height: none;
+          height: auto;
+          overflow-y: visible;
+          margin-bottom: 24px;
         }
         .userprofile-box {
           background: linear-gradient(120deg, #e0f7fa 0%, #b2ebf2 60%, #f7f8fa 100%);
           border: 1px solid #e0e0e0;
-          box-shadow: 0 8px 32px rgba(0,139,139,0.12);
-          border-radius: 18px;
-          padding: 1.2rem 0.8rem;
-          margin-bottom: 0.5rem;
-          width: 92%;
+          box-shadow: 0 4px 18px rgba(0,139,139,0.10);
+          border-radius: 14px;
+          padding: 1rem 0.7rem;
+          margin-bottom: 0.7rem;
+          width: 100%;
           margin-left: auto;
           margin-right: auto;
           box-sizing: border-box;
@@ -368,13 +320,13 @@ function UserProfile() {
         .userprofile-content {
           margin: 0;
           font-style: italic;
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           color: #333;
         }
         .userprofile-box.clickable { cursor: pointer; }
         .userprofile-box.clickable:hover {
-          transform: translateY(-7px) scale(1.025);
-          box-shadow: 0 16px 48px rgba(8,163,173,0.22), 0 4px 16px rgba(0,139,139,0.16);
+          transform: translateY(-3px) scale(1.01);
+          box-shadow: 0 8px 24px rgba(8,163,173,0.13), 0 2px 8px rgba(0,139,139,0.10);
           border-color: #43e9f6;
           background: linear-gradient(120deg, #e0f7fa 0%, #f7f8fa 100%);
           transition: box-shadow 0.2s, transform 0.18s, border 0.18s;
@@ -387,18 +339,18 @@ function UserProfile() {
           align-items: center;
           justify-content: center;
           z-index: 1200;
-          padding: 20px;
+          padding: 10px;
           box-sizing: border-box;
         }
         .profile-modal {
           background: #fff;
           border-radius: 10px;
-          max-width: 760px;
+          max-width: 98vw;
           width: 100%;
           max-height: 80vh;
           overflow-y: auto;
-          padding: 1.2rem 1.4rem;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+          padding: 1rem 0.7rem;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.18);
           position: relative;
         }
         .profile-modal-close {
