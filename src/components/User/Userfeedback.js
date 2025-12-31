@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar";
 
 function Userfeedback() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
@@ -21,18 +20,13 @@ function Userfeedback() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: feedback })
       });
-      const data = await res.json();
-      if (res.ok) {
-        setShowPopup(true);
-        setFeedback("");
-        setTimeout(() => {
-          setShowPopup(false);
-          navigate(-1);
-        }, 1800);
-      } else {
-        setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 1800);
-      }
+      await res.json();
+      setShowPopup(true);
+      setFeedback("");
+      setTimeout(() => {
+        setShowPopup(false);
+        navigate(-1);
+      }, 1800);
     } catch (err) {
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 1800);
@@ -43,18 +37,26 @@ function Userfeedback() {
     setFeedback("");
     navigate(-1);
   };
+
   return (
-    <div className="userfeedback-container">
-      <style>{`
+    <>
+      <TopBar
+        title="Feedback"
+        menuItems={[
+          { label: "Profile", link: "/profile" },
+          { label: "Journal", link: "/journal" },
+          { label: "About", link: "/about" },
+          { label: "Logout", link: "/" }
+        ]}
+      />
+      <div className="userfeedback-container">
+        <style>{`
 .userfeedback-container {
   min-height: 100vh;
   background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
   background-size: 200% 200%;
   animation: userlogin-colorwave 12s ease-in-out infinite;
   font-family: 'Segoe UI', Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
   padding-top: 64px;
 }
@@ -64,7 +66,7 @@ function Userfeedback() {
   100% { background-position: 0% 0%; }
 }
 .userfeedback-main {
-  margin-top: 1.2rem;
+  margin: 1.2rem auto 0 auto;
   width: 100%;
   max-width: 480px;
   background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
@@ -147,57 +149,49 @@ function Userfeedback() {
     margin-left: 0 !important;
   }
 }
-      `}</style>
-      <TopBar
-        menuItems={[
-          { label: "Profile", link: "/profile" },
-          { label: "Journal", link: "/journal" },
-          { label: "About", link: "/about" },
-          { label: "Logout", link: "/" }
-        ]}
-      />
-      <div className="userfeedback-main">
-        <div className="userfeedback-title">App Feedback & Report</div>
-        <div className="userfeedback-explanation">
-          You can share your feedback or report any issues you encounter. Your input helps us improve the app experience for everyone.
-        </div>
-        <textarea
-          className="userfeedback-textarea"
-          value={feedback}
-          onChange={e => setFeedback(e.target.value)}
-          placeholder="Type your feedback or report here..."
-          style={{ marginLeft: '0.5rem', marginRight: '0.5rem', width: 'calc(100% - 1rem)' }}
-        />
-        <div className="userfeedback-btns">
-          <button className="userfeedback-btn" onClick={handleSave}>Save</button>
-          <button
-            className="userfeedback-btn userfeedback-cancel-btn"
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
-        </div>
-        {showPopup && (
-          <div style={{
-            position: 'fixed',
-            top: '25%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: '#e0f7fa',
-            color: '#008b8b',
-            padding: '1.2rem 2.2rem',
-            borderRadius: '14px',
-            fontWeight: 600,
-            fontSize: '1.15rem',
-            boxShadow: '0 4px 16px rgba(8,163,173,0.18)',
-            zIndex: 9999,
-            textAlign: 'center'
-          }}>
-            Your feedback has been recorded successfully!
+        `}</style>
+        <div className="userfeedback-main">
+          <div className="userfeedback-title">App Feedback & Report</div>
+          <div className="userfeedback-explanation">
+            You can share your feedback or report any issues you encounter. Your input helps us improve the app experience for everyone.
           </div>
-        )}
+          <textarea
+            className="userfeedback-textarea"
+            value={feedback}
+            onChange={e => setFeedback(e.target.value)}
+            placeholder="Type your feedback or report here..."
+          />
+          <div className="userfeedback-btns">
+            <button className="userfeedback-btn" onClick={handleSave}>Save</button>
+            <button
+              className="userfeedback-btn userfeedback-cancel-btn"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
+          {showPopup && (
+            <div style={{
+              position: 'fixed',
+              top: '25%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: '#e0f7fa',
+              color: '#008b8b',
+              padding: '1.2rem 2.2rem',
+              borderRadius: '14px',
+              fontWeight: 600,
+              fontSize: '1.15rem',
+              boxShadow: '0 4px 16px rgba(8,163,173,0.18)',
+              zIndex: 9999,
+              textAlign: 'center'
+            }}>
+              Your feedback has been recorded successfully!
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
