@@ -85,17 +85,7 @@ function Login() {
           box-sizing: border-box;
           overflow-x: hidden;
         }
-        .userlogin-content {
-          margin: 32px auto 0 auto;
-          width: 100%;
-          max-width: 400px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          padding: 0;
-          box-sizing: border-box;
-        }
+
         .userlogin-form-glass {
           width: 100%;
           max-width: 400px;
@@ -225,14 +215,6 @@ function Login() {
           font-size: 1rem;
         }
         @media (max-width: 600px) {
-          .userlogin-content,
-          .userlogin-form-glass {
-            max-width: 98vw;
-            width: 98vw;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 2vw;
-          }
             
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
