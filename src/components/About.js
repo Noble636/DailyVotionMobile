@@ -25,8 +25,8 @@ function About() {
           max-width: 480px;
           width: 100%;
           margin: 0 auto;
-          padding-left: 8px;
-          padding-right: 8px;
+          margin-left: 16px;
+          margin-right: 16px;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -74,15 +74,20 @@ function About() {
           margin-top: 0.2rem !important;
         }
         @media (max-width: 600px) {
-          .aboutpage-content,
-          .aboutpage-text,
-          .aboutpage-gallery {
+          .aboutpage-content {
             max-width: 98vw;
             width: 98vw;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 4px;
-            padding-right: 4px;
+            margin-left: 8px;
+            margin-right: 8px;
+            padding: 0;
+          }
+          .aboutpage-text,
+          .aboutpage-gallery {
+            max-width: 100vw;
+            width: 100vw;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
           }
           .aboutpage-gallery {
             gap: 0.5rem;
