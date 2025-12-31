@@ -196,6 +196,7 @@ function UserProfile() {
           margin: 0;
           gap: 0;
           box-sizing: border-box;
+          margin-top: 32px;
         }
         .userprofile-left,
         .userprofile-right {
