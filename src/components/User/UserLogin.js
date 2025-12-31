@@ -82,35 +82,33 @@ function Login() {
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           min-height: 100vh;
           display: block;
+          box-sizing: border-box;
+          overflow-x: hidden;
         }
         .userlogin-content {
           margin-top: 32px;
-          margin-left: 24px; /* Increase this value for more right shift */
-          margin-right: 0;
-          max-width: 98vw;
-          width: 98vw;
+          max-width: 100%;
+          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
           padding: 24px 0 0 0;
           box-sizing: border-box;
+          margin-left: 0;
+          margin-right: 0;
         }
         .userlogin-form-glass {
-          background: rgba(255,255,255,0.92);
-          border-radius: 16px;
-          box-shadow: 0 4px 24px 0 rgba(0,0,0,0.13);
-          padding: 20px 12px 16px 12px;
-          width: 94vw;
+          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
+          border-radius: 14px;
+          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+          padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+          width: 100%;
           max-width: 400px;
           margin: 0 auto 1rem auto;
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-          border-radius: 14px;
-          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
           z-index: 2;
           box-sizing: border-box;
         }
