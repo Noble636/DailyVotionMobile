@@ -468,26 +468,29 @@ body, #root {
 
 .manageuser-back-btn {
   display: block;
-  margin: 2rem auto 0 auto;
+  margin: 2.2rem auto 0 auto;
   background: #008b8b;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.7rem 2.2rem;
-  font-size: 1.08rem;
-  font-weight: 500;
+  border-radius: 10px;
+  padding: 1.1rem 0;
+  font-size: 1.35rem;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,139,139,0.10);
   transition: background 0.2s;
+  width: 320px;
+  max-width: 95vw;
+  letter-spacing: 0.5px;
 }
 .manageuser-back-btn:hover {
   background: #006d6d;
 }
 @media (max-width: 700px) {
   .manageuser-back-btn {
-    width: 90vw;
-    font-size: 1rem;
-    padding: 0.7rem 0;
+    width: 98vw;
+    font-size: 1.18rem;
+    padding: 1.1rem 0;
   }
 }
       `}</style>
