@@ -199,6 +199,24 @@ function Managefeedback() {
   letter-spacing: 1px;
   -webkit-text-stroke: 1px #fff;
 }
+
+@media (max-width: 700px) {
+  .managefeedback-list {
+    min-width: 0;
+    max-width: 99vw;
+    width: 99vw;
+    padding: 1.1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .managefeedback-item {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 8px;
+  }
+  .managefeedback-container {
+    padding: 0;
+  }
+}
             `}</style>
             <AdminTopBar
                 menuItems={[
