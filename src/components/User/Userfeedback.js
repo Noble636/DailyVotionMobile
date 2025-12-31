@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar";
 
 function Userfeedback() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
@@ -21,18 +20,13 @@ function Userfeedback() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: feedback })
       });
-      const data = await res.json();
-      if (res.ok) {
-        setShowPopup(true);
-        setFeedback("");
-        setTimeout(() => {
-          setShowPopup(false);
-          navigate(-1);
-        }, 1800);
-      } else {
-        setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 1800);
-      }
+      await res.json();
+      setShowPopup(true);
+      setFeedback("");
+      setTimeout(() => {
+        setShowPopup(false);
+        navigate(-1);
+      }, 1800);
     } catch (err) {
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 1800);
@@ -43,6 +37,7 @@ function Userfeedback() {
     setFeedback("");
     navigate(-1);
   };
+
   return (
     <div className="userfeedback-container">
       <style>{`
@@ -105,7 +100,6 @@ function Userfeedback() {
   margin-top: 1.2rem;
   justify-content: flex-end;
 }
-
 .userfeedback-btn {
   background: #008b8b;
   color: #fff;
@@ -116,17 +110,14 @@ function Userfeedback() {
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .userfeedback-btn:hover {
   background: #006d6d;
 }
-
 .userfeedback-cancel-btn {
   background: #d32f2f;
   color: #fff;
   font-weight: 500;
 }
-
 @media (max-width: 700px) {
   .userfeedback-main {
     max-width: 98vw;
@@ -150,15 +141,6 @@ function Userfeedback() {
     width: 100%;
     margin-left: 0 !important;
   }
-}
-.TopBar-fixed, .topbar, .top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 1000;
-  background: #008b8b;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
       `}</style>
       <TopBar
