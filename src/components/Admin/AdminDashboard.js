@@ -36,42 +36,6 @@ function AdminDashboard() {
   position: relative;
   z-index: 1;
 }
-.admindash-topbar {
-  background-color: #008b8b;
-  padding: 14px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.admindash-logo {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-.admindash-menu {
-  list-style: none;
-  display: flex;
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-}
-.admindash-menu li a,
-.admindash-back-btn {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.2s;
-}
-.admindash-menu li a:hover,
-.admindash-back-btn:hover {
-  color: #e0f7fa;
-  text-decoration: underline;
-}
 .admindash-main {
   flex: 1;
   padding: 0.8rem 0;
@@ -149,133 +113,21 @@ function AdminDashboard() {
 .admindash-btn:hover {
   background: #006d6d;
 }
-.admindash-menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-.admindash-menu-icon {
-  display: block;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  position: relative;
-}
-.admindash-menu-icon::before,
-.admindash-menu-icon::after {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  transition: 0.2s;
-}
-.admindash-menu-icon::before {
-  top: -10px;
-}
-.admindash-menu-icon::after {
-  top: 10px;
-}
-.admindash-dropdown-menu {
-  position: absolute;
-  top: 54px;
-  right: 32px;
-  background: #008b8b;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,139,139,0.18);
-  z-index: 100;
-  min-width: 180px;
-}
-.admindash-dropdown-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-.admindash-dropdown-menu li {
-  padding: 12px 20px;
-  color: #fff;
-  cursor: pointer;
-  border-bottom: 1px solid #006d6d;
-  transition: background 0.2s;
-  width: 100%;
-  box-sizing: border-box;
-}
-.admindash-dropdown-menu li:last-child {
-  border-bottom: none;
-}
-.admindash-dropdown-menu li:hover {
-  background: #006d6d;
-}
-.admindash-link-btn,
-.admindash-back-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  padding: 0;
-}
-.admindash-card .admindash-btn {
-  align-self: center;
-  margin-top: auto;
-}
-.admindash-container input::placeholder,
-.admindash-container textarea::placeholder,
-.admindash-container .admindash-input::placeholder {
-  color: #6b9fa0;
-  opacity: 1;
-}
-.admindash-container input::-webkit-input-placeholder,
-.admindash-container textarea::-webkit-input-placeholder,
-.admindash-container .admindash-input::-webkit-input-placeholder {
-  color: #6b9fa0;
-}
-.admindash-container input:-ms-input-placeholder,
-.admindash-container textarea:-ms-input-placeholder,
-.admindash-container .admindash-input:-ms-input-placeholder {
-  color: #6b9fa0;
-}
-.admindash-container input::-ms-input-placeholder,
-.admindash-container textarea::-ms-input-placeholder,
-.admindash-container .admindash-input::-ms-input-placeholder {
-  color: #6b9fa0;
-}
 @media (max-width: 700px) {
   .admindash-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    width: 94%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    width: 99%;
+    max-width: 99vw;
   }
   .admindash-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
   }
   .admindash-card {
-    min-height: 140px;
-    padding: 0.9rem;
+    min-height: 120px;
+    padding: 0.7rem 0.5rem;
   }
-}
-.admindash-container,
-.admindash-main {
-  position: relative;
-  z-index: 1;
-}
-.admindash-gallery-row {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
       `}</style>
       <AdminTopBar
