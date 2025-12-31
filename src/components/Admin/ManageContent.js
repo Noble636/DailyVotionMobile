@@ -169,15 +169,16 @@ function ManageContent() {
 }
 .managecontent-fresh-sections {
   display: flex;
-  gap: 1.25rem;
-  justify-content: center !important;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
-  margin-top: 0.5rem !important;
+  margin-top: 0.5rem;
 }
 .managecontent-fresh-delivery {
   margin-top: 0.5rem !important;
