@@ -86,6 +86,10 @@ function Login() {
           overflow-x: hidden;
         }
 
+        .userlogin-content {
+          margin-top: 32px;
+        }
+
         .userlogin-form-glass {
           width: 100%;
           max-width: 400px;
