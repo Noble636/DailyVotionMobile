@@ -61,7 +61,7 @@ function About() {
           gap: 0.7rem;
           width: 100%;
           max-width: 440px;
-          margin: 0 0 2rem 0;
+          margin: 0 0 1rem 0;
         }
         .aboutpage-img {
           width: 100%;
