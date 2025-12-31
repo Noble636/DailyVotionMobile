@@ -70,7 +70,6 @@ function Login() {
           font-family: Arial, sans-serif;
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           min-height: 100vh;
-          min-width: 100vw;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -227,6 +226,9 @@ function Login() {
           box-shadow: 0 2px 8px rgba(0,139,139,0.10);
           background: #eee;
         }
+        .userlogin-images img:nth-child(2) {
+          margin-top: -18px;
+        }
         .userlogin-warning {
           color: #d32f2f;
           margin-bottom: 1rem;
@@ -246,6 +248,9 @@ function Login() {
           }
           .userlogin-images {
             gap: 0.5rem;
+          }
+          .userlogin-images img:nth-child(2) {
+            margin-top: -10px;
           }
         }
       `}</style>
