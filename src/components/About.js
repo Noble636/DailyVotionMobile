@@ -16,8 +16,6 @@ function About() {
           flex-direction: column;
           position: relative;
           overflow: hidden;
-          padding-left: 8px;
-          padding-right: 8px;
         }
         .aboutpage-content {
           display: flex;
@@ -27,7 +25,8 @@ function About() {
           max-width: 480px;
           width: 100%;
           margin: 0 auto;
-          padding: 0;
+          padding-left: 8px;
+          padding-right: 8px;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -52,7 +51,7 @@ function About() {
           font-size: 1.1rem;
           color: #333;
           margin-bottom: 1rem;
-          text-align: left;
+          text-align: center;
           width: 100%;
         }
         .aboutpage-gallery {
@@ -72,13 +71,9 @@ function About() {
           background: #fff;
         }
         .aboutpage-text button {
-          margin-top: 0.5rem !important;
+          margin-top: 0.2rem !important;
         }
         @media (max-width: 600px) {
-          .aboutpage-container {
-            padding-left: 4px;
-            padding-right: 4px;
-          }
           .aboutpage-content,
           .aboutpage-text,
           .aboutpage-gallery {
@@ -86,7 +81,8 @@ function About() {
             width: 98vw;
             margin-left: auto;
             margin-right: auto;
-            padding: 0;
+            padding-left: 4px;
+            padding-right: 4px;
           }
           .aboutpage-gallery {
             gap: 0.5rem;
