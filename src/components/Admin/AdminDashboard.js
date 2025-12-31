@@ -116,17 +116,31 @@ function AdminDashboard() {
 @media (max-width: 700px) {
   .admindash-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.7rem;
-    width: 99%;
-    max-width: 99vw;
-  }
-  .admindash-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.6rem;
+    gap: 0.6rem;
+    width: 98vw;
+    max-width: 98vw;
+    box-sizing: border-box;
+    margin: 0 auto;
   }
   .admindash-card {
-    min-height: 120px;
-    padding: 0.7rem 0.5rem;
+    min-width: 0;
+    max-width: 99%;
+    min-height: 100px;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+  .admindash-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .admindash-card h2 {
+    font-size: 1rem;
+  }
+  .admindash-btn {
+    min-width: 100px;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem;
   }
 }
       `}</style>
