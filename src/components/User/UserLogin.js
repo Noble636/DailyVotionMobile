@@ -86,8 +86,10 @@ function Login() {
           overflow-x: hidden;
         }
         .userlogin-content {
-          margin: 32px 0 0 8px; /* Top, Right, Bottom, Left (nudge right) */
-          width: 96vw;
+          margin-top: 32px;
+          margin-left: 16px; /* Nudge right, adjust as needed */
+          margin-right: 0;
+          width: 98vw;
           max-width: 400px;
           display: flex;
           flex-direction: column;
