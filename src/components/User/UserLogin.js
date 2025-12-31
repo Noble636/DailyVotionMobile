@@ -86,16 +86,14 @@ function Login() {
           overflow-x: hidden;
         }
         .userlogin-content {
-          margin-top: 32px;
-          margin-left: 12px; /* Nudge right, adjust as needed (e.g., 12px, 16px) */
-          margin-right: 0;
-          max-width: 100%;
-          width: 100%;
+          margin: 32px 0 0 8px; /* Top, Right, Bottom, Left (nudge right) */
+          width: 96vw;
+          max-width: 400px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
-          padding: 24px 0 0 0;
+          padding: 0;
           box-sizing: border-box;
         }
         .userlogin-form-glass {
