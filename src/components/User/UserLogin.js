@@ -84,18 +84,17 @@ function Login() {
           display: block;
         }
         .userlogin-content {
-          flex: 1;
+          margin-top: 32px;
+          margin-left: 24px; /* Increase this value for more right shift */
+          margin-right: 0;
+          max-width: 98vw;
+          width: 98vw;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
           padding: 24px 0 0 0;
-          width: 100vw;
           box-sizing: border-box;
-          max-width: 98vw;
-          margin-left: 16px; /* Increase this value if you want it more to the right */
-          margin-right: 0;
-          margin-top: 32px;
         }
         .userlogin-form-glass {
           background: rgba(255,255,255,0.92);
