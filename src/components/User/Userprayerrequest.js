@@ -255,10 +255,85 @@ function Userprayerrequest() {
   .userprayerrequest-left-stack, .userprayerrequest-right { flex: 0 0 98%; max-width: 98%; }
   .userprayerrequest-right { max-height: none; }
 }
-.userprayerrequest-left,
-.userprayerrequest-right,
-.userprayerrequest-bottom-box-left {
-  border: 2.5px solid #fff;
+@media (max-width: 700px) {
+  .userprayerrequest-container {
+    padding: 0 4vw 24px 4vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  .userprayerrequest-main-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .userprayerrequest-main {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    align-items: center !important;
+    width: 100%;
+    margin: 0;
+  }
+  .userprayerrequest-left-stack,
+  .userprayerrequest-right,
+  .userprayerrequest-left,
+  .userprayerrequest-bottom-box-left {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+  }
+  .userprayerrequest-left,
+  .userprayerrequest-right {
+    padding: 1.2rem 4vw 1.2rem 4vw !important;
+    min-width: 0 !important;
+    margin: 0 auto 0 auto !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+  }
+  .userprayerrequest-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem !important;
+    margin-top: 0.2rem !important;
+  }
+  .userprayerrequest-explanation,
+  .userprayerrequest-bottom-title {
+    font-size: 1rem !important;
+    text-align: center !important;
+  }
+  .userprayerrequest-btns {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+    width: 100% !important;
+    align-items: stretch !important;
+  }
+  .userprayerrequest-btn,
+  .userprayerrequest-cancel-btn {
+    width: 100% !important;
+    font-size: 1.05rem !important;
+    padding: 0.7rem 0 !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+  }
+  .userprayerrequest-textarea {
+    min-height: 100px !important;
+    font-size: 1rem !important;
+    padding: 0.7rem !important;
+  }
+  .userprayerrequest-right {
+    margin-top: 1.2rem !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 1.2rem 4vw !important;
+  }
+  .userprayerrequest-history-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .userprayerrequest-list {
+    max-height: 300px !important;
+    padding-right: 0 !important;
+  }
 }
       `}</style>
       <TopBar
