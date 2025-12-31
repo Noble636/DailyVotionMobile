@@ -76,23 +76,13 @@ function Login() {
           overflow: hidden !important;
         }
         .userlogin-outer {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 100vh !important;
-          overflow: hidden !important;
-        }
-        .userlogin-outer {
           font-family: Arial, sans-serif;
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           min-height: 100vh;
-          width: 100vw;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center; /* Center vertically */
+          justify-content: center;
         }
         .userlogin-content {
           display: flex;
