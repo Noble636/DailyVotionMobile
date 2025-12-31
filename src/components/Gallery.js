@@ -136,7 +136,7 @@ function Gallery() {
           margin: 0 auto 1rem auto;
           height: calc(100vh - 120px);
           overflow-y: auto;
-          padding: 2.5rem 8px 1rem 8px; /* <-- Add top padding for desktop */
+          padding: 1.5rem 8px 1rem 8px; /* slightly less top padding for desktop */
           background: transparent;
           position: relative;
         }
@@ -178,7 +178,7 @@ function Gallery() {
           .gallery-images {
             max-width: 98vw;
             width: 98vw;
-            padding: 4.5rem 2vw 1rem 2vw; /* <-- More top padding for mobile */
+            padding: 3.5rem 2vw 1rem 2vw; /* slightly less top padding for mobile */
             gap: 0.5rem;
           }
         }
