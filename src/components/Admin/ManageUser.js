@@ -549,6 +549,12 @@ body, #root {
             </ul>
           </div>
         </div>
+        <button
+          className="manageuser-back-btn"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
       </div>
 
       {showAdminDetails && adminDetails && (
