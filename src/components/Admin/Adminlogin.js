@@ -71,6 +71,8 @@ function AdminLogin() {
   animation: userlogin-colorwave 12s ease-in-out infinite;
   box-sizing: border-box;
   padding-top: 64px;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 @keyframes userlogin-colorwave {
   0% { background-position: 0% 0%; }
@@ -84,6 +86,7 @@ function AdminLogin() {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100vw;
 }
 .adminlogin-paper {
   background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
@@ -96,6 +99,7 @@ function AdminLogin() {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  max-width: 100vw;
 }
 .adminlogin-title {
   color: #008b8b;
