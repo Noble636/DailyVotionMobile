@@ -191,6 +191,13 @@ function UserJournal() {
 
   return (
     <div className="journalpage-container">
+      <TopBar
+        menuItems={[
+          { label: "Profile", link: "/profile" },
+          { label: "About", link: "/about" },
+          { label: "Logout", link: "/" }
+        ]}
+      />
       <style>{`
 .journal-input-error {
   color: #e53935;
@@ -639,6 +646,26 @@ function UserJournal() {
 .journalpage-img-bg .journalpage-date label,
 .journalpage-img-bg .journalpage-title {
   color: #fff !important;
+}
+@media (max-width: 700px) {
+  .journal-bibleguide-overlay,
+  .journal-history-overlay {
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+  }
+  .journal-bibleguide-popup-movable,
+  .journal-history-popup {
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    position: fixed !important;
+    margin: 0 !important;
+    max-width: 98vw !important;
+    width: 98vw !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
 }
 @media (max-width: 700px) {
   .journalpage-container {
