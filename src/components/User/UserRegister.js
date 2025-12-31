@@ -95,14 +95,6 @@ function UserRegister() {
   return (
     <div className="userregister-outer">
       <style>{`
-        body::-webkit-scrollbar, html::-webkit-scrollbar {
-          width: 0px;
-          background: transparent;
-        }
-        body {
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
         .userregister-outer {
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           background-size: 200% 200%;
@@ -110,28 +102,13 @@ function UserRegister() {
           position: relative;
           min-height: 100vh;
           overflow: hidden !important;
-          display: flex;
-          flex-direction: column;
+          display: block;
           padding-top: 0px;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
         }
         @keyframes userregister-colorwave {
           0% { background-position: 0% 0%; }
           50% { background-position: 100% 100%; }
           100% { background-position: 0% 0%; }
-        }
-        .userregister-outer::before {
-          content: "";
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          pointer-events: none;
-          z-index: 0;
-          background: none;
-        }
-        .userregister-outer::-webkit-scrollbar {
-          width: 0px;
-          background: transparent;
         }
         .userregister-main {
           margin: 1.2rem auto 0 auto;
@@ -167,7 +144,7 @@ function UserRegister() {
           background: #f7f8fa;
           box-sizing: border-box;
         }
-        .userregister-btn {
+        .userregister-btn, .userregister-signup-btn {
           background: #008b8b;
           color: #fff;
           border: none;
@@ -178,7 +155,7 @@ function UserRegister() {
           cursor: pointer;
           transition: background 0.2s;
         }
-        .userregister-btn:hover {
+        .userregister-btn:hover, .userregister-signup-btn:hover {
           background: #006d6d;
         }
         .userregister-login-link {
@@ -203,71 +180,6 @@ function UserRegister() {
         .userregister-login-btn:hover {
           background: #08a3ad;
           color: #fff;
-        }
-        .userregister-images {
-          position: relative;
-          flex: 1 1 400px;
-          min-width: 400px;
-          height: 480px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-end;
-          z-index: 2;
-        }
-        .userregister-img-holder {
-          position: absolute;
-          width: 320px;
-          height: 180px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .userregister-img-holder-top {
-          top: -15px;
-          right: 40px;
-          z-index: 3;
-        }
-        .userregister-img-holder-middle {
-          top: 150px;
-          right: -40px;
-          z-index: 4;
-        }
-        .userregister-img-holder-bottom {
-          top: 315px;
-          right: 75px;
-          z-index: 5;
-        }
-        .userregister-img {
-          width: 320px;
-          height: 180px;
-          object-fit: cover;
-          border-radius: 18px;
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.22), 4px 8px 16px 0 rgba(0,139,139,0.14);
-          background: #eee;
-          transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .userregister-img-text {
-          position: absolute;
-          right: -250px;
-          top: 50px;
-          color: #111;
-          font-size: 1.7rem;
-          font-weight: 700;
-          background: none;
-          padding: 0;
-          border-radius: 0;
-          box-shadow: none;
-          z-index: 10;
-          text-align: right;
-        }
-        .userregister-img-text-bottom {
-          top: unset;
-          bottom: 60px;
-          right: -280px;
-          left: unset;
-          font-size: 1.7rem;
-          text-align: right;
         }
         .userregister-password-row {
           position: relative;
@@ -349,11 +261,21 @@ function UserRegister() {
           font-weight: 700;
           margin-top: 0.6rem;
         }
-        .editprofile-bg {
-          scrollbar-width: none;
-        }
-        .editprofile-bg::-webkit-scrollbar {
-          display: none;
+        @media (max-width: 700px) {
+          .userregister-main {
+            max-width: 98vw;
+            padding: 1.2rem 2vw;
+            border-radius: 12px;
+            margin-top: 0.7rem;
+          }
+          .userregister-title {
+            font-size: 1.1rem;
+          }
+          .userregister-btn, .userregister-signup-btn {
+            width: 100%;
+            font-size: 1rem;
+            padding: 0.7rem 0;
+          }
         }
       `}</style>
       <TopBar
@@ -471,19 +393,6 @@ function UserRegister() {
               </div>
             </form>
             {warning && <div className="warning-strong">{warning}</div>}
-          </div>
-        </div>
-        <div className="userregister-images">
-          <div className="userregister-img-holder userregister-img-holder-top">
-            <img src={process.env.PUBLIC_URL + "/JTVCF/gallery/about us/11.jpg"} alt="Group" className="userregister-img" />
-            <div className="userregister-img-text userregister-img-text-top">Join the journey.</div>
-          </div>
-          <div className="userregister-img-holder userregister-img-holder-middle">
-            <img src={process.env.PUBLIC_URL + "/JTVCF/gallery/about us/5.jpg"} alt="Ministry" className="userregister-img" />
-          </div>
-          <div className="userregister-img-holder userregister-img-holder-bottom">
-            <img src={process.env.PUBLIC_URL + "/JTVCF/gallery/about us/10.jpg"} alt="Worship" className="userregister-img" />
-            <div className="userregister-img-text userregister-img-text-bottom">Be part of <b>JTVCF</b></div>
           </div>
         </div>
       </div>
