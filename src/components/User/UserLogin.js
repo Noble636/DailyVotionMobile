@@ -234,9 +234,6 @@ function Login() {
           }
           .userlogin-content {
             margin-top: 32px;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
           }
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
