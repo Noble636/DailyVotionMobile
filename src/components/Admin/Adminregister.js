@@ -100,10 +100,14 @@ function AdminRegister() {
   width: 100%;
   background: #fff;
   border-radius: 18px;
-  padding: 2rem 2.2rem;
   box-shadow: 0 12px 40px rgba(0,0,0,0.08);
   border: 1px solid rgba(0,0,0,0.06);
   box-sizing: border-box;
+  padding: 2rem 2.2rem;
+  margin: 0 auto;
+}
+.adminregister-form-col {
+  margin-bottom: 1.2rem;
 }
 .adminregister-title {
   color: #008b8b;
@@ -145,80 +149,26 @@ function AdminRegister() {
   background: #b2dfdb;
   color: #fff;
 }
-.adminregister-eye {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-  color: #888;
+.adminregister-actions {
   display: flex;
-  align-items: center;
+  gap: 12px;
   justify-content: center;
-  transition: color 0.2s;
-}
-.adminregister-eye:hover {
-  color: #008b8b;
-}
-.adminregister-eye svg {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
-.adminregister-eye svg path,
-.adminregister-eye svg circle {
-  fill: currentColor;
-  stroke: none;
-}
-.adminregister-modal-content {
-  margin-bottom: 1.2rem;
-}
-.adminregister-modal-checkbox {
-  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
 }
-.adminregister-modal-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-}
-.adminregister-modal-registerbtn {
-  background: #008b8b;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.adminregister-modal-registerbtn:disabled {
-  background: #b2dfdb;
-  cursor: not-allowed;
-}
-.adminregister-modal-registerbtn:hover:enabled {
-  background: #006d6d;
-}
-.adminregister-modal-cancelbtn {
+.adminregister-cancel-btn {
   background: #fff;
   color: #008b8b;
   border: 2px solid #008b8b;
   border-radius: 8px;
-  padding: 0.6rem 1.2rem;
+  padding: 0.7rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-.adminregister-modal-cancelbtn:hover {
+.adminregister-cancel-btn:hover {
   background: #008b8b;
   color: #fff;
 }
@@ -241,78 +191,84 @@ function AdminRegister() {
   padding: 0.7rem;
   margin-bottom: 0;
 }
-.adminregister-forgot {
-  background: none;
-  color: #008b8b;
+.adminlogin-eye {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  background: transparent;
   border: none;
   padding: 0;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.2s;
-  margin-bottom: 0.2rem;
-}
-.adminregister-forgot:hover {
-  color: #006d6d;
-  text-decoration: underline;
-}
-@media (max-width: 860px) {
-  .adminregister-paper {
-    overflow-x: auto;
-    padding: 1.2rem;
-  }
-  .adminregister-terms-col { flex: 0 0 320px; width: 320px; }
-  .adminregister-form-col { min-width: 420px; }
-}
-.adminregister-form-col .adminregister-btn,
-.adminregister-form-col .adminregister-cancel-btn {
-  margin-right: auto;
-  margin-left: 0;
-}
-.adminregister-actions {
+  color: #888;
   display: flex;
-  gap: 12px;
-  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  width: 100%;
+  justify-content: center;
+  transition: color 0.2s;
 }
-.adminregister-btn,
-.adminregister-cancel-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  min-width: 120px;
-  padding: 0.7rem 1.5rem;
+.adminlogin-eye:hover {
+  color: #008b8b;
+}
+.adminlogin-eye svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.adminregister-terms-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  padding: 1.1rem;
   box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
-.adminregister-btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background: #b2dfdb;
-  color: #fff;
+.adminregister-terms-title {
+  margin: 0 0 0.8rem 0;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #0b6b66;
+  font-weight: 700;
 }
-.adminregister-form-col .adminregister-btn,
-.adminregister-form-col .adminregister-cancel-btn {
-  display: inline-flex !important;
-  margin: 0 !important;
+.adminregister-terms-checkbox {
+  margin: 0;
+  align-items: center;
+  gap: 0.6rem;
 }
-.adminregister-form-col .adminregister-actions {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-  gap: 12px !important;
-  margin-top: 1rem !important;
-}
-.adminregister-form-col .adminregister-actions .adminregister-btn,
-.adminregister-form-col .adminregister-actions .adminregister-cancel-btn {
-  margin: 0 !important;
-  display: inline-flex !important;
-}
-.adminregister-form-col .adminregister-eye {
-  color: #888 !important;
+@media (max-width: 700px) {
+  .adminregister-container {
+    padding: 0 0 24px 0;
+    align-items: flex-start;
+    overflow-x: hidden;
+  }
+  .adminregister-paper {
+    max-width: 98vw;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0 2rem 0;
+    border-radius: 0;
+    gap: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  .adminregister-form-col,
+  .adminregister-terms-col {
+    max-width: 98vw;
+    width: 100%;
+    padding: 1.2rem 4vw;
+    border-radius: 12px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .adminregister-form-col {
+    margin-bottom: 1.2rem;
+  }
 }
       `}</style>
       {showSuccessPopup && (
