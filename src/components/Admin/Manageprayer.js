@@ -364,6 +364,46 @@ function ManagePrayer() {
   margin-top: 0.2rem;
   text-align: left;
 }
+
+@media (max-width: 700px) {
+  .manageprayer-sections {
+    max-width: 99vw;
+    padding: 0 2vw;
+    gap: 1.2rem;
+  }
+  .manageprayer-section.box,
+  .manageprayer-requests,
+  .manageprayer-response {
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    padding: 1.1rem 0.5rem !important;
+    box-sizing: border-box !important;
+  }
+  .manageprayer-title {
+    font-size: 1.3rem;
+    margin-top: 3.2rem;
+    margin-bottom: 1rem;
+  }
+  .manageprayer-requests ul {
+    min-height: 120px;
+    max-height: 220px;
+    font-size: 0.98rem;
+  }
+  .manageprayer-request-item {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.5rem;
+  }
+  .manageprayer-response-textarea {
+    min-height: 80px;
+    font-size: 0.98rem;
+    padding: 0.4rem;
+  }
+  .manageprayer-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
             `}</style>
             <AdminTopBar
                 menuItems={[
