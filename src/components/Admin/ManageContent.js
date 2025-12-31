@@ -164,8 +164,14 @@ function ManageContent() {
   font-weight: bold;
   text-align: center;
   text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50;
-  margin: 2rem 0 1rem 0;
+  margin: 4.2rem 0 1.2rem 0; /* Increased top margin */
   letter-spacing: 1px;
+}
+@media (max-width: 700px) {
+  .managecontent-fresh-title {
+    margin-top: 3.2rem;
+    font-size: 1.5rem;
+  }
 }
 .managecontent-fresh-sections {
   display: flex;
