@@ -345,6 +345,25 @@ function ManagePrayer() {
     max-height: 90vh;
     overflow-y: auto;
 }
+
+.manageprayer-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+.manageprayer-hint {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  margin-top: 0.2rem;
+  text-align: left;
+}
             `}</style>
             <AdminTopBar
                 menuItems={[
@@ -354,9 +373,12 @@ function ManagePrayer() {
                 ]}
             />
             <h1 className="manageprayer-title">Manage Prayer Requests</h1>
-            <div className="manageprayer-main">
-                <div className="manageprayer-requests">
+            <div className="manageprayer-sections">
+                <div className="manageprayer-section manageprayer-requests box">
                     <h2>Prayer Requests</h2>
+                    <div className="manageprayer-hint">
+                        Prayer requests will be displayed here. If there are no requests, this area will be empty. You can view and respond to requests below.
+                    </div>
                     <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
                         {prayerRequests.length === 0 ? (
                             <li style={{ color: '#888', padding: '1rem', textAlign: 'center' }}>No Prayer Requests Yet</li>
@@ -380,7 +402,7 @@ function ManagePrayer() {
                         )}
                     </ul>
                 </div>
-                <div className="manageprayer-response">
+                <div className="manageprayer-section manageprayer-response box">
                     <h2>Respond to Request</h2>
                     <form className="manageprayer-response-form" onSubmit={handleRespond}>
                         <textarea
