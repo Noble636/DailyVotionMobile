@@ -83,34 +83,6 @@ function Gallery() {
           justify-content: flex-start;
           font-family: Arial, sans-serif;
         }
-        .gallery-bubbles {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100vw;
-          height: 100vh;
-          pointer-events: none;
-          z-index: 0;
-        }
-        .gallery-bubble {
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(156, 39, 176, 0.18);
-          animation: galleryBubbleUp 8s linear infinite;
-        }
-        @keyframes galleryBubbleUp {
-          0% {
-            transform: translateY(100vh) scale(1);
-            opacity: 0.7;
-          }
-          80% {
-            opacity: 0.5;
-          }
-          100% {
-            transform: translateY(-10vh) scale(1.2);
-            opacity: 0;
-          }
-        }
         .gallery-back-btn {
           position: absolute;
           top: 32px;
@@ -156,19 +128,23 @@ function Gallery() {
           margin-bottom: 0;
         }
         .gallery-images {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
-          justify-content: center;
-          align-items: center;
-          margin-top: 120px;
-          z-index: 1;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.7rem;
+          width: 100%;
+          max-width: 440px;
+          margin: 0 auto 1rem auto;
+          height: calc(100vh - 120px);
+          overflow-y: auto;
+          padding: 0 8px 1rem 8px;
+          background: transparent;
+          position: relative;
         }
         .gallery-img-thumb {
-          width: 180px;
-          height: 140px;
+          width: 100%;
+          aspect-ratio: 1.2/1;
           object-fit: cover;
-          border-radius: 18px;
+          border-radius: 14px;
           box-shadow: 0 2px 8px rgba(0,139,139,0.10);
           cursor: pointer;
           transition: transform 0.2s, box-shadow 0.2s;
@@ -198,21 +174,15 @@ function Gallery() {
           box-shadow: 0 8px 32px rgba(156,39,176,0.18);
           background: #fff;
         }
+        @media (max-width: 600px) {
+          .gallery-images {
+            max-width: 98vw;
+            width: 98vw;
+            padding: 0 2vw 1rem 2vw;
+            gap: 0.5rem;
+          }
+        }
       `}</style>
-      <div className="gallery-bubbles">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="gallery-bubble"
-            style={{
-              left: `${Math.random() * 90 + 2}%`,
-              width: `${Math.random() * 32 + 18}px`,
-              height: `${Math.random() * 32 + 18}px`,
-              animationDelay: `${Math.random() * 8}s`,
-            }}
-          />
-        ))}
-      </div>
       <button className="gallery-back-btn" onClick={() => setSelectedAlbum(null)} style={{ display: selectedAlbum !== null ? "block" : "none" }}>
         ← Back
       </button>
@@ -233,7 +203,7 @@ function Gallery() {
         </div>
       )}
       {selectedAlbum !== null && !fullscreenImg && (
-        <div className="gallery-images" style={{ marginTop: "120px", position: "absolute", left: 0, right: 0 }}>
+        <div className="gallery-images">
           {images.map((img, i) => (
             <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
           ))}
