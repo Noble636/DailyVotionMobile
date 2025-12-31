@@ -24,15 +24,19 @@ function TopBar({ menuItems }) {
     <header className="topbar-container">
       <style>{`
 .topbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 64px;
   background-color: #008b8b;
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  width: 100vw;
   z-index: 9999 !important;
   box-sizing: border-box;
+  padding: 0 20px;
+  margin: 0;
 }
 .topbar-logo-float {
   position: absolute;
