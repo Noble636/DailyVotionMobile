@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function AdminRegister() {
   const navigate = useNavigate();
   const [agreed, setAgreed] = useState(false);
@@ -74,69 +73,31 @@ function AdminRegister() {
   return (
     <div className="adminregister-container">
       <style>{`
-/* Center the registration success popup overlay and box */
-.adminregister-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.18);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.adminregister-modal-box {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,139,139,0.18);
-  padding: 2rem 2.5rem;
-  min-width: 320px;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.adminlogin-eye {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.adminlogin-eye svg {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
-.adminlogin-eye:hover {
-  color: #008b8b;
-}
 .adminregister-container {
   min-height: 100vh;
   background: #08a3ad;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 64px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 .adminregister-paper {
+  width: 100%;
+  max-width: 480px;
+  margin: 2rem auto;
   background: transparent;
   display: flex;
-  gap: 2.8rem;
-  padding: 2rem;
-  align-items: flex-start;
-  max-width: 980px;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   box-sizing: border-box;
+  overflow: visible;
 }
-.adminregister-form-col {
-  flex: 1 1 auto;
-  min-width: 420px;
+.adminregister-form-col,
+.adminregister-terms-col {
+  width: 100%;
   background: #fff;
   border-radius: 18px;
   padding: 2rem 2.2rem;
@@ -144,43 +105,6 @@ function AdminRegister() {
   border: 1px solid rgba(0,0,0,0.06);
   box-sizing: border-box;
 }
-.adminregister-form-col .adminregister-input { margin-bottom: 1rem; }
-.adminregister-terms-col {
-  flex: 0 0 340px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  align-items: stretch;
-  padding: 0;
-  box-sizing: border-box;
-}
-.adminregister-terms-box {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  padding: 1.1rem;
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-.adminregister-terms-box .adminregister-terms-title {
-  margin: 0 0 0.8rem 0;
-  padding: 0;
-  font-size: 1.1rem;
-  color: #0b6b66;
-  font-weight: 700;
-}
-.adminregister-terms-box .adminregister-terms-checkbox {
-  margin: 0;
-  align-items: center;
-  gap: 0.6rem;
-}
-.adminregister-terms-col > .adminregister-terms-title { display: none; }
-.adminregister-form-col { margin-right: 4px; }
-.adminregister-terms-col { margin-left: 4px; }
 .adminregister-title {
   color: #008b8b;
   font-size: 1.5rem;
@@ -221,30 +145,30 @@ function AdminRegister() {
   background: #b2dfdb;
   color: #fff;
 }
-  .adminregister-eye {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    user-select: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: #888;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s;
-  }
-  .adminregister-eye:hover {
-    color: #008b8b;
-  }
-  .adminregister-eye svg {
-    display: block;
-    width: 20px;
-    height: 20px;
-  }
+.adminregister-eye {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.adminregister-eye:hover {
+  color: #008b8b;
+}
+.adminregister-eye svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
 .adminregister-eye svg path,
 .adminregister-eye svg circle {
   fill: currentColor;
@@ -316,35 +240,6 @@ function AdminRegister() {
   font-size: 1rem;
   padding: 0.7rem;
   margin-bottom: 0;
-}
-.adminregister-eye {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-  color: #888;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
-}
-.adminregister-eye:hover {
-  color: #008b8b;
-}
-.adminregister-eye svg {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
-.adminregister-eye svg path,
-.adminregister-eye svg circle {
-  fill: #888;
-  stroke: none;
 }
 .adminregister-forgot {
   background: none;
