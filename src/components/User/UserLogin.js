@@ -93,11 +93,9 @@ function Login() {
           width: 100vw;
           box-sizing: border-box;
           max-width: 98vw;
-          margin-left: auto;
-          margin-right: auto;
-          padding: 0 2vw;
+          margin-left: 16px; /* Increase this value if you want it more to the right */
+          margin-right: 0;
           margin-top: 32px;
-          margin-left: 8px; /* Changed from -8px to 8px to nudge right */
         }
         .userlogin-form-glass {
           background: rgba(255,255,255,0.92);
