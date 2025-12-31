@@ -115,29 +115,30 @@ function UserEditProfile() {
   min-height: 100vh;
   width: 100%;
   overflow-y: auto;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #f7f8fa;
+  box-sizing: border-box;
 }
 .editprofile-flex {
   width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
 }
 .editprofile-formbox,
 .editprofile-info-guide {
-  width: 98%;
+  width: 100%;
   max-width: 420px;
+  margin: 18px auto 0 auto;
+  box-sizing: border-box;
 }
 .editprofile-formbox {
   background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
   border-radius: 18px;
   box-shadow: 0 4px 18px rgba(0,139,180,0.10);
   padding: 1.2rem 0.7rem;
-  width: 96vw;
-  max-width: 420px;
-  margin: 18px auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
