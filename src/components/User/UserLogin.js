@@ -75,100 +75,39 @@ function Login() {
           height: 100vh !important;
           overflow: hidden !important;
         }
-        .userlogin-warning {
-          color: #d32f2f;
-          margin-bottom: 1rem;
-          font-weight: 500;
-          text-align: center;
-          font-size: 1rem;
-        }
         .userlogin-outer {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 100vh !important;
-          overflow: hidden !important;
+          font-family: Arial, sans-serif;
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
-          background-size: 200% 200%;
-          animation: userlogin-colorwave 12s ease-in-out infinite;
+          min-height: 100vh;
+          width: 100vw;
           display: flex;
           flex-direction: column;
-          padding-top: 56px;
-          position: relative;
-        }
-        .userlogin-outer::before {
-          content: "";
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          pointer-events: none;
-          z-index: 0;
-          background: none;
-        }
-        @keyframes userlogin-sparkle-move {
-          0% {
-            background-position:
-              10% 20%, 70% 80%, 40% 60%, 80% 30%, 55% 10%,
-              25% 75%, 60% 40%, 85% 60%, 35% 15%, 15% 50%, 90% 10%, 75% 55%;
-            opacity: 1;
-          }
-          25% {
-            background-position:
-              15% 25%, 65% 75%, 45% 65%, 75% 35%, 60% 15%,
-              30% 80%, 65% 45%, 80% 65%, 40% 20%, 20% 55%, 95% 15%, 70% 60%;
-            opacity: 0.8;
-          }
-          50% {
-            background-position:
-              20% 30%, 60% 70%, 50% 70%, 70% 40%, 65% 20%,
-              35% 85%, 70% 50%, 75% 70%, 45% 25%, 25% 60%, 85% 20%, 65% 65%;
-            opacity: 1;
-          }
-          75% {
-            background-position:
-              15% 25%, 65% 75%, 45% 65%, 75% 35%, 60% 15%,
-              30% 80%, 65% 45%, 80% 65%, 40% 20%, 20% 55%, 95% 15%, 70% 60%;
-            opacity: 0.8;
-          }
-          100% {
-            background-position:
-              10% 20%, 70% 80%, 40% 60%, 80% 30%, 55% 10%,
-              25% 75%, 60% 40%, 85% 60%, 35% 15%, 15% 50%, 90% 10%, 75% 55%;
-            opacity: 1;
-          }
-        }
-        @keyframes userlogin-colorwave {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 100% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-        .userlogin-outer::-webkit-scrollbar {
-          display: none;
-        }
-        .userlogin-main {
-          display: flex;
-          justify-content: flex-start;
           align-items: center;
-          max-width: 1100px;
-          margin: 2rem auto;
-          position: relative;
-          gap: 3.5rem;
+          justify-content: center; /* Center vertically */
+        }
+        .userlogin-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 440px;
+          margin: 0 auto;
+          padding: 0 16px;
+          box-sizing: border-box;
         }
         .userlogin-form-glass {
           background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
           border-radius: 22px;
           box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-          padding: 2.5rem 2rem;
-          min-width: 340px;
-          max-width: 370px;
+          padding: 2.5rem 2rem 2rem 2rem;
           width: 100%;
+          max-width: 400px;
+          margin: 0 auto 1rem auto;
+          z-index: 2;
           display: flex;
           flex-direction: column;
           align-items: center;
-          z-index: 2;
-          margin-right: 0.5rem;
-          backdrop-filter: blur(14px) saturate(120%);
+          box-sizing: border-box;
         }
         .userlogin-form-content {
           width: 100%;
@@ -281,41 +220,34 @@ function Login() {
         .userlogin-createbtn:hover {
           background: #006d6d;
         }
-        .userlogin-images {
-          position: relative;
-          flex: 1 1 400px;
-          min-width: 400px;
-          height: 480px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-end;
-          z-index: 1;
+        .userlogin-warning {
+          color: #d32f2f;
+          margin-bottom: 1rem;
+          font-weight: 500;
+          text-align: center;
+          font-size: 1rem;
         }
-        .userlogin-img {
-          position: absolute;
-          width: 320px;
-          height: 180px;
-          object-fit: cover;
-          border-radius: 18px;
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.22), 4px 8px 16px 0 rgba(0,139,139,0.14);
-          background: #eee;
-          transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .userlogin-img-top {
-          top: -15px;
-          right: 40px;
-          z-index: 3;
-        }
-        .userlogin-img-middle {
-          top: 150px;
-          right: -40px;
-          z-index: 4;
-        }
-        .userlogin-img-bottom {
-          top: 315px;
-          right: 75px;
-          z-index: 5;
+        @media (max-width: 600px) {
+          .userlogin-outer {
+            width: 100vw;
+            min-width: 0;
+            padding: 0;
+          }
+          .userlogin-content,
+          .userlogin-form-glass {
+            max-width: 98vw;
+            width: 98vw;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2vw;
+          }
+          .userlogin-form-glass {
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+            border-radius: 14px;
+          }
+          .userlogin-title {
+            font-size: 1.2rem;
+          }
         }
       `}</style>
       <TopBar
@@ -327,7 +259,7 @@ function Login() {
           { label: "About", link: "/about" }
         ]}
       />
-      <div className="userlogin-main">
+      <div className="userlogin-content">
         <div className="userlogin-form-glass">
           <div className="userlogin-form-content">
             <h2 className="userlogin-title">Login to DailyVotion</h2>
@@ -408,11 +340,6 @@ function Login() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="userlogin-images">
-          <img src="/JTVCF/for background picture/3.jpg" alt="Image 1" className="userlogin-img userlogin-img-top" />
-          <img src="/JTVCF/for background picture/1.jpg" alt="Image 2" className="userlogin-img userlogin-img-middle" />
-          <img src="/JTVCF/gallery/ministry or organization/3.jpg" alt="Image 3" className="userlogin-img userlogin-img-bottom" />
         </div>
       </div>
     </div>
