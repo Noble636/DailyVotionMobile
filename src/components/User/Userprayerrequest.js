@@ -115,7 +115,7 @@ function Userprayerrequest() {
   box-sizing: border-box;
   padding-bottom: 0;
   min-height: 0;
-  margin-top: 32px;
+  margin-top: 0;
 }
 .userprayerrequest-textarea {
   width: 100%;
@@ -334,6 +334,14 @@ function Userprayerrequest() {
   .userprayerrequest-list {
     max-height: 300px !important;
     padding-right: 0 !important;
+  }
+}
+@media (max-width: 700px) {
+  .userprayerrequest-container {
+    padding-top: 72px !important; /* increase for mobile TopBar */
+  }
+  .userprayerrequest-left {
+    margin-top: 0 !important;
   }
 }
       `}</style>
