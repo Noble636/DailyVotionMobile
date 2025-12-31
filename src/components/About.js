@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import TopBar from "./TopBar";
 
 const imageBase = "/JTVCF/gallery/about us/";
 
@@ -29,43 +30,10 @@ function About() {
       flexDirection: "column",
       alignItems: "center"
     }}>
-      {/* Capstone Top Bar */}
+      {/* Restore your original TopBar */}
+      <TopBar />
+      {/* Keep the rest of your code as is */}
       <style>{`
-        .aboutpage-topbar {
-          background-color: #008b8b;
-          padding: 14px 32px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100vw;
-          left: 0;
-          right: 0;
-          box-sizing: border-box;
-          margin: 0;
-          position: relative;
-        }
-        .aboutpage-logo {
-          color: #fff;
-          font-weight: bold;
-          font-size: 1.3rem;
-        }
-        .aboutpage-topbar ul {
-          list-style: none;
-          display: flex;
-          gap: 20px;
-          margin: 0;
-          padding: 0;
-        }
-        .aboutpage-topbar li a {
-          color: white;
-          text-decoration: none;
-          font-weight: 500;
-          transition: 0.3s;
-        }
-        .aboutpage-topbar li a:hover {
-          text-decoration: underline;
-          text-shadow: 0 0 8px white;
-        }
         .aboutpage-aboutus {
           width: 100vw;
           max-width: 500px;
@@ -119,14 +87,6 @@ function About() {
           }
         }
       `}</style>
-      <div className="aboutpage-topbar">
-        <div className="aboutpage-logo">Daily Votion</div>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-        </ul>
-      </div>
       <div className="aboutpage-aboutus">
         <h2>About Us</h2>
         <p>
