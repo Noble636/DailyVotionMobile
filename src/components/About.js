@@ -21,10 +21,10 @@ function About() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 100vw;
-          max-width: 100vw;
-          margin: 0 auto;
+          justify-content: center;
+          width: 100%;
           padding: 0 1rem;
+          margin: 0 auto;
         }
         .aboutpage-text {
           background: rgba(255,255,255,0.85);
@@ -67,6 +67,8 @@ function About() {
           .aboutpage-text, .aboutpage-gallery {
             max-width: 98vw;
             width: 98vw;
+            margin-left: auto;
+            margin-right: auto;
           }
           .aboutpage-gallery {
             gap: 0.5rem;
