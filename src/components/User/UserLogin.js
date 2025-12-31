@@ -78,11 +78,10 @@ function Login() {
           font-family: Arial, sans-serif;
         }
         .userlogin-outer {
-          min-height: 100vh;
+          font-family: Arial, sans-serif;
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
+          min-height: 100vh;
+          display: block;
         }
         .userlogin-content {
           flex: 1;
@@ -93,6 +92,10 @@ function Login() {
           padding: 24px 0 0 0;
           width: 100vw;
           box-sizing: border-box;
+          max-width: 98vw;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 0 2vw;
         }
         .userlogin-form-glass {
           background: rgba(255,255,255,0.92);
@@ -101,31 +104,45 @@ function Login() {
           padding: 20px 12px 16px 12px;
           width: 94vw;
           max-width: 400px;
-          margin: 0 auto;
+          margin: 0 auto 1rem auto;
           display: flex;
           flex-direction: column;
           align-items: center;
+          padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+          border-radius: 14px;
+          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
+          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+          z-index: 2;
+          box-sizing: border-box;
         }
         .userlogin-title {
           color: #222;
-          font-size: 1.3rem;
+          font-size: 1.2rem;
           font-weight: bold;
-          margin-bottom: 1.2rem;
+          margin-bottom: 2rem;
           text-align: center;
+        }
+        .userlogin-form-content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .userlogin-form {
           width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 0.8rem;
+          gap: 1rem;
         }
         .userlogin-input {
           width: 100%;
+          box-sizing: border-box;
           border: 1px solid #cbe7e7;
           border-radius: 7px;
           font-size: 1rem;
           padding: 0.7rem;
           background: #f7f8fa;
+          margin-bottom: 0.1rem;
         }
         .userlogin-password-row {
           position: relative;
@@ -186,13 +203,13 @@ function Login() {
           width: 100%;
           height: 1px;
           background: #eee;
-          margin: 1.2rem 0;
+          margin: 1.5rem 0;
         }
         .userlogin-register-row {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.7rem;
         }
         .userlogin-createbtn {
           background: #08a3ad;
@@ -227,11 +244,19 @@ function Login() {
           }
           .userlogin-content {
             margin-top: 32px;
-            margin-left: -8px; /* Add this line to nudge left */
+            margin-left: -8px;
           }
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
             border-radius: 14px;
+            background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
+            box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+            margin: 0 auto 1rem auto;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
           }
           .userlogin-title {
             font-size: 1.2rem;
