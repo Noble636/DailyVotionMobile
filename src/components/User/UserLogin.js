@@ -86,8 +86,8 @@ function Login() {
           overflow-x: hidden;
         }
         .userlogin-content {
-          margin: 32px auto 0 auto; /* Top, auto (center), Bottom, auto (center) */
-          width: 98vw;
+          margin: 32px auto 0 auto;
+          width: 100%;
           max-width: 400px;
           display: flex;
           flex-direction: column;
@@ -97,10 +97,6 @@ function Login() {
           box-sizing: border-box;
         }
         .userlogin-form-glass {
-          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-          border-radius: 14px;
-          box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
-          padding: 1.2rem 0.5rem 1.2rem 0.5rem;
           width: 100%;
           max-width: 400px;
           margin: 0 auto 1rem auto;
