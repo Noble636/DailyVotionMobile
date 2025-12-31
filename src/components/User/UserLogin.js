@@ -79,10 +79,7 @@ function Login() {
           font-family: Arial, sans-serif;
           background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
           min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          display: block;
         }
         .userlogin-content {
           display: flex;
@@ -90,7 +87,7 @@ function Login() {
           align-items: center;
           width: 100%;
           max-width: 440px;
-          margin: 0 auto;
+          margin: 48px auto 0 auto;
           padding: 0 16px;
           box-sizing: border-box;
         }
@@ -227,11 +224,6 @@ function Login() {
           font-size: 1rem;
         }
         @media (max-width: 600px) {
-          .userlogin-outer {
-            width: 100vw;
-            min-width: 0;
-            padding: 0;
-          }
           .userlogin-content,
           .userlogin-form-glass {
             max-width: 98vw;
@@ -239,6 +231,9 @@ function Login() {
             margin-left: auto;
             margin-right: auto;
             padding: 0 2vw;
+          }
+          .userlogin-content {
+            margin-top: 32px;
           }
           .userlogin-form-glass {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
