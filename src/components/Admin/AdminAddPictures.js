@@ -489,6 +489,18 @@ function AdminAddPictures() {
   margin-top: 0.7rem;
   font-size: 1rem;
 }
+.adminaddpics-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Prevent horizontal scroll */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
       `}</style>
       <NotificationPopup message={notification} show={showNotification} />
       <AdminTopBar
@@ -633,10 +645,21 @@ function AdminAddPictures() {
                 </button>
               </div>
               {/* Show images in selected album visually */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+              <div
+                className="adminaddpics-preview-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 10,
+                  width: '100%',
+                  margin: 0,
+                  padding: 0,
+                  boxSizing: 'border-box',
+                }}
+              >
                 {(albumImages[selectedAlbumId] && albumImages[selectedAlbumId].length > 0) ? (
                   albumImages[selectedAlbumId].map(img => (
-                    <div key={img.id} className="adminaddpics-preview-imgbox" style={{ position: 'relative', marginBottom: 8 }}>
+                    <div key={img.id} className="adminaddpics-preview-imgbox" style={{ position: 'relative', marginBottom: 0 }}>
                       <img
                         src={img.base64 ? img.base64 : (img.filename ? `https://dailyvotionbackend-91wt.onrender.com/uploads/${img.filename}` : '')}
                         alt={img.image_name || 'Photo'}
@@ -655,7 +678,7 @@ function AdminAddPictures() {
                     </div>
                   ))
                 ) : (
-                  <span style={{ color: '#888', fontSize: '0.98rem' }}>No photos in this album.</span>
+                  <span style={{ color: '#888', fontSize: '0.98rem', gridColumn: '1 / -1' }}>No photos in this album.</span>
                 )}
               </div>
             </div>
