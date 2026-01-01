@@ -368,6 +368,70 @@ function AdminAddPictures() {
       }}
     >
       <style>{`
+html, body, #root {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.adminaddpics-container {
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.adminaddpics-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: stretch;
+  max-width: 100vw;
+  width: 100%;
+  padding: 0 0.2rem;
+  margin: 2.5rem 0 0 0;
+  box-sizing: border-box;
+}
+
+.adminaddpics-card {
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+  padding: 1.1rem 0.5rem;
+  min-width: 0;
+  max-width: 100vw;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  border: 2px solid #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.adminaddpics-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 /* Gallery image preview styles */
 .adminaddpics-preview-wrap {
     display: flex;
