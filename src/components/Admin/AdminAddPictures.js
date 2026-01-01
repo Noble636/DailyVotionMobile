@@ -376,19 +376,21 @@ function AdminAddPictures() {
     margin: 0.7rem 0 1.2rem 0;
 }
 .adminaddpics-preview-imgbox {
+  /* For gallery albums, keep the original size and allow wrapping */
+  width: 60px;
+  height: 60px;
+  min-width: 0;
+  min-height: 0;
+  margin-bottom: 8px;
+  position: relative;
   background: #f7f8fa;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 2px;
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  min-width: 0;
-  min-height: 0;
   overflow: hidden;
-  position: relative;
   box-sizing: border-box;
 }
 .adminaddpics-preview-img {
@@ -489,6 +491,15 @@ function AdminAddPictures() {
   font-weight: 500;
   margin-top: 0.7rem;
   font-size: 1rem;
+}
+.adminaddpics-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
       `}</style>
       <NotificationPopup message={notification} show={showNotification} />
