@@ -147,6 +147,8 @@ function Managefeedback() {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 2px solid #fff;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .managefeedback-item {
@@ -160,6 +162,10 @@ function Managefeedback() {
   flex-direction: column;
   gap: 0.3rem;
   word-break: break-word;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .managefeedback-user {
