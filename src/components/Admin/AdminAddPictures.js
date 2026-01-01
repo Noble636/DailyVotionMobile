@@ -379,19 +379,22 @@ function AdminAddPictures() {
     background: #f7f8fa;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 3px;
+    padding: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    min-height: 0;
     overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
 }
 .adminaddpics-preview-img {
-    max-width: 54px;
-    max-height: 54px;
-    border-radius: 6px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 6px;
     display: block;
 }
 /* Unique styles for AdminAddPictures */
@@ -512,37 +515,64 @@ function AdminAddPictures() {
             {brgImages.length === 0 ? (
               <div style={{ color: '#888', fontSize: '0.98rem' }}>No Bible Guide images uploaded.</div>
             ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div
+                className="adminaddpics-preview-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 10,
+                  width: '100%',
+                  margin: 0,
+                  padding: 0,
+                  boxSizing: 'border-box',
+                }}
+              >
                 {brgImages.map(img => (
-                  <div key={img.id} style={{ display: 'flex', alignItems: 'center', gap: 16, background: '#f7f8fa', borderRadius: 8, padding: 8 }}>
+                  <div key={img.id} className="adminaddpics-preview-imgbox" style={{ position: 'relative', marginBottom: 0 }}>
                     <img
                       src={img.base64 ? img.base64 : '/broken-image.png'}
                       alt={img.image_name || 'Bible Guide'}
-                      style={{ width: 60, height: 60, objectFit: 'cover', borderRadius: 6, border: '1px solid #e0e0e0' }}
+                      className="adminaddpics-preview-img"
                       onError={e => { e.target.onerror = null; e.target.src = '/broken-image.png'; }}
                     />
+                    <div style={{
+                      position: 'absolute', bottom: 2, left: 2, right: 2,
+                      textAlign: 'center', fontSize: '0.85rem', color: '#008b8b',
+                      background: 'rgba(255,255,255,0.85)', borderRadius: 4, padding: '1px 0', fontWeight: 500, zIndex: 1
+                    }}>
+                      {img.image_name || img.filename || 'Bible Guide'}
+                    </div>
                     {editingImageId === img.id ? (
-                      <>
+                      <div style={{
+                        position: 'absolute', top: 2, left: 2, right: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, zIndex: 2
+                      }}>
                         <input
                           type="text"
                           value={editingImageName}
                           onChange={e => setEditingImageName(e.target.value)}
-                          style={{ fontSize: '1rem', padding: '2px 8px', borderRadius: 4, border: '1px solid #ccc' }}
+                          style={{ fontSize: '0.85rem', padding: '1px 4px', borderRadius: 4, border: '1px solid #ccc', width: '90%' }}
                         />
-                        <button className="adminaddpics-btn" style={{ marginLeft: 8 }} onClick={() => handleSaveImageName(img.id)}>Save</button>
-                        <button className="adminaddpics-btn" style={{ marginLeft: 4, background: '#888' }} onClick={() => setEditingImageId(null)}>Cancel</button>
-                      </>
+                        <div style={{ display: 'flex', gap: 2, marginTop: 1 }}>
+                          <button className="adminaddpics-btn" style={{ fontSize: '0.8rem', padding: '1px 6px' }} onClick={() => handleSaveImageName(img.id)}>Save</button>
+                          <button className="adminaddpics-btn" style={{ fontSize: '0.8rem', padding: '1px 6px', background: '#888' }} onClick={() => setEditingImageId(null)}>Cancel</button>
+                        </div>
+                      </div>
                     ) : (
-                      <span style={{ fontWeight: 500, fontSize: '1rem', color: '#008b8b', marginRight: 8 }}>{img.image_name || img.filename || 'Bible Guide'}</span>
+                      <div style={{
+                        position: 'absolute', top: 2, left: 2, right: 2, display: 'flex', justifyContent: 'center', gap: 2, zIndex: 2
+                      }}>
+                        <button
+                          className="adminaddpics-btn"
+                          style={{ background: '#1976d2', color: '#fff', fontSize: '0.8rem', padding: '1px 6px', borderRadius: 6 }}
+                          onClick={() => startEditImageName(img.id, img.image_name)}
+                        >Rename</button>
+                        <button
+                          className="adminaddpics-btn"
+                          style={{ background: '#d32f2f', color: '#fff', fontSize: '0.8rem', padding: '1px 6px', borderRadius: 6 }}
+                          onClick={() => setConfirmDelete({ type: 'brg', id: img.id })}
+                        >Delete</button>
+                      </div>
                     )}
-                    <button className="adminaddpics-btn" style={{ background: '#1976d2', marginLeft: 8 }} onClick={() => startEditImageName(img.id, img.image_name)}>Rename</button>
-                    <button
-                      className="adminaddpics-btn"
-                      style={{ background: '#d32f2f', marginLeft: 8 }}
-                      onClick={() => setConfirmDelete({ type: 'brg', id: img.id })}
-                    >
-                      Delete
-                    </button>
                   </div>
                 ))}
               </div>
