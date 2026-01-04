@@ -107,8 +107,8 @@ function Login() {
         .userlogin-form-glass::before {
           content: "";
           display: block;
-          width: 32px;
-          min-width: 32px;
+          width: 8px;         /* Reduced thickness */
+          min-width: 8px;     /* Reduced thickness */
           background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
         }
         .userlogin-form-content {
@@ -246,8 +246,8 @@ function Login() {
             box-sizing: border-box;
           }
           .userlogin-form-glass::before {
-            width: 18px;
-            min-width: 18px;
+            width: 5px;      /* Reduced thickness for mobile */
+            min-width: 5px;
           }
           .userlogin-form-content {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;
