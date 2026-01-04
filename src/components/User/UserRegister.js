@@ -93,101 +93,83 @@ function UserRegister() {
   };
 
   return (
-    <div className="userregister-outer">
+    <div className="userlogin-outer">
       <style>{`
-        .userregister-outer {
-          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
-          background-size: 200% 200%;
-          animation: userregister-colorwave 12s ease-in-out infinite;
-          position: relative;
+        body, html {
+          margin: 0;
+          padding: 0;
+          background: #fff;
+          font-family: Arial, sans-serif;
+        }
+        .userlogin-outer {
+          font-family: Arial, sans-serif;
+          background: #fff;
           min-height: 100vh;
-          overflow: hidden !important;
           display: block;
-          padding-top: 0px;
-        }
-        @keyframes userregister-colorwave {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 100% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-        .userregister-main {
-          margin: 1.2rem auto 0 auto;
-          width: 100%;
-          max-width: 480px;
-          background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-          border-radius: 18px;
-          box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,139,139,0.12);
-          padding: 2rem 1.2rem;
-          border: 2px solid #fff;
           box-sizing: border-box;
+          overflow-x: hidden;
         }
-        .userregister-title {
-          color: #008b8b;
-          font-size: 1.5rem;
-          font-weight: bold;
-          margin-bottom: 1rem;
-          text-align: center;
-          text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+        .userlogin-content {
+          margin-top: 32px;
         }
-        .userregister-form {
+        .userlogin-form-glass {
+          width: 95%;
+          max-width: 340px;
+          margin: 0 auto 1rem auto;
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+          z-index: 2;
+          box-sizing: border-box;
+          background: #fff;
+          border-radius: 14px;
+          box-shadow: 0 4px 24px rgba(11,98,214,0.08);
+          overflow: hidden;
+        }
+        .userlogin-form-glass::before {
+          content: "";
+          display: block;
+          width: 5px;
+          min-width: 5px;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+        }
+        .userlogin-form-content {
+          width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 1.1rem;
-          width: 100%;
+          align-items: center;
+          padding: 2rem 1.2rem;
         }
-        .userregister-input {
-          width: 100%;
-          padding: 0.7rem;
-          border-radius: 8px;
-          border: 1px solid #cce4e4;
-          font-size: 1rem;
-          background: #f7f8fa;
-          box-sizing: border-box;
-        }
-        .userregister-btn, .userregister-signup-btn {
-          background: #008b8b;
-          color: #fff;
-          border: none;
-          padding: 0.7rem 1.2rem;
-          border-radius: 6px;
-          font-size: 1.1rem;
-          font-weight: 500;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .userregister-btn:hover, .userregister-signup-btn:hover {
-          background: #006d6d;
-        }
-        .userregister-login-link {
-          margin-top: 18px;
+        .userlogin-title {
+          color: #222;
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 2rem;
           text-align: center;
-          color: #008b8b;
-          font-size: 1rem;
         }
-        .userregister-login-btn {
-          background: #fff;
-          color: #08a3ad;
-          border: 1px solid #08a3ad;
-          border-radius: 7px;
-          padding: 0.7rem 0;
-          font-size: 1rem;
-          font-weight: 500;
-          cursor: pointer;
+        .userlogin-form {
           width: 100%;
-          transition: background 0.2s, color 0.2s;
-          margin-top: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
         }
-        .userregister-login-btn:hover {
-          background: #08a3ad;
-          color: #fff;
+        .userlogin-input {
+          width: 100%;
+          box-sizing: border-box;
+          border: 1px solid #cbe7e7;
+          border-radius: 7px;
+          font-size: 1rem;
+          padding: 0.7rem;
+          background: #f7f8fa;
+          margin-bottom: 0.1rem;
         }
-        .userregister-password-row {
+        .userlogin-password-row {
           position: relative;
           width: 100%;
           display: flex;
           align-items: center;
         }
-        .userregister-eye {
+        .userlogin-eye {
           position: absolute;
           right: 12px;
           top: 12px;
@@ -197,6 +179,73 @@ function UserRegister() {
           background: transparent;
           border: none;
           padding: 0;
+        }
+        .userlogin-loginbtn, .userregister-signup-btn {
+          background: #0b62d6;
+          color: #fff;
+          border: none;
+          padding: 0.8rem 0;
+          border-radius: 7px;
+          font-size: 1.1rem;
+          font-weight: 500;
+          cursor: pointer;
+          margin-top: 0.5rem;
+          transition: background 0.2s;
+        }
+        .userlogin-loginbtn:hover, .userregister-signup-btn:hover {
+          background: #044a9f;
+        }
+        .userlogin-divider {
+          width: 100%;
+          height: 1px;
+          background: #eee;
+          margin: 1.5rem 0;
+        }
+        .userlogin-register-row {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.7rem;
+        }
+        .userlogin-createbtn, .userregister-login-btn {
+          background: #fff;
+          color: #0b62d6;
+          border: 2px solid #0b62d6;
+          padding: 0.7rem 0;
+          border-radius: 7px;
+          font-size: 1rem;
+          font-weight: 500;
+          cursor: pointer;
+          width: 100%;
+          transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .userlogin-createbtn:hover, .userregister-login-btn:hover {
+          background: #0b62d6;
+          color: #fff;
+          border-color: #044a9f;
+        }
+        .userlogin-warning, .warning-strong {
+          color: #d32f2f;
+          margin-bottom: 1rem;
+          font-weight: 500;
+          text-align: center;
+          font-size: 1rem;
+        }
+        @media (max-width: 600px) {
+          .userlogin-form-glass {
+            max-width: 98vw;
+            width: 98vw;
+          }
+          .userlogin-form-glass::before {
+            width: 6px;
+            min-width: 6px;
+          }
+          .userlogin-form-content {
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+          }
+          .userlogin-title {
+            font-size: 1.2rem;
+          }
         }
         .agreement-overlay {
           position: fixed;
@@ -256,27 +305,6 @@ function UserRegister() {
           opacity: 0.55;
           cursor: not-allowed;
         }
-        .warning-strong {
-          color: #b12704;
-          font-weight: 700;
-          margin-top: 0.6rem;
-        }
-        @media (max-width: 700px) {
-          .userregister-main {
-            max-width: 98vw;
-            padding: 1.2rem 2vw;
-            border-radius: 12px;
-            margin-top: 0.7rem;
-          }
-          .userregister-title {
-            font-size: 1.1rem;
-          }
-          .userregister-btn, .userregister-signup-btn {
-            width: 100%;
-            font-size: 1rem;
-            padding: 0.7rem 0;
-          }
-        }
       `}</style>
       <TopBar
         logo="DailyVotion"
@@ -287,16 +315,17 @@ function UserRegister() {
           { label: "About", link: "/about" }
         ]}
       />
-      <div className="userregister-main">
-        <div className="userregister-form-glass">
-          <div className="userregister-form-content">
-            <h2 className="userregister-title">Create your Account</h2>
-            <form className="userregister-form" onSubmit={handleSubmit}>
+      <div className="userlogin-content">
+        <div className="userlogin-form-glass">
+          <div className="userlogin-form-content">
+            <h2 className="userlogin-title">Create your Account</h2>
+            {warning && <div className="warning-strong">{warning}</div>}
+            <form className="userlogin-form" onSubmit={handleSubmit}>
               <input
                 type="text"
                 name="fullName"
                 placeholder="Full Name"
-                className="userregister-input"
+                className="userlogin-input"
                 value={form.fullName}
                 onChange={handleChange}
                 required
@@ -305,7 +334,7 @@ function UserRegister() {
                 type="text"
                 name="username"
                 placeholder="Username"
-                className="userregister-input"
+                className="userlogin-input"
                 value={form.username}
                 onChange={handleChange}
                 required
@@ -314,7 +343,7 @@ function UserRegister() {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="userregister-input"
+                className="userlogin-input"
                 value={form.email}
                 onChange={handleChange}
                 required
@@ -323,22 +352,22 @@ function UserRegister() {
                 type="text"
                 name="mobile"
                 placeholder="Mobile Number (optional)"
-                className="userregister-input"
+                className="userlogin-input"
                 value={form.mobile}
                 onChange={handleChange}
               />
-              <div className="userregister-password-row">
+              <div className="userlogin-password-row">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
-                  className="userregister-input"
+                  className="userlogin-input"
                   value={form.password}
                   onChange={handleChange}
                   required
                 />
                 <span
-                  className="userregister-eye"
+                  className="userlogin-eye"
                   onClick={() => setShowPassword(!showPassword)}
                   title="Show/Hide Password"
                 >
@@ -355,19 +384,18 @@ function UserRegister() {
                   )}
                 </span>
               </div>
-
-              <div className="userregister-password-row">
+              <div className="userlogin-password-row">
                 <input
                   type={showConfirm ? "text" : "password"}
                   name="confirmPassword"
                   placeholder="Confirm Password"
-                  className="userregister-input"
+                  className="userlogin-input"
                   value={form.confirmPassword}
                   onChange={handleChange}
                   required
                 />
                 <span
-                  className="userregister-eye"
+                  className="userlogin-eye"
                   onClick={() => setShowConfirm(!showConfirm)}
                   title="Show/Hide Password"
                 >
@@ -385,18 +413,21 @@ function UserRegister() {
                 </span>
               </div>
               <button type="submit" className="userregister-signup-btn">SIGN UP</button>
-              <div className="userregister-login-link">
-                Already have an Account?
-                <a href="/login">
-                  <button type="button" className="userregister-login-btn">LOGIN</button>
-                </a>
+              <div className="userlogin-divider"></div>
+              <div className="userlogin-register-row">
+                <span>Already have an Account?</span>
+                <button
+                  className="userregister-login-btn"
+                  type="button"
+                  onClick={() => navigate("/login")}
+                >
+                  LOGIN
+                </button>
               </div>
             </form>
-            {warning && <div className="warning-strong">{warning}</div>}
           </div>
         </div>
       </div>
-
       {showAgreementModal && (
         <div className="agreement-overlay">
           <div className="agreement-modal">
@@ -411,7 +442,6 @@ function UserRegister() {
                 <li>Use this platform responsibly and refrain from any abusive, offensive, or inappropriate behavior.</li>
                 <li>By registering, you agree to our Terms of Service and Privacy Policy.</li>
               </ul>
-
             <label className="agreement-row">
               <input
                 type="checkbox"
@@ -420,7 +450,6 @@ function UserRegister() {
               />
               I have read and agree to the terms above.
             </label>
-
             <div className="agreement-actions">
               <button className="userregister-btn-secondary" onClick={() => setShowAgreementModal(false)}>Cancel</button>
               <button
@@ -435,7 +464,6 @@ function UserRegister() {
           </div>
         </div>
       )}
-
       {showSuccessModal && (
         <div className="agreement-overlay">
           <div className="agreement-modal" style={{textAlign: 'center', padding: '2rem 1.4rem'}}>
