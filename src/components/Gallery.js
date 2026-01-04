@@ -74,7 +74,7 @@ function Gallery() {
         .gallery-container {
           min-height: 100vh;
           width: 100vw;
-          background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
+          background: #fff;
           position: relative;
           overflow: hidden;
           display: flex;
@@ -82,6 +82,25 @@ function Gallery() {
           align-items: center;
           justify-content: flex-start;
           font-family: Arial, sans-serif;
+        }
+        .gallery-main-box {
+          background: #fff;
+          border-left: 12px solid #1976d2;
+          border-right: 12px solid #1976d2;
+          border-radius: 32px;
+          box-shadow: 0 4px 32px rgba(25,118,210,0.10);
+          margin-top: 100px;
+          margin-bottom: 32px;
+          padding: 2.5rem 2.5rem 2rem 2.5rem;
+          max-width: 520px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .gallery-blue-text {
+          color: #1976d2;
+          font-weight: 700;
         }
         .gallery-back-btn {
           position: absolute;
@@ -93,10 +112,18 @@ function Gallery() {
           padding: 0.7rem 1.5rem;
           font-size: 1.1rem;
           font-weight: bold;
-          color: #008b8b;
+          color: #1976d2;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          box-shadow: 0 2px 8px rgba(25,118,210,0.10);
           z-index: 2;
+        }
+        .gallery-back-btn.about {
+          left: auto;
+          right: 32px;
+          background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+          color: #fff;
+          font-weight: 700;
+          box-shadow: 0 4px 16px rgba(25,118,210,0.18);
         }
         .gallery-albums {
           display: flex;
@@ -104,25 +131,27 @@ function Gallery() {
           gap: 2rem;
           justify-content: center;
           align-items: center;
-          margin-top: 120px;
+          margin-top: 0;
           z-index: 1;
         }
         .gallery-album-card {
-          background: rgba(255,255,255,0.55);
+          background: #fff;
           border-radius: 32px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
+          box-shadow: 0 4px 16px rgba(25,118,210,0.10);
           padding: 2.5rem 3.5rem;
           cursor: pointer;
           font-size: 1.3rem;
           font-weight: bold;
-          color: #008b8b;
-          transition: transform 0.2s, box-shadow 0.2s;
+          color: #1976d2;
+          border: 2.5px solid #1976d2;
+          transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
           text-align: center;
           z-index: 1;
         }
         .gallery-album-card:hover {
           transform: translateY(-8px) scale(1.04);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+          box-shadow: 0 8px 32px rgba(25,118,210,0.18);
+          background: #e3f0fd;
         }
         .gallery-album-title {
           margin-bottom: 0;
@@ -136,7 +165,7 @@ function Gallery() {
           margin: 0 auto 1rem auto;
           height: calc(100vh - 120px);
           overflow-y: auto;
-          padding: 3.5rem 8px 1rem 8px; /* increased top padding for desktop */
+          padding: 3.5rem 8px 1rem 8px;
           background: transparent;
           position: relative;
         }
@@ -145,14 +174,14 @@ function Gallery() {
           aspect-ratio: 1.2/1;
           object-fit: cover;
           border-radius: 14px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          box-shadow: 0 2px 8px rgba(25,118,210,0.10);
           cursor: pointer;
           transition: transform 0.2s, box-shadow 0.2s;
           background: #fff;
         }
         .gallery-img-thumb:hover {
           transform: scale(1.08);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+          box-shadow: 0 8px 32px rgba(25,118,210,0.18);
         }
         .gallery-fullscreen {
           position: fixed;
@@ -160,7 +189,7 @@ function Gallery() {
           top: 0;
           width: 100vw;
           height: 100vh;
-          background: rgba(40,0,60,0.45);
+          background: rgba(25,118,210,0.10);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -171,14 +200,20 @@ function Gallery() {
           max-width: 90vw;
           max-height: 90vh;
           border-radius: 24px;
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+          box-shadow: 0 8px 32px rgba(25,118,210,0.18);
           background: #fff;
         }
         @media (max-width: 600px) {
+          .gallery-main-box {
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+            border-radius: 18px;
+            border-left-width: 6px;
+            border-right-width: 6px;
+          }
           .gallery-images {
             max-width: 98vw;
             width: 98vw;
-            padding: 6rem 2vw 1rem 2vw; /* increased top padding for mobile */
+            padding: 6rem 2vw 1rem 2vw;
             gap: 0.5rem;
           }
         }
@@ -187,26 +222,32 @@ function Gallery() {
         ← Back
       </button>
       <button
-        className="gallery-back-btn"
-        style={{ top: "32px", right: "32px", left: "auto", background: "rgba(255,255,255,0.7)", display: selectedAlbum === null ? "block" : "none" }}
+        className="gallery-back-btn about"
+        style={{ display: selectedAlbum === null ? "block" : "none" }}
         onClick={() => window.location.href = "/about"}
       >
         ← Back to About
       </button>
       {selectedAlbum === null && (
-        <div className="gallery-albums">
-          {albums.map((album, idx) => (
-            <div className="gallery-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
-              <div className="gallery-album-title">{album.name}</div>
-            </div>
-          ))}
+        <div className="gallery-main-box">
+          <div className="gallery-blue-text" style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>Gallery</div>
+          <div className="gallery-albums">
+            {albums.map((album, idx) => (
+              <div className="gallery-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
+                <div className="gallery-album-title gallery-blue-text">{album.name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {selectedAlbum !== null && !fullscreenImg && (
-        <div className="gallery-images">
-          {images.map((img, i) => (
-            <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
-          ))}
+        <div className="gallery-main-box">
+          <div className="gallery-blue-text" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', textAlign: 'center' }}>{albums[selectedAlbum]?.name}</div>
+          <div className="gallery-images">
+            {images.map((img, i) => (
+              <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
+            ))}
+          </div>
         </div>
       )}
       {fullscreenImg && (
