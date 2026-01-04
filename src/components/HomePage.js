@@ -85,16 +85,29 @@ const DailyVotion = () => {
       lineHeight: 1.1,
     },
     dailyVotionBrand: {
-      color: '#010f5fff',
+      color: '#f7b733',
       fontWeight: 900,
+    },
+    bibleVerse: {
+      fontSize: 20,
+      fontStyle: 'italic',
+      color: '#333',
+      marginBottom: 4,
+      textAlign: 'center',
+    },
+    bibleReference: {
+      fontSize: 16,
+      color: '#222', // darker color
+      marginBottom: 24,
+      textAlign: 'center',
     },
     getStartedButton: {
       padding: '16px 0',
       width: 220,
       fontSize: 20,
       fontWeight: 700,
-      color: '#000000ff', // black text as in Updates
-      background: 'linear-gradient(90deg, rgba(125, 168, 248, 0.81), rgba(0, 29, 82, 1))',
+      color: '#fff',
+      background: 'linear-gradient(90deg, #f7b733, #fc4a1a)',
       border: 'none',
       borderRadius: 10,
       cursor: 'pointer',
