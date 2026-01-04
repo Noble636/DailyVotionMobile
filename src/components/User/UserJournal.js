@@ -15,7 +15,7 @@ function UserJournal() {
   const bibleGuidePopupRef = useRef(null);
   const [zoomImage, setZoomImage] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
-  
+
   useEffect(() => {
     const handleMove = (e) => {
       if (!bibleGuideDragRef.current.dragging) return;
@@ -36,13 +36,13 @@ function UserJournal() {
       window.removeEventListener("mouseup", handleUp);
     };
   }, []);
-  
+
   const startBibleGuideDrag = (e) => {
     bibleGuideDragRef.current.dragging = true;
     bibleGuideDragRef.current.offsetX = e.clientX - bibleGuidePopupPos.x;
     bibleGuideDragRef.current.offsetY = e.clientY - bibleGuidePopupPos.y;
   };
-  
+
   const [showBibleGuide, setShowBibleGuide] = useState(false);
   const [bibleGuideImages, setBibleGuideImages] = useState([]);
   const [loadingBibleGuide, setLoadingBibleGuide] = useState(false);
@@ -67,20 +67,17 @@ function UserJournal() {
     }
     setLoadingBibleGuide(false);
   };
-  
+
   const handleShowBibleGuide = () => {
     setShowBibleGuide(true);
     fetchBibleGuideImages();
   };
-  
+
   const [inputErrors, setInputErrors] = useState({});
   const [showValidation, setShowValidation] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [historyEntries, setHistoryEntries] = useState([]);
   const [loadingHistory, setLoadingHistory] = useState(false);
-  const [editingEntryId, setEditingEntryId] = useState(null);
-  const [editedEntry, setEditedEntry] = useState({});
-  const [showUpdatePopup, setShowUpdatePopup] = useState(false);
 
   const fetchHistory = async () => {
     const userId = localStorage.getItem('userId');
@@ -105,60 +102,6 @@ function UserJournal() {
       fetchHistory();
     }
   }, [showHistory]);
-
-  const handleEditEntry = (entry) => {
-    setEditingEntryId(entry._id || entry.id);
-    setEditedEntry({
-      date: entry.date,
-      scripture: entry.scripture,
-      observation: entry.observation,
-      application: entry.application,
-      prayer: entry.prayer
-    });
-  };
-
-  const handleCancelEdit = () => {
-    setEditingEntryId(null);
-    setEditedEntry({});
-  };
-
-  const handleSaveEdit = async (entryId) => {
-    try {
-      setLoadingHistory(true);
-      // Get user id from localStorage
-      const userId = localStorage.getItem('userId');
-      const response = await fetch(`/api/user/${userId}/journal/${entryId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          date: editedEntry.date,
-          scripture: editedEntry.scripture,
-          observation: editedEntry.observation,
-          application: editedEntry.application,
-          prayer: editedEntry.prayer,
-        }),
-      });
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to update journal entry');
-      }
-      setShowUpdatePopup(false);
-      setEditingEntryId(null);
-      setEditedEntry({});
-      await fetchHistory(); // Refresh history after update
-    } catch (err) {
-      alert(err.message || 'Error updating journal entry');
-    } finally {
-      setLoadingHistory(false);
-    }
-  };
-
-  const handleEditFieldChange = (field, value) => {
-    setEditedEntry(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
 
   const [journal, setJournal] = useState({ date: "", scripture: "", observation: "", application: "", prayer: "" });
   const [currentSection, setCurrentSection] = useState(null);
@@ -211,7 +154,7 @@ function UserJournal() {
   const handleChange = (e) => setJournal({ ...journal, [e.target.name]: e.target.value });
   const handleClear = (key) => setJournal({ ...journal, [key]: "" });
   const [showSavePopup, setShowSavePopup] = useState(false);
-  
+
   const handleSaveAll = async () => {
     setShowValidation(true);
     const errors = {};
@@ -225,7 +168,7 @@ function UserJournal() {
 
     const userId = localStorage.getItem('userId');
     if (!userId) return;
-    
+
     try {
       const res = await fetch(`https://dailyvotionbackend-91wt.onrender.com/api/user/${userId}/journal`, {
         method: 'POST',
@@ -1082,12 +1025,6 @@ function UserJournal() {
         </div>
       )}
 
-      {showUpdatePopup && (
-        <div className="journal-save-popup">
-          ✓ Journal updated successfully!
-        </div>
-      )}
-
       <div className="journal-main">
         <div className="journal-section-list">
           {soapSections.map((section) => (
@@ -1189,96 +1126,33 @@ function UserJournal() {
               <div>No journal entries found.</div>
             ) : (
               <div>
-                {historyEntries.map((entry, idx) => {
-                  const entryId = entry._id || entry.id;
-                  const isEditing = editingEntryId === entryId;
-
-                  return (
-                    <div key={idx} className="journal-history-entry">
-                      <div className="journal-history-date">
-                        {entry.date ? new Date(entry.date).toLocaleDateString() : ''}
-                      </div>
-                      
-                      <div className="journal-history-field">
-                        <strong>Scripture:</strong>
-                        {isEditing ? (
-                          <textarea
-                            className="journal-history-edit-input"
-                            value={editedEntry.scripture || ''}
-                            onChange={(e) => handleEditFieldChange('scripture', e.target.value)}
-                          />
-                        ) : (
-                          <span>{entry.scripture}</span>
-                        )}
-                      </div>
-                      
-                      <div className="journal-history-field">
-                        <strong>Observation:</strong>
-                        {isEditing ? (
-                          <textarea
-                            className="journal-history-edit-input"
-                            value={editedEntry.observation || ''}
-                            onChange={(e) => handleEditFieldChange('observation', e.target.value)}
-                          />
-                        ) : (
-                          <span>{entry.observation}</span>
-                        )}
-                      </div>
-                      
-                      <div className="journal-history-field">
-                        <strong>Application:</strong>
-                        {isEditing ? (
-                          <textarea
-                            className="journal-history-edit-input"
-                            value={editedEntry.application || ''}
-                            onChange={(e) => handleEditFieldChange('application', e.target.value)}
-                          />
-                        ) : (
-                          <span>{entry.application}</span>
-                        )}
-                      </div>
-                      
-                      <div className="journal-history-field">
-                        <strong>Prayer:</strong>
-                        {isEditing ? (
-                          <textarea
-                            className="journal-history-edit-input"
-                            value={editedEntry.prayer || ''}
-                            onChange={(e) => handleEditFieldChange('prayer', e.target.value)}
-                          />
-                        ) : (
-                          <span>{entry.prayer}</span>
-                        )}
-                      </div>
-
-                      <div className="journal-history-actions">
-                        {isEditing ? (
-                          <>
-                            <button
-                              className="journal-history-btn-save"
-                              onClick={() => handleSaveEdit(entryId)}
-                            >
-                              Save Changes
-                            </button>
-                            <button
-                              className="journal-history-btn-cancel"
-                              onClick={handleCancelEdit}
-                            >
-                              Cancel
-                            </button>
-                          </>
-                        ) : (
-                          <button
-                            className="journal-history-btn-edit"
-                            onClick={() => handleEditEntry(entry)}
-                          >
-                            Edit Entry
-                          </button>
-                        )}
-                      </div>
+                {historyEntries.map((entry, idx) => (
+                  <div key={idx} className="journal-history-entry">
+                    <div className="journal-history-date">
+                      {entry.date ? new Date(entry.date).toLocaleDateString() : ''}
                     </div>
-                  );
-                })}
+                    
+                    <div className="journal-history-field">
+                      <strong>Scripture:</strong>
+                      <span>{entry.scripture}</span>
+                    </div>
+                    
+                    <div className="journal-history-field">
+                      <strong>Observation:</strong>
+                      <span>{entry.observation}</span>
+                    </div>
+                    
+                    <div className="journal-history-field">
+                      <strong>Application:</strong>
+                      <span>{entry.application}</span>
+                    </div>
+                    
+                    <div className="journal-history-field">
+                      <strong>Prayer:</strong>
+                      <span>{entry.prayer}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>

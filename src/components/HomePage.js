@@ -51,6 +51,7 @@ const DailyVotion = () => {
       background: 'linear-gradient(120deg, #16777a 0%, #e0c9f7 100%)',
       position: 'relative',
       zIndex: 2,
+      // Remove or set paddingTop to 0
     },
     leftPanel: {
       flex: 1,
@@ -75,11 +76,12 @@ const DailyVotion = () => {
       justifyContent: 'center',
       minWidth: 0,
       padding: '0 2vw',
+      marginTop: '-120px', // <-- Increase negative margin for less space above
     },
     welcomeHeader: {
       fontSize: 48,
       fontWeight: 900,
-      margin: '0 0 16px 0',
+      margin: '-32px 0 16px 0', // negative top margin to pull up the header
       color: '#222',
       textAlign: 'center',
       lineHeight: 1.1,
