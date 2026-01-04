@@ -23,7 +23,7 @@ const TopBar = ({ menuItems }) => {
     <header className="topbar-container">
       <style>{`
         .topbar-container {
-          background-color: #008b8b;
+          background-color: linear-gradient(180deg, #3f7fc6 0%, #2f63ad 100%);
           padding: 10px 20px;
           display: flex;
           justify-content: space-between;
