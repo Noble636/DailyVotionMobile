@@ -8,16 +8,13 @@ function AdminDashboard() {
   return (
     <div
       className="admindash-container"
-      style={{ backgroundImage: "url('/JTVCF/for%20background%20picture/AdminDashboard.png')" }}
+      style={{ background: "#fff" }}
     >
       <style>{`
 .admindash-container {
   position: relative;
   min-height: 100vh;
-  background-color: #e0f7fa;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #fff;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -52,11 +49,11 @@ function AdminDashboard() {
   display: none;
 }
 .admindash-title {
-  color: #fff !important;
+  color: #1a3a52 !important;
   font-size: 2.3rem;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center;
-  text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 2rem 0 1rem 0;
   letter-spacing: 1px;
 }
@@ -70,10 +67,10 @@ function AdminDashboard() {
   margin: 0 auto;
 }
 .admindash-card {
-  background: rgba(255,255,255,0.82);
-  border-radius: 18px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.18), 4px 8px 16px 0 rgba(0,139,139,0.10);
-  border: 2.5px solid #fff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 252, 255, 1) 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(44, 90, 160, 0.15), 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(44, 90, 160, 0.15);
   padding: 1.5rem 1.2rem;
   display: flex;
   flex-direction: column;
@@ -83,35 +80,43 @@ function AdminDashboard() {
   height: 100%;
   position: relative;
   box-sizing: border-box;
-  backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
 }
 .admindash-card h2 {
-  color: #008b8b;
-  font-size: 1.25rem;
+  color: #2c5aa0;
+  font-size: 1.3rem;
   margin-bottom: 0.7rem;
-  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+  font-weight: 700;
+  text-shadow: none;
+  transition: color 0.3s, transform 0.3s;
 }
 .admindash-card p {
-  color: #444;
+  color: #556b82;
   font-size: 1rem;
   margin-bottom: 1.2rem;
+  line-height: 1.5;
+  transition: color 0.3s;
 }
 .admindash-btn {
-  background: #008b8b;
-  color: #fff;
+  background: linear-gradient(135deg, #2c5aa0 0%, #3d7bb8 100%);
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.5rem;
+  border-radius: 12px;
+  padding: 0.8rem 1.8rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   align-self: center;
   margin-top: auto;
   min-width: 160px;
+  box-shadow: 0 6px 20px 0 rgba(44, 90, 160, 0.3);
+  letter-spacing: 0.3px;
 }
 .admindash-btn:hover {
-  background: #006d6d;
+  background: linear-gradient(135deg, #3d7bb8 0%, #4a8dd9 100%);
+  box-shadow: 0 10px 32px 0 rgba(44, 90, 160, 0.4);
+  transform: translateY(-3px) scale(1.03);
 }
 @media (max-width: 700px) {
   .admindash-grid {

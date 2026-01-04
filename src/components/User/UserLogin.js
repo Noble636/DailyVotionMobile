@@ -107,7 +107,7 @@ function Login() {
         .userlogin-form-glass::before {
           content: "";
           display: block;
-          width: 5px;         /* Thinner blue bar */
+          width: 5px;         /* Desktop: thin blue bar */
           min-width: 5px;
           background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
         }
@@ -238,8 +238,8 @@ function Login() {
             width: 98vw;
           }
           .userlogin-form-glass::before {
-            width: 4px;      /* Thinner for mobile */
-            min-width: 4px;
+            width: 6px;      /* Mobile: slightly thicker */
+            min-width: 6px;
           }
           .userlogin-form-content {
             padding: 1.2rem 0.5rem 1.2rem 0.5rem;

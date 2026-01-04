@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './getCroppedImg';
 
@@ -19,6 +20,7 @@ function UserEditProfile() {
   const [phone, setPhone] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -88,8 +90,7 @@ function UserEditProfile() {
         setShowInfoPopup(true);
         setTimeout(() => {
           setShowInfoPopup(false);
-          // Redirect to UserProfile.js after popup
-          window.location.href = '/profile';
+          navigate('/profile');
         }, 1200);
         window.dispatchEvent(new Event('profileUpdated'));
       } else {
@@ -100,291 +101,591 @@ function UserEditProfile() {
     }
   };
 
-  const bgStyle = {
-    minHeight: '100vh',
-    width: '100%',
-    background: "url('/JTVCF/gallery/about us/13.jpg') center center / cover no-repeat",
-    overflowY: 'auto',
-    overflowX: 'hidden'
-  };
-
   return (
-    <div style={bgStyle} className="editprofile-bg">
+    <div className="editprofile-bg">
       <style>{`
-.editprofile-bg {
-  min-height: 100vh;
-  width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #f7f8fa;
-  box-sizing: border-box;
-}
-.editprofile-flex {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.editprofile-formbox,
-.editprofile-info-guide {
-  width: 100%;
-  max-width: 420px;
-  margin: 18px auto 0 auto;
-  box-sizing: border-box;
-}
-.editprofile-formbox {
-  background: radial-gradient(circle at 20% 20%, rgba(200,230,255,0.90) 0%, rgba(180,220,250,0.80) 60%, rgba(160,210,245,0.65) 100%);
-  border-radius: 18px;
-  box-shadow: 0 4px 18px rgba(0,139,180,0.10);
-  padding: 1.2rem 0.7rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(10px) saturate(120%);
-}
-.editprofile-title {
-  color: #08a3ad;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  text-align: center;
-  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
-}
-.editprofile-formbox form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.editprofile-formbox label {
-  font-weight: 500;
-  color: #222;
-  margin-bottom: 0.2rem;
-}
-.editprofile-formbox input[type="text"],
-.editprofile-formbox input[type="password"],
-.editprofile-formbox input[type="email"],
-.editprofile-formbox input[type="tel"] {
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #b3e0f7;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 0.7rem;
-  background: #eaf7fc;
-  margin-bottom: 0.1rem;
-}
-.editprofile-formbox input[type="file"] {
-  margin-bottom: 1rem;
-}
-.editprofile-password-field {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.editprofile-password-field input[type="password"],
-.editprofile-password-field input[type="text"] {
-  flex: 1;
-}
-.editprofile-eye {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.editprofile-save-btn {
-  background: #43e9f6;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 0;
-  border-radius: 7px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
-}
-.editprofile-save-btn:hover {
-  background: #08a3ad;
-}
-.editprofile-cancel-btn {
-  margin-top: 0.5rem;
-  background: #eee;
-  color: #008b8b;
-  border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-.editprofile-info-guide {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  width: 96vw;
-  max-width: 420px;
-  margin: 18px auto 24px auto;
-}
-.editprofile-currentinfo,
-.editprofile-guidebox,
-.editprofile-warningbox {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0,139,180,0.08);
-  padding: 1rem 1.2rem;
-  margin: 0 0 0.7rem 0;
-}
-.editprofile-currentinfo h3,
-.editprofile-guidebox h3 {
-  color: #08a3ad;
-  margin-bottom: 0.8rem;
-  font-size: 1.1rem;
-  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
-}
-.editprofile-currentinfo p,
-.editprofile-guidebox p,
-.editprofile-warningbox p {
-  margin: 0.3rem 0;
-  color: #333;
-  font-size: 1rem;
-}
-.editprofile-warningbox {
-  background: #fff3cd;
-  color: #856404;
-  border: 1px solid #ffeeba;
-}
-@media (max-width: 900px) {
-  .editprofile-flex {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    max-width: 98vw;
-  }
-  .editprofile-info-guide {
-    margin-top: 2rem;
-    max-width: 98vw;
-  }
-}
+        * { box-sizing: border-box; }
+        body, html {
+          margin: 0;
+          padding: 0;
+          background: #ffffff !important;
+          font-family: "Inter", "Segoe UI", Arial, sans-serif;
+          color: #0f172a;
+        }
+        .editprofile-bg {
+          min-height: 100vh;
+          width: 100%;
+          background: #f8fafc;
+          overflow-y: auto;
+          overflow-x: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 12px;
+          position: relative;
+        }
+        .editprofile-back-btn {
+          position: fixed;
+          top: 16px;
+          right: 16px;
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
+          color: #ffffff;
+          border: none;
+          padding: 0.7rem 1.2rem;
+          border-radius: 12px;
+          font-size: 1rem;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(11, 98, 214, 0.25);
+          transition: all 0.2s ease;
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          min-height: 44px;
+          touch-action: manipulation;
+        }
+        .editprofile-back-btn:hover {
+          background: linear-gradient(135deg, #044a9f 0%, #033d82 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(11, 98, 214, 0.35);
+        }
+        .editprofile-back-btn:active {
+          transform: scale(0.97);
+        }
+        .editprofile-back-btn:focus-visible {
+          outline: 3px solid #0b62d6;
+          outline-offset: 2px;
+        }
+        .editprofile-back-arrow {
+          width: 20px;
+          height: 20px;
+          fill: #ffffff;
+        }
+        .editprofile-flex {
+          width: 100%;
+          max-width: 500px;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-top: 60px;
+        }
+        .editprofile-formbox {
+          width: 100%;
+          background: #ffffff;
+          border-radius: 16px;
+          box-shadow: 0 2px 12px rgba(11, 98, 214, 0.08);
+          padding: 1.5rem 1.2rem;
+          border: 2px solid #e2e8f0;
+          position: relative;
+        }
+        .editprofile-formbox::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 5px;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+          border-radius: 16px 0 0 16px;
+        }
+        .editprofile-title {
+          color: #0f172a;
+          font-size: 1.6rem;
+          font-weight: 800;
+          margin: 0 0 1.5rem 0;
+          text-align: center;
+        }
+        .editprofile-formbox form {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+        .editprofile-form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .editprofile-formbox label {
+          font-weight: 600;
+          color: #0f172a;
+          font-size: 1rem;
+        }
+        .editprofile-formbox input[type="text"],
+        .editprofile-formbox input[type="password"],
+        .editprofile-formbox input[type="email"],
+        .editprofile-formbox input[type="tel"] {
+          width: 100%;
+          border: 2px solid #cbd5e1;
+          border-radius: 10px;
+          font-size: 1rem;
+          padding: 0.9rem;
+          background: #ffffff;
+          color: #0f172a;
+          transition: all 0.2s ease;
+          -webkit-appearance: none;
+          appearance: none;
+        }
+        .editprofile-formbox input:focus {
+          outline: none;
+          border-color: #0b62d6;
+          box-shadow: 0 0 0 3px rgba(11, 98, 214, 0.1);
+        }
+        .editprofile-formbox input::placeholder {
+          color: #94a3b8;
+        }
+        .editprofile-formbox input[type="file"] {
+          padding: 0.6rem;
+          border: 2px dashed #cbd5e1;
+          border-radius: 10px;
+          background: #f8fafc;
+          cursor: pointer;
+          font-size: 0.95rem;
+          transition: all 0.2s ease;
+        }
+        .editprofile-formbox input[type="file"]:hover {
+          border-color: #0b62d6;
+          background: #f1f5f9;
+        }
+        .editprofile-password-field {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        .editprofile-password-field input {
+          flex: 1;
+          padding-right: 50px;
+        }
+        .editprofile-eye {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          background: transparent;
+          border: none;
+          padding: 8px;
+          min-width: 44px;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          touch-action: manipulation;
+          border-radius: 6px;
+          transition: background 0.2s ease;
+        }
+        .editprofile-eye:hover {
+          background: #f1f5f9;
+        }
+        .editprofile-eye:active {
+          background: #e2e8f0;
+          transform: translateY(-50%) scale(0.95);
+        }
+        .editprofile-eye:focus-visible {
+          outline: 2px solid #0b62d6;
+          outline-offset: 2px;
+        }
+        .editprofile-save-btn {
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
+          color: #ffffff;
+          border: none;
+          padding: 1rem 0;
+          border-radius: 12px;
+          font-size: 1.05rem;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(11, 98, 214, 0.2);
+          transition: all 0.2s ease;
+          min-height: 48px;
+          touch-action: manipulation;
+        }
+        .editprofile-save-btn:hover {
+          background: linear-gradient(135deg, #044a9f 0%, #033d82 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(11, 98, 214, 0.3);
+        }
+        .editprofile-save-btn:active {
+          transform: scale(0.98);
+        }
+        .editprofile-cancel-btn {
+          background: #f1f5f9;
+          color: #475569;
+          border: 2px solid #cbd5e1;
+          padding: 0.9rem 0;
+          border-radius: 12px;
+          font-size: 1.02rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-height: 48px;
+          touch-action: manipulation;
+        }
+        .editprofile-cancel-btn:hover {
+          background: #e2e8f0;
+          border-color: #94a3b8;
+        }
+        .editprofile-cancel-btn:active {
+          transform: scale(0.98);
+        }
+        .editprofile-info-guide {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          width: 100%;
+        }
+        .editprofile-currentinfo,
+        .editprofile-guidebox,
+        .editprofile-warningbox {
+          background: #ffffff;
+          border-radius: 14px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+          padding: 1.2rem;
+          border: 2px solid #e2e8f0;
+          position: relative;
+        }
+        .editprofile-currentinfo::before,
+        .editprofile-guidebox::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 5px;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+          border-radius: 14px 0 0 14px;
+        }
+        .editprofile-warningbox {
+          background: #fef3f2;
+          border-color: #fed7d7;
+        }
+        .editprofile-warningbox::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 5px;
+          background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+          border-radius: 14px 0 0 14px;
+        }
+        .editprofile-currentinfo h3,
+        .editprofile-guidebox h3 {
+          color: #0b62d6;
+          margin: 0 0 1rem 0;
+          font-size: 1.15rem;
+          font-weight: 700;
+        }
+        .editprofile-currentinfo p,
+        .editprofile-guidebox p {
+          margin: 0.6rem 0;
+          color: #1e293b;
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+        .editprofile-warningbox {
+          color: #7c2d12;
+        }
+        .editprofile-warningbox strong {
+          color: #ea580c;
+          font-weight: 700;
+        }
+        .crop-container {
+          background: #ffffff;
+          border: 2px solid #e2e8f0;
+          border-radius: 14px;
+          padding: 1.2rem;
+          margin: 1rem 0;
+        }
+        .crop-controls {
+          display: flex;
+          gap: 0.8rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+        }
+        .crop-btn {
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
+          color: #ffffff;
+          border: none;
+          padding: 0.8rem 1.5rem;
+          border-radius: 10px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-height: 44px;
+          flex: 1;
+          min-width: 120px;
+        }
+        .crop-btn:hover {
+          background: linear-gradient(135deg, #044a9f 0%, #033d82 100%);
+        }
+        .crop-btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        .crop-btn.cancel {
+          background: #f1f5f9;
+          color: #475569;
+          border: 2px solid #cbd5e1;
+        }
+        .crop-btn.cancel:hover {
+          background: #e2e8f0;
+        }
+        .crop-area {
+          width: 100%;
+          max-width: 300px;
+          height: 300px;
+          position: relative;
+          margin: 0 auto;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 2px solid #e2e8f0;
+        }
+        .popup-notification {
+          position: fixed;
+          top: 80px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+          color: #ffffff;
+          padding: 1rem 1.8rem;
+          border-radius: 14px;
+          box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+          z-index: 9999;
+          font-weight: 700;
+          font-size: 1rem;
+          animation: popIn 0.3s ease-out;
+        }
+        @keyframes popIn {
+          from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+          }
+        }
+        @media (max-width: 480px) {
+          .editprofile-bg {
+            padding: 16px 10px;
+          }
+          .editprofile-back-btn {
+            top: 12px;
+            right: 12px;
+            padding: 0.6rem 1rem;
+            font-size: 0.95rem;
+          }
+          .editprofile-back-arrow {
+            width: 18px;
+            height: 18px;
+          }
+          .editprofile-flex {
+            max-width: 100%;
+            margin-top: 56px;
+          }
+          .editprofile-formbox {
+            padding: 1.2rem 1rem;
+          }
+          .editprofile-title {
+            font-size: 1.4rem;
+          }
+          .editprofile-formbox input[type="text"],
+          .editprofile-formbox input[type="password"],
+          .editprofile-formbox input[type="email"],
+          .editprofile-formbox input[type="tel"] {
+            padding: 0.8rem;
+            font-size: 16px;
+          }
+          .crop-area {
+            height: 250px;
+            max-width: 250px;
+          }
+          .crop-controls {
+            flex-direction: column;
+          }
+          .crop-btn {
+            width: 100%;
+          }
+        }
+        @media (min-width: 768px) {
+          .editprofile-bg {
+            padding: 40px 24px;
+          }
+          .editprofile-back-btn {
+            top: 24px;
+            right: 24px;
+          }
+          .editprofile-flex {
+            max-width: 600px;
+            margin-top: 0;
+          }
+          .editprofile-formbox {
+            padding: 2rem 1.8rem;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation: none !important;
+            transition: none !important;
+          }
+        }
       `}</style>
+
+      <button
+        className="editprofile-back-btn"
+        onClick={() => navigate('/profile')}
+        aria-label="Go back to profile"
+      >
+        <svg className="editprofile-back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/>
+        </svg>
+        Back
+      </button>
+
       <div className="editprofile-flex">
         <div className="editprofile-formbox">
           <h2 className="editprofile-title">Edit Profile</h2>
           <form onSubmit={handleSave}>
-            <label>Change Name:</label>
-            <input
-              type="text"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              placeholder="New Name"
-            />
-
-            <label>Change Username:</label>
-            <input
-              type="text"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              placeholder="New Username"
-            />
-
-            <label>Change Password:</label>
-            <div className="editprofile-password-field">
+            <div className="editprofile-form-group">
+              <label htmlFor="name">Change Name:</label>
               <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="New Password"
+                id="name"
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="New Name"
               />
-              <span
-                className="editprofile-eye"
-                onClick={() => setShowPassword(!showPassword)}
-                title="Show/Hide Password"
-              >
-                {showPassword ? (
-                  <svg width="20" height="20" viewBox="0 0 20 20">
-                    <path d="M2 2l16 16" stroke="#888" strokeWidth="2"/>
-                    <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6 2.1 0 4.06-.61 5.62-1.62" stroke="#888" strokeWidth="2" fill="none"/>
-                    <circle cx="10" cy="10" r="4" stroke="#888" strokeWidth="2" fill="none"/>
-                  </svg>
-                ) : (
-                  <svg width="20" height="20" viewBox="0 0 20 20">
-                    <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6s8.27-4.11 9-6c-.73-1.89-4-6-9-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#888"/>
-                  </svg>
-                )}
-              </span>
             </div>
 
-            <label>Confirm New Password:</label>
-            <div className="editprofile-password-field">
+            <div className="editprofile-form-group">
+              <label htmlFor="username">Change Username:</label>
               <input
-                type={showConfirm ? "text" : "password"}
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                placeholder="Confirm Password"
+                id="username"
+                type="text"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                placeholder="New Username"
               />
-              <span
-                className="editprofile-eye"
-                onClick={() => setShowConfirm(!showConfirm)}
-                title="Show/Hide Password"
-              >
-                {showConfirm ? (
-                  <svg width="20" height="20" viewBox="0 0 20 20">
-                    <path d="M2 2l16 16" stroke="#888" strokeWidth="2"/>
-                    <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6 2.1 0 4.06-.61 5.62-1.62" stroke="#888" strokeWidth="2" fill="none"/>
-                    <circle cx="10" cy="10" r="4" stroke="#888" strokeWidth="2" fill="none"/>
-                  </svg>
-                ) : (
-                  <svg width="20" height="20" viewBox="0 0 20 20">
-                    <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6s8.27-4.11 9-6c-.73-1.89-4-6-9-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#888"/>
-                  </svg>
-                )}
-              </span>
             </div>
 
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Email"
-            />
+            <div className="editprofile-form-group">
+              <label htmlFor="password">Change Password:</label>
+              <div className="editprofile-password-field">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="New Password"
+                />
+                <button
+                  type="button"
+                  className="editprofile-eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  title={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M2 2l16 16" stroke="#4b5563" strokeWidth="2"/>
+                      <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6 2.1 0 4.06-.61 5.62-1.62" stroke="#4b5563" strokeWidth="2" fill="none"/>
+                      <circle cx="10" cy="10" r="4" stroke="#4b5563" strokeWidth="2" fill="none"/>
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6s8.27-4.11 9-6c-.73-1.89-4-6-9-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#4b5563"/>
+                    </svg>
+                  )}
+                </button>
+              </div>
+            </div>
 
-            <label>Phone Number (optional):</label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-              placeholder="Phone Number"
-            />
+            <div className="editprofile-form-group">
+              <label htmlFor="confirmPassword">Confirm New Password:</label>
+              <div className="editprofile-password-field">
+                <input
+                  id="confirmPassword"
+                  type={showConfirm ? "text" : "password"}
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm Password"
+                />
+                <button
+                  type="button"
+                  className="editprofile-eye"
+                  onClick={() => setShowConfirm(!showConfirm)}
+                  aria-label={showConfirm ? "Hide password" : "Show password"}
+                  title={showConfirm ? "Hide password" : "Show password"}
+                >
+                  {showConfirm ? (
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M2 2l16 16" stroke="#4b5563" strokeWidth="2"/>
+                      <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6 2.1 0 4.06-.61 5.62-1.62" stroke="#4b5563" strokeWidth="2" fill="none"/>
+                      <circle cx="10" cy="10" r="4" stroke="#4b5563" strokeWidth="2" fill="none"/>
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M10 4C5 4 1.73 8.11 1 10c.73 1.89 4 6 9 6s8.27-4.11 9-6c-.73-1.89-4-6-9-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#4b5563"/>
+                    </svg>
+                  )}
+                </button>
+              </div>
+            </div>
 
-            <label>Upload Profile Picture:</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handlePicChange}
-            />
+            <div className="editprofile-form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+            </div>
+
+            <div className="editprofile-form-group">
+              <label htmlFor="phone">Phone Number (optional):</label>
+              <input
+                id="phone"
+                type="tel"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                placeholder="Phone Number"
+              />
+            </div>
+
+            <div className="editprofile-form-group">
+              <label htmlFor="profilePic">Upload Profile Picture:</label>
+              <input
+                id="profilePic"
+                type="file"
+                accept="image/*"
+                onChange={handlePicChange}
+              />
+            </div>
+
             {cropping && (
-              <div style={{ position: 'relative', width: 250, height: 250, margin: '1rem auto' }}>
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', justifyContent: 'flex-start' }}>
+              <div className="crop-container">
+                <div className="crop-controls">
                   <button
                     type="button"
-                    style={{ zIndex: 1000 }}
+                    className="crop-btn"
                     onClick={handleCropSave}
                     disabled={!croppedAreaPixels}
                   >
                     Save Crop
                   </button>
-                  <button type="button" onClick={() => setCropping(false)}>Cancel</button>
+                  <button 
+                    type="button" 
+                    className="crop-btn cancel"
+                    onClick={() => setCropping(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
-                <div style={{ width: 250, height: 250, position: 'relative' }}>
+                <div className="crop-area">
                   <Cropper
                     image={rawImage}
                     crop={crop}
@@ -397,38 +698,6 @@ function UserEditProfile() {
                 </div>
               </div>
             )}
-            {showImagePopup && (
-              <div style={{
-                position: 'fixed',
-                top: '20%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                background: '#008b8b',
-                color: '#fff',
-                padding: '1rem 2rem',
-                borderRadius: '12px',
-                boxShadow: '0 4px 16px rgba(0,139,139,0.15)',
-                zIndex: 9999
-              }}>
-                Image uploaded successfully!
-              </div>
-            )}
-            {showInfoPopup && (
-              <div style={{
-                position: 'fixed',
-                top: '28%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                background: '#008b8b',
-                color: '#fff',
-                padding: '1rem 2rem',
-                borderRadius: '12px',
-                boxShadow: '0 4px 16px rgba(0,139,139,0.15)',
-                zIndex: 9999
-              }}>
-                Your info is updated!
-              </div>
-            )}
 
             <button className="editprofile-save-btn" type="submit">
               Save Changes
@@ -436,45 +705,47 @@ function UserEditProfile() {
             <button
               className="editprofile-cancel-btn"
               type="button"
-              style={{
-                marginTop: "0.5rem",
-                background: "#eee",
-                color: "#008b8b",
-                border: "none",
-                borderRadius: "8px",
-                padding: "0.7rem 1.5rem",
-                fontSize: "1rem",
-                fontWeight: "500",
-                cursor: "pointer"
-              }}
-              onClick={() => window.history.back()}
+              onClick={() => navigate('/profile')}
             >
               Cancel
             </button>
           </form>
         </div>
+
         <div className="editprofile-info-guide">
           <div className="editprofile-currentinfo">
             <h3>Current Profile Info</h3>
-            <p>Name: {name || <span style={{color:'#888'}}>Not set</span>}</p>
-            <p>Username: {username || <span style={{color:'#888'}}>Not set</span>}</p>
-            <p>Email: {email || <span style={{color:'#888'}}>Not set</span>}</p>
-            <p>Phone: {phone || <span style={{color:'#888'}}>Not set</span>}</p>
+            <p><strong>Name:</strong> {name || <span style={{color:'#94a3b8'}}>Not set</span>}</p>
+            <p><strong>Username:</strong> {username || <span style={{color:'#94a3b8'}}>Not set</span>}</p>
+            <p><strong>Email:</strong> {email || <span style={{color:'#94a3b8'}}>Not set</span>}</p>
+            <p><strong>Phone:</strong> {phone || <span style={{color:'#94a3b8'}}>Not set</span>}</p>
           </div>
+
           <div className="editprofile-guidebox">
             <h3>Profile Editing Tips</h3>
             <p>
-              Update your details as needed.<br />
-              Leave fields blank to keep current info.<br />
-              Your changes are private and secure.
+              Update your details as needed. Leave fields blank to keep current info. Your changes are private and secure.
             </p>
           </div>
+
           <div className="editprofile-warningbox">
-            <strong>Security Warning:</strong><br />
-            Never share your password with anyone, including admins. Your password is private and should be kept secure at all times.
+            <p><strong>Security Warning:</strong><br />
+            Never share your password with anyone, including admins. Your password is private and should be kept secure at all times.</p>
           </div>
         </div>
       </div>
+
+      {showImagePopup && (
+        <div className="popup-notification">
+          ✓ Image uploaded successfully!
+        </div>
+      )}
+
+      {showInfoPopup && (
+        <div className="popup-notification">
+          ✓ Your info is updated!
+        </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AdminTopBar from "./AdminTopBar";
+import { useNavigate } from "react-router-dom";
+
 
 function AdminAddPictures() {
   // Notification popup state
@@ -24,6 +25,9 @@ function AdminAddPictures() {
   // Notification popup state
   const [notification, setNotification] = useState("");
   const [showNotification, setShowNotification] = useState(false);
+  // Active tab state
+  const [activeTab, setActiveTab] = useState("bible");
+  const navigate = useNavigate();
 
   // Confirm delete modal state
   const [confirmDelete, setConfirmDelete] = useState({ type: null, id: null, albumId: null });
@@ -251,7 +255,7 @@ function AdminAddPictures() {
         top: '32px',
         left: '50%',
         transform: 'translateX(-50%)',
-        background: '#008b8b',
+        background: '#2c5aa0',
         color: '#fff',
         borderRadius: '10px',
         boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
@@ -358,15 +362,7 @@ function AdminAddPictures() {
   };
 
   return (
-    <div
-      className="adminaddpics-container"
-      style={{
-        minHeight: '100vh',
-        background: "url('/JTVCF/for background picture/AdminDashboard.png') center center / cover no-repeat",
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <div className="adminaddpics-container">
       <style>{`
 html, body, #root {
   width: 100vw;
@@ -377,206 +373,378 @@ html, body, #root {
   padding: 0;
 }
 
+.adminaddpics-back-btn {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 100;
+  background: #2c5aa0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.adminaddpics-back-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 .adminaddpics-container {
   min-height: 100vh;
   width: 100vw;
   max-width: 100vw;
-  overflow-x: hidden;
+  background: #f0f4f8;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
   padding: 0;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1a1a1a;
 }
 
 .adminaddpics-main {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  align-items: stretch;
-  max-width: 100vw;
   width: 100%;
-  padding: 0 0.2rem;
-  margin: 2.5rem 0 0 0;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0.75rem;
+  padding-top: 100px;
+  padding-bottom: 80px;
   box-sizing: border-box;
+  gap: 1rem;
+}
+
+.adminaddpics-page-title {
+  color: #1a3a52;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.75rem 0 1rem 0;
+  letter-spacing: 0.3px;
+  padding-top: 0.5rem;
+}
+
+.adminaddpics-mobile-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.adminaddpics-tab-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: #ffffff;
+  color: #4d4d4d;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.adminaddpics-tab-btn.active {
+  color: #2c5aa0;
+  background: #f0f7ff;
+  border-bottom-color: #2c5aa0;
+}
+
+.adminaddpics-tab-btn:active {
+  transform: scale(0.98);
+}
+
+.adminaddpics-tab-content {
+  display: none;
+}
+
+.adminaddpics-tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .adminaddpics-card {
-  background: rgba(255,255,255,0.55);
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
-  padding: 1.1rem 0.5rem;
-  min-width: 0;
-  max-width: 100vw;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
   width: 100%;
-  margin-bottom: 1.2rem;
-  border: 2px solid #fff;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #d0d7de;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   box-sizing: border-box;
-}
-
-.adminaddpics-preview-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* Gallery image preview styles */
-.adminaddpics-preview-wrap {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 0.7rem 0 1.2rem 0;
-}
-.adminaddpics-preview-imgbox {
-    background: #f7f8fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 1 / 1;
-    min-width: 0;
-    min-height: 0;
-    overflow: hidden;
-    position: relative;
-    box-sizing: border-box;
-}
-.adminaddpics-preview-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    display: block;
-}
-/* Unique styles for AdminAddPictures */
-.adminaddpics-container {
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  padding: 0;
-}
-
-.adminaddpics-main {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  align-items: stretch;
-  max-width: 100vw;
-  padding: 0 0.2rem;
-  margin: 2.5rem 0 0 0;
-  width: 100vw;
-}
-
-.adminaddpics-card {
-  background: rgba(255,255,255,0.55);
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,139,139,0.10);
-  padding: 1.1rem 0.5rem;
-  min-width: 0;
-  max-width: 100vw;
-  width: 100vw;
-  margin-bottom: 1.2rem;
-  border: 2px solid #fff;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
 }
 
 .adminaddpics-title {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.7rem;
-  text-align: left;
-  text-shadow: 0 2px 8px #008b8b, 0 0 12px #2d3e50, 0 0 2px #fff;
-  -webkit-text-stroke: 1px #fff;
+  color: #1a1a1a;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.85rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adminaddpics-section-icon {
+  font-size: 1.3rem;
 }
 
 .adminaddpics-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .adminaddpics-label {
-  font-weight: 500;
-  color: #0b6b66;
-  margin-bottom: 0.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
 }
 
 .adminaddpics-input,
 .adminaddpics-select {
-  border: 1px solid #cbe7e7;
-  border-radius: 8px;
-  font-size: 0.98rem;
-  padding: 0.5rem;
-  margin-bottom: 0.2rem;
-  background: #f7fdfd;
+  border: 2px solid #d0d7de;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 0.85rem;
+  margin-bottom: 0.25rem;
+  background: #ffffff;
+  color: #1a1a1a;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.adminaddpics-input:focus,
+.adminaddpics-select:focus {
+  outline: none;
+  border-color: #2c5aa0;
+  box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
 }
 
 .adminaddpics-btn {
-  background: #008b8b;
-  color: #fff;
+  background: #2c5aa0;
+  color: #ffffff;
   border: none;
-  border-radius: 7px;
-  padding: 0.5rem 1rem;
-  font-size: 0.98rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.18s;
-}
-.adminaddpics-btn:hover {
-  background: #006d6d;
-}
-.adminaddpics-status {
-  color: #008b8b;
-  font-weight: 500;
-  margin-top: 0.7rem;
+  border-radius: 10px;
+  padding: 0.85rem 1.2rem;
   font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(44, 90, 160, 0.25);
+  -webkit-tap-highlight-color: transparent;
+  min-height: 48px;
+}
+
+.adminaddpics-btn:active {
+  transform: scale(0.98);
+  background: #1a3a52;
+}
+
+.adminaddpics-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.adminaddpics-btn-secondary {
+  background: #ffffff;
+  color: #2c5aa0;
+  border: 2px solid #2c5aa0;
+}
+
+.adminaddpics-btn-secondary:active {
+  background: #f0f7ff;
+}
+
+.adminaddpics-btn-danger {
+  background: #dc3545;
+}
+
+.adminaddpics-btn-danger:active {
+  background: #bb2d3b;
+}
+
+.adminaddpics-status {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  color: #2c5aa0;
+  font-weight: 600;
+  text-align: center;
+  background: #e8f4fd;
+  border-radius: 8px;
+  font-size: 0.95rem;
 }
 .adminaddpics-preview-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 0.75rem;
   width: 100%;
-  margin: 0;
+  margin: 0.75rem 0;
   padding: 0;
   box-sizing: border-box;
-  /* Prevent horizontal scroll */
-  max-width: 100vw;
-  overflow-x: hidden;
+}
+
+.adminaddpics-preview-wrap {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0;
+}
+
+.adminaddpics-preview-imgbox {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #d0d7de;
+}
+
+.adminaddpics-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.adminaddpics-album-container {
+  margin-bottom: 1.5rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #f8f9fa;
+}
+
+.adminaddpics-album-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.adminaddpics-album-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  flex: 1;
+  min-width: 150px;
+}
+
+.adminaddpics-image-label {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #2c5aa0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  padding: 4px 2px;
+  font-weight: 600;
+  z-index: 1;
+  word-break: break-word;
+}
+
+.adminaddpics-image-controls {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  z-index: 2;
+  flex-wrap: wrap;
 }
       `}</style>
       <NotificationPopup message={notification} show={showNotification} />
-      <AdminTopBar
-        menuItems={[
-          { label: "Dashboard", link: "/admindashboard" },
-          { label: "Home", link: "/" },
-        ]}
-      />
+
+      <button
+        className="editprofile-back-btn"
+        style={{
+          position: "fixed",
+          top: 16,
+          right: 16,
+          background: "linear-gradient(135deg, #0b62d6 0%, #044a9f 100%)",
+          color: "#ffffff",
+          border: "none",
+          padding: "0.7rem 1.2rem",
+          borderRadius: 12,
+          fontSize: "1rem",
+          fontWeight: 700,
+          cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(11, 98, 214, 0.25)",
+          transition: "all 0.2s ease",
+          zIndex: 1000,
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          minHeight: 44,
+          touchAction: "manipulation"
+        }}
+        onClick={() => navigate("/admindashboard")}
+        aria-label="Go back"
+      >
+        <svg className="editprofile-back-arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="#fff"/>
+        </svg>
+        Back
+      </button>
+
       <div className="adminaddpics-main">
-        <div className="adminaddpics-card adminaddpics-left">
-          <h2 className="adminaddpics-title">Bible Reading Guide</h2>
-          <form onSubmit={handleBrgUpload} className="adminaddpics-form">
+        <h1 className="adminaddpics-page-title" style={{ marginTop: 60 }}>📸 Manage Pictures</h1>
+        
+        {/* Mobile Tabs */}
+        <div className="adminaddpics-mobile-tabs">
+          <button 
+            className={`adminaddpics-tab-btn ${activeTab === "bible" ? "active" : ""}`}
+            onClick={() => setActiveTab("bible")}
+          >
+            📖 Bible Guide
+          </button>
+          <button 
+            className={`adminaddpics-tab-btn ${activeTab === "gallery" ? "active" : ""}`}
+            onClick={() => setActiveTab("gallery")}
+          >
+            🖼️ Gallery
+          </button>
+        </div>
+
+        {/* Bible Reading Guide Tab */}
+        <div className={`adminaddpics-tab-content ${activeTab === "bible" ? "active" : ""}`}>
+          <div className="adminaddpics-card adminaddpics-left">
+            <h2 className="adminaddpics-title"><span className="adminaddpics-section-icon">📖</span>Bible Reading Guide</h2>
+            <form onSubmit={handleBrgUpload} className="adminaddpics-form">
             <label className="adminaddpics-label">Image Name (optional):</label>
             <input className="adminaddpics-input" type="text" value={brgImageName} onChange={e => setBrgImageName(e.target.value)} />
             <label className="adminaddpics-label">Upload Image:</label>
@@ -587,7 +755,7 @@ html, body, #root {
 
           {/* Bible Guide images list */}
           <div style={{ marginTop: '2rem' }}>
-            <h3 style={{ fontWeight: 600, fontSize: '1.08rem', color: '#008b8b' }}>Bible Guide Images</h3>
+            <h3 style={{ fontWeight: 600, fontSize: '1.08rem', color: '#1a3a52' }}>Bible Guide Images</h3>
             {brgImages.length === 0 ? (
               <div style={{ color: '#888', fontSize: '0.98rem' }}>No Bible Guide images uploaded.</div>
             ) : (
@@ -613,7 +781,7 @@ html, body, #root {
                     />
                     <div style={{
                       position: 'absolute', bottom: 2, left: 2, right: 2,
-                      textAlign: 'center', fontSize: '0.85rem', color: '#008b8b',
+                      textAlign: 'center', fontSize: '0.85rem', color: '#2c5aa0',
                       background: 'rgba(255,255,255,0.85)', borderRadius: 4, padding: '1px 0', fontWeight: 500, zIndex: 1
                     }}>
                       {img.image_name || img.filename || 'Bible Guide'}
@@ -628,9 +796,9 @@ html, body, #root {
                           onChange={e => setEditingImageName(e.target.value)}
                           style={{ fontSize: '0.85rem', padding: '1px 4px', borderRadius: 4, border: '1px solid #ccc', width: '90%' }}
                         />
-                        <div style={{ display: 'flex', gap: 2, marginTop: 1 }}>
-                          <button className="adminaddpics-btn" style={{ fontSize: '0.8rem', padding: '1px 6px' }} onClick={() => handleSaveImageName(img.id)}>Save</button>
-                          <button className="adminaddpics-btn" style={{ fontSize: '0.8rem', padding: '1px 6px', background: '#888' }} onClick={() => setEditingImageId(null)}>Cancel</button>
+                        <div style={{ display: 'flex', gap: 4, marginTop: 4 }}>
+                          <button className="adminaddpics-btn" style={{ fontSize: '0.75rem', padding: '4px 8px', minHeight: '32px' }} onClick={() => handleSaveImageName(img.id)}>Save</button>
+                          <button className="adminaddpics-btn adminaddpics-btn-secondary" style={{ fontSize: '0.75rem', padding: '4px 8px', minHeight: '32px' }} onClick={() => setEditingImageId(null)}>Cancel</button>
                         </div>
                       </div>
                     ) : (
@@ -639,12 +807,12 @@ html, body, #root {
                       }}>
                         <button
                           className="adminaddpics-btn"
-                          style={{ background: '#1976d2', color: '#fff', fontSize: '0.8rem', padding: '1px 6px', borderRadius: 6 }}
+                          style={{ background: '#1976d2', color: '#fff', fontSize: '0.75rem', padding: '4px 8px', borderRadius: 6, minHeight: '32px' }}
                           onClick={() => startEditImageName(img.id, img.image_name)}
                         >Rename</button>
                         <button
-                          className="adminaddpics-btn"
-                          style={{ background: '#d32f2f', color: '#fff', fontSize: '0.8rem', padding: '1px 6px', borderRadius: 6 }}
+                          className="adminaddpics-btn adminaddpics-btn-danger"
+                          style={{ fontSize: '0.75rem', padding: '4px 8px', borderRadius: 6, minHeight: '32px' }}
                           onClick={() => setConfirmDelete({ type: 'brg', id: img.id })}
                         >Delete</button>
                       </div>
@@ -655,15 +823,17 @@ html, body, #root {
             )}
           </div>
         </div>
-        <div className="adminaddpics-card adminaddpics-right">
-          <h2 className="adminaddpics-title">Gallery Albums</h2>
-          <form onSubmit={handleCreateAlbum} className="adminaddpics-form" style={{ marginBottom: '1.2rem' }}>
-            <label className="adminaddpics-label">Create New Album:</label>
-            <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'center' }}>
+        </div>
+
+        {/* Gallery Albums Tab */}
+        <div className={`adminaddpics-tab-content ${activeTab === "gallery" ? "active" : ""}`}>
+          <div className="adminaddpics-card adminaddpics-right">
+            <h2 className="adminaddpics-title"><span className="adminaddpics-section-icon">🖼️</span>Gallery Albums</h2>
+            <form onSubmit={handleCreateAlbum} className="adminaddpics-form" style={{ marginBottom: '1.2rem' }}>
+              <label className="adminaddpics-label">Create New Album:</label>
               <input className="adminaddpics-input" type="text" value={albumName} onChange={e => setAlbumName(e.target.value)} placeholder="Album Name" required />
-              <button className="adminaddpics-btn" type="submit">Create Album</button>
-            </div>
-          </form>
+              <button className="adminaddpics-btn" type="submit" style={{ marginTop: '0.5rem', width: '100%' }}>Create Album</button>
+            </form>
 
           {/* Only one album select and upload form */}
           <div className="adminaddpics-form" style={{ marginBottom: '1.5rem' }}>
@@ -698,14 +868,14 @@ html, body, #root {
           {selectedAlbumId && (
             <div style={{ marginBottom: '2rem', border: '1px solid #e0e0e0', borderRadius: 10, padding: '1rem', background: '#f7f8fa' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-                <span style={{ fontWeight: 600, fontSize: '1.08rem', color: '#008b8b' }}>{albums.find(a => a.id === selectedAlbumId)?.name}</span>
+                <span style={{ fontWeight: 600, fontSize: '1.08rem', color: '#1a3a52' }}>{albums.find(a => a.id === selectedAlbumId)?.name}</span>
                 <button
-                  className="adminaddpics-btn"
-                  style={{ background: '#d32f2f', marginLeft: 12, padding: '0.4rem 1rem' }}
+                  className="adminaddpics-btn adminaddpics-btn-danger"
+                  style={{ marginLeft: 12, padding: '0.65rem 1rem', fontSize: '0.9rem' }}
                   disabled={deletingAlbumId === selectedAlbumId}
                   onClick={() => setConfirmDelete({ type: 'album', id: selectedAlbumId })}
                 >
-                  {deletingAlbumId === selectedAlbumId ? 'Deleting...' : 'Delete Album'}
+                  {deletingAlbumId === selectedAlbumId ? 'Deleting...' : '🗑️ Delete Album'}
                 </button>
               </div>
               {/* Show images in selected album visually */}
@@ -730,14 +900,14 @@ html, body, #root {
                         className="adminaddpics-preview-img"
                         onError={e => { e.target.onerror = null; e.target.src = '/broken-image.png'; }}
                       />
-                      <div style={{ position: 'absolute', bottom: 4, left: 4, right: 4, textAlign: 'center', fontSize: '0.95rem', color: '#008b8b', background: 'rgba(255,255,255,0.85)', borderRadius: 4, padding: '2px 0', fontWeight: 500 }}>{img.image_name || img.filename || 'Photo'}</div>
+                      <div style={{ position: 'absolute', bottom: 4, left: 4, right: 4, textAlign: 'center', fontSize: '0.95rem', color: '#2c5aa0', background: 'rgba(255,255,255,0.85)', borderRadius: 4, padding: '2px 0', fontWeight: 500 }}>{img.image_name || img.filename || 'Photo'}</div>
                       <button
-                        className="adminaddpics-btn"
-                        style={{ position: 'absolute', top: 4, right: 4, background: '#d32f2f', color: '#fff', fontSize: '0.85rem', padding: '2px 8px', borderRadius: 6, zIndex: 2 }}
+                        className="adminaddpics-btn adminaddpics-btn-danger"
+                        style={{ position: 'absolute', top: 4, right: 4, fontSize: '0.75rem', padding: '4px 8px', borderRadius: 6, zIndex: 2, minHeight: '32px' }}
                         disabled={deletingPhotoId === img.id}
                         onClick={() => setConfirmDelete({ type: 'photo', id: img.id, albumId: selectedAlbumId })}
                       >
-                        {deletingPhotoId === img.id ? 'Deleting...' : 'Delete'}
+                        {deletingPhotoId === img.id ? '...' : '🗑️'}
                       </button>
                     </div>
                   ))
@@ -749,6 +919,7 @@ html, body, #root {
           )}
           {/* galleryStatus message after main upload form */}
           {galleryStatus && <div className="adminaddpics-status">{galleryStatus}</div>}
+        </div>
         </div>
       </div>
 

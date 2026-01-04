@@ -176,11 +176,14 @@ function UserProfile() {
       }}
     >
       <style>{`
+        body, html {
+          background: #fff;
+        }
         .userprofile-bg {
           font-family: Arial, sans-serif;
           min-height: 100vh;
           width: 100vw;
-          background: center center / cover no-repeat;
+          background: #fff !important;
           display: flex;
           flex-direction: column;
           overflow-x: hidden;
@@ -192,23 +195,32 @@ function UserProfile() {
           justify-content: flex-start;
           width: 100vw;
           min-height: 100vh;
-          padding: 0;
-          margin: 0;
-          gap: 0;
-          box-sizing: border-box;
           margin-top: 32px;
         }
         .userprofile-left,
         .userprofile-right {
-          width: 98vw;
-          max-width: 98vw;
+          width: 95%;
+          max-width: 340px;
           min-width: 0;
           margin: 0 auto 18px auto;
-          background: rgba(255,255,255,0.85);
+          background: #fff;
           border-radius: 14px;
-          box-shadow: 0 4px 18px rgba(0,139,139,0.10);
+          box-shadow: 0 4px 18px rgba(11,98,214,0.10);
           padding: 1.2rem 0.7rem 1.2rem 0.7rem;
           box-sizing: border-box;
+          position: relative;
+          overflow: hidden;
+        }
+        .userprofile-left::before,
+        .userprofile-right::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 6px;
+          height: 100%;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+          border-radius: 14px 0 0 14px;
         }
         .userprofile-left {
           align-items: center;
@@ -216,27 +228,37 @@ function UserProfile() {
           flex-direction: column;
           height: auto;
           min-height: 0;
-          max-width: 98vw;
         }
         .userprofile-avatar-section {
           display: flex;
           flex-direction: column;
           align-items: center;
           margin-bottom: 1.2rem;
+          position: relative;
+          width: 100%;
         }
+        .userprofile-avatar-container {
+          position: relative;
+          width: 90px;
+          height: 90px;
+          margin-bottom: 0.7rem;
+        }
+        /* Remove left side line on profile picture */
         .userprofile-avatar {
           width: 90px;
           height: 90px;
           border-radius: 50%;
           object-fit: cover;
-          margin-bottom: 0.7rem;
-          border: 2px solid #008b8b;
+          position: relative;
+          z-index: 2;
+          border: none;
+          background: #fff;
         }
         .userprofile-name {
           margin: 0;
           font-size: 1.2rem;
           font-weight: bold;
-          color: #008b8b;
+          color: #111;
           margin-bottom: 0.3rem;
           text-align: center;
         }
@@ -256,7 +278,7 @@ function UserProfile() {
           margin-bottom: 1.5rem;
         }
         .userprofile-btn {
-          background: #008b8b;
+          background: #0b62d6;
           color: #fff;
           border: none;
           border-radius: 6px;
@@ -264,42 +286,39 @@ function UserProfile() {
           font-weight: 500;
           padding: 0.5rem 0.7rem;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          box-shadow: 0 2px 8px rgba(11,98,214,0.10);
           transition: background 0.2s, box-shadow 0.2s;
           min-width: 90px;
           width: 100%;
           max-width: 400px;
           margin: 0;
         }
-        .userprofile-verse {
-          margin: 0.5rem auto 0 auto;
-          width: 100%;
-          max-width: 600px;
-          padding: 1rem 0.5rem;
-          box-sizing: border-box;
-          text-align: center;
-          word-break: break-word;
-          overflow-wrap: break-word;
-          white-space: pre-line;
-        }
+        /* White container with orange left side for Verse of the Day */
         .userprofile-box.userprofile-verse {
+          background: #fff !important;
           min-height: 120px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          position: relative;
+          box-shadow: 0 4px 18px rgba(247,183,51,0.10);
         }
-        .userprofile-right {
-          gap: 1.2rem;
-          max-height: none;
-          height: auto;
-          overflow-y: visible;
-          margin-bottom: 24px;
+        .userprofile-box.userprofile-verse::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 6px;
+          height: 100%;
+          background: linear-gradient(180deg, #f7b733 0%, #fc4a1a 100%);
+          border-radius: 14px 0 0 14px;
         }
+        /* White container with blue left side for other boxes */
         .userprofile-box {
-          background: linear-gradient(120deg, #e0f7fa 0%, #b2ebf2 60%, #f7f8fa 100%);
+          background: #fff;
           border: 1px solid #e0e0e0;
-          box-shadow: 0 4px 18px rgba(0,139,139,0.10);
+          box-shadow: 0 4px 18px rgba(11,98,214,0.10);
           border-radius: 14px;
           padding: 1rem 0.7rem;
           margin-bottom: 0.7rem;
@@ -307,6 +326,18 @@ function UserProfile() {
           margin-left: auto;
           margin-right: auto;
           box-sizing: border-box;
+          position: relative;
+          overflow: hidden;
+        }
+        .userprofile-box:not(.userprofile-verse)::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 6px;
+          height: 100%;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+          border-radius: 14px 0 0 14px;
         }
         .userprofile-post {
           background: none;
@@ -328,9 +359,9 @@ function UserProfile() {
         .userprofile-box.clickable { cursor: pointer; }
         .userprofile-box.clickable:hover {
           transform: translateY(-3px) scale(1.01);
-          box-shadow: 0 8px 24px rgba(8,163,173,0.13), 0 2px 8px rgba(0,139,139,0.10);
-          border-color: #43e9f6;
-          background: linear-gradient(120deg, #e0f7fa 0%, #f7f8fa 100%);
+          box-shadow: 0 8px 24px rgba(11,98,214,0.13), 0 2px 8px rgba(11,98,214,0.10);
+          border-color: #0b62d6;
+          background: #fff;
           transition: box-shadow 0.2s, transform 0.18s, border 0.18s;
         }
         .profile-modal-overlay {
@@ -366,7 +397,7 @@ function UserProfile() {
           color: #333;
         }
         .profile-modal-title {
-          color: #008b8b;
+          color: #0b62d6;
           margin-top: 0;
           margin-bottom: 0.6rem;
         }
@@ -403,11 +434,11 @@ function UserProfile() {
           top: '20%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          background: '#008b8b',
+          background: '#0b62d6',
           color: '#fff',
           padding: '1rem 2rem',
           borderRadius: '12px',
-          boxShadow: '0 4px 16px rgba(0,139,139,0.15)',
+          boxShadow: '0 4px 16px rgba(11,98,214,0.15)',
           zIndex: 9999
         }}>
           Your info is updated!
@@ -416,14 +447,16 @@ function UserProfile() {
       <div className="userprofile-main">
         <div className="userprofile-left">
           <div className="userprofile-avatar-section">
-            <img
-              src={profilePicBase64
-                ? profilePicBase64
-                : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName || user.username || 'Me')}&background=008b8b&color=fff&size=128`}
-              alt="User"
-              className="userprofile-avatar"
-              onError={e => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName || user.username || 'Me')}&background=008b8b&color=fff&size=128`; }}
-            />
+            <div className="userprofile-avatar-container">
+              <img
+                src={profilePicBase64
+                  ? profilePicBase64
+                  : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName || user.username || 'Me')}&background=0b62d6&color=fff&size=128`}
+                alt="User"
+                className="userprofile-avatar"
+                onError={e => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName || user.username || 'Me')}&background=0b62d6&color=fff&size=128`; }}
+              />
+            </div>
             <h2 className="userprofile-name">{user.fullName || 'Your Name'}</h2>
             <p className="userprofile-username">{user.username ? `@${user.username}` : '@username'}</p>
           </div>
@@ -442,14 +475,23 @@ function UserProfile() {
             role="button"
             tabIndex={0}
           >
-            <h3>Verse of the Day</h3>
-              {(() => {
-                const verse = getVerseOfTheDay();
-                return <p style={{margin: "0.5rem 0 0 0"}}>{`"${verse.text}" – ${verse.ref}`}</p>;
-              })()}
+            <h3 style={{ textAlign: "center", width: "100%" }}>Verse of the Day</h3>
+            {(() => {
+              const verse = getVerseOfTheDay();
+              return (
+                <p
+                  style={{
+                    margin: "0.5rem 0 0 0",
+                    textAlign: "center",
+                    width: "100%",
+                  }}
+                >
+                  {`"${verse.text}" – ${verse.ref}`}
+                </p>
+              );
+            })()}
           </div>
         </div>
-
         <div className="userprofile-right">
           <div
             className="userprofile-box clickable"
@@ -469,7 +511,6 @@ function UserProfile() {
               )}
             </div>
           </div>
-
           <div
             className="userprofile-box clickable"
             onClick={() => openModal("prayer")}
@@ -504,7 +545,6 @@ function UserProfile() {
               <p style={{ color: '#888' }}>No Prayer Requests Yet</p>
             )}
           </div>
-
           <div
             className="userprofile-box clickable"
             onClick={() => navigate("/userreflection")}
@@ -528,7 +568,6 @@ function UserProfile() {
               </ul>
             )}
           </div>
-
           <div
             className="userprofile-box clickable"
             onClick={() => openModal("church")}

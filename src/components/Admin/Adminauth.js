@@ -31,7 +31,7 @@ function AdminAuth() {
       <style>{`
 .adminauth-container {
   min-height: 100vh;
-  background: #08a3ad;
+  background: linear-gradient(135deg, #e8f4f8 0%, #d4e7f5 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ function AdminAuth() {
   align-items: center;
 }
 .adminauth-title {
-  color: #008b8b;
+  color: #1a3a52;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
@@ -70,14 +70,14 @@ function AdminAuth() {
 .adminauth-input {
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid #008b8b;
+  border: 2px solid #2c5aa0;
   border-radius: 8px;
   font-size: 1rem;
   padding: 0.7rem;
   margin-bottom: 1rem;
 }
 .adminauth-btn {
-  background: #008b8b;
+  background: linear-gradient(135deg, #2c5aa0 0%, #3d7bb8 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -85,13 +85,16 @@ function AdminAuth() {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 60%;
   margin: 0 auto;
   display: block;
+  box-shadow: 0 2px 8px rgba(44, 90, 160, 0.2);
 }
 .adminauth-btn:hover {
-  background: #006d6d;
+  background: linear-gradient(135deg, #3d7bb8 0%, #4a8dd9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
 }
 .adminauth-warning {
   color: #d9534f;

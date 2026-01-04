@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AdminTopBar from "./AdminTopBar";
 // Removed: import "../../css/Admin/AdminFPW.css";
 import { useNavigate } from "react-router-dom";
 
@@ -113,12 +112,53 @@ function AdminFPW() {
   return (
     <div className="adminfpw-outer">
       <style>{`
+        .adminfpw-back-btn {
+          position: fixed;
+          top: 32px;
+          right: 12px;
+          left: auto;
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
+          color: #ffffff;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 12px;
+          font-size: 0.95rem;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(11, 98, 214, 0.25);
+          transition: all 0.2s ease;
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          min-height: 44px;
+          touch-action: manipulation;
+        }
+        .adminfpw-back-btn:hover {
+          background: linear-gradient(135deg, #044a9f 0%, #033d82 100%);
+          transform: translateY(-2px);
+        }
+        .adminfpw-back-btn:active {
+          transform: scale(0.97);
+        }
+      `}</style>
+      <button
+        className="adminfpw-back-btn"
+        onClick={() => navigate('/adminlogin')}
+        aria-label="Go back to admin login"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
+      <style>{`
 .adminfpw-outer {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   height: 100vh !important;
   overflow: hidden !important;
-  background: #08a3ad;
+  background: linear-gradient(135deg, #e8f4f8 0%, #d4e7f5 100%);
   display: flex;
   flex-direction: column;
   padding-top: 0px;
@@ -167,7 +207,7 @@ function AdminFPW() {
   margin-bottom: 0.1rem;
 }
 .adminfpw-submitbtn {
-  background: #08a3ad;
+  background: linear-gradient(135deg, #2c5aa0 0%, #3d7bb8 100%);
   color: #fff;
   border: none;
   padding: 0.8rem 0;
@@ -176,10 +216,13 @@ function AdminFPW() {
   font-weight: 500;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(44, 90, 160, 0.2);
 }
 .adminfpw-submitbtn:hover {
-  background: #006d6d;
+  background: linear-gradient(135deg, #3d7bb8 0%, #4a8dd9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
 }
 .adminfpw-error {
   color: #d32f2f;
@@ -189,8 +232,9 @@ function AdminFPW() {
   font-size: 1rem;
 }
 .adminfpw-success {
-  color: #006d6d;
-  background: #e0f7fa;
+  color: #1a3a52;
+  background: #e8f4f8;
+  border: 2px solid #2c5aa0;
   border-radius: 7px;
   padding: 1.2rem;
   text-align: center;
@@ -199,7 +243,6 @@ function AdminFPW() {
   margin-bottom: 1.2rem;
 }
       `}</style>
-      <AdminTopBar />
       <div className="adminfpw-main">
         <div className="adminfpw-form-glass">
           <h2 className="adminfpw-title">Admin Forgot Password</h2>

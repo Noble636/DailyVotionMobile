@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import TopBar from "../TopBar";
+import { useNavigate } from "react-router-dom";
 
 function UserReflection() {
   const [reflectionText, setReflectionText] = useState("");
   const [reflections, setReflections] = useState([]);
   const [sentNotice, setSentNotice] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -65,28 +66,23 @@ function UserReflection() {
       <style>{`
 .userreflection-container {
   min-height: 100vh;
-  background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
-  background-size: 200% 200%;
-  animation: userlogin-colorwave 12s ease-in-out infinite;
+  background: #f5f7fb;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 72px;
   box-sizing: border-box;
-}
-@keyframes userlogin-colorwave {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
+  color: #0f172a;
+  position: relative;
 }
 .userreflection-main {
   margin: 1.4rem auto 0;
   width: 100%;
-  max-width: 1200px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.25rem;
+  padding: 1.1rem;
   box-sizing: border-box;
   align-items: center;
   justify-content: flex-start;
@@ -94,64 +90,69 @@ function UserReflection() {
 .userreflection-verse-card,
 .userreflection-form,
 .userreflection-left {
-  background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-  border-radius: 22px;
-  box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   box-sizing: border-box;
-  border: 2.5px solid #fff;
-  max-width: 480px;
+  max-width: 520px;
   width: 100%;
   align-items: center;
-  z-index: 2;
-  backdrop-filter: blur(14px) saturate(120%);
   margin: 0 auto;
 }
 .userreflection-verse-card {
-  padding: 2.5rem 2rem 1.5rem 2rem;
-  min-height: 230px;
+  padding: 1.6rem 1.4rem 1.2rem 1.4rem;
+  min-height: 180px;
   height: auto;
 }
 .userreflection-verse-title {
-  color: #008b8b;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-  padding-top: 1.0rem;
-  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+  color: #0b62d6;
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+  font-size: 1.6rem;
+  padding-top: 0.4rem;
   text-align: center;
 }
 .userreflection-verse-text {
-  font-size: 1.18rem;
-  color: #234;
-  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+  margin-bottom: 0.7rem;
   text-align: center;
+  line-height: 1.5;
 }
 .userreflection-verse-meta {
   display: flex;
   justify-content: space-between;
-  color: #6b6b6b;
-  font-size: 0.92rem;
+  color: #475467;
+  font-size: 0.95rem;
   width: 100%;
 }
 .userreflection-form {
-  padding: 2rem 2rem 1.5rem 2rem;
+  padding: 1.4rem 1.4rem 1.2rem 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .userreflection-form-label {
-  font-weight: 600;
-  color: #006d6d;
+  font-weight: 700;
+  color: #0f172a;
 }
 .userreflection-textarea {
-  min-height: 100px;
-  font-size: 1.08rem;
-  margin-bottom: 0.7rem;
+  min-height: 110px;
+  font-size: 1.02rem;
+  margin-bottom: 0.8rem;
   resize: none;
   width: 100%;
-  border: 1px solid #cce4e4;
-  border-radius: 8px;
-  padding: 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  background: #f8fafc;
+  color: #0f172a;
+}
+.userreflection-textarea:focus {
+  outline: 2px solid #0b62d6;
+  outline-offset: 2px;
+  border-color: #0b62d6;
 }
 .userreflection-form-actions {
   display: flex;
@@ -161,45 +162,58 @@ function UserReflection() {
   width: 100%;
 }
 .userreflection-btn {
-  background: #008b8b;
+  background: #0b62d6;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
   cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(11, 98, 214, 0.22);
+}
+.userreflection-btn:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
 }
 .userreflection-cancel-btn {
-  background: #d32f2f;
+  background: #475467;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 0.4rem 1rem;
-  font-weight: 500;
+  border-radius: 10px;
+  padding: 0.7rem 1.1rem;
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(71, 84, 103, 0.2);
+}
+.userreflection-cancel-btn:focus-visible {
+  outline: 3px solid #cbd5e1;
+  outline-offset: 2px;
 }
 .userreflection-sent {
-  color: #fff;
-  background: #008b8b;
-  padding: 6px 8px;
-  border-radius: 6px;
+  color: #065f46;
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+  padding: 8px 10px;
+  border-radius: 10px;
   display: inline-block;
-  width: max-content;
-  margin-top: 0.25rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.4rem;
 }
 .userreflection-left {
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem 1.5rem 2rem;
+  padding: 1.3rem 1.2rem 1.1rem 1.2rem;
   min-width: 240px;
   min-height: 200px;
-  max-height: 350px;
+  max-height: 320px;
   overflow-y: auto;
 }
 .userreflection-left-title {
-  color: #008b8b;
-  text-shadow: 0 0 2px #fff, 0 2px 8px #fff, 0 0 8px #008b8b;
+  color: #0b62d6;
   text-align: center;
   margin-bottom: 0.7rem;
+  font-weight: 800;
 }
 .userreflection-left-list {
   overflow-y: auto;
@@ -211,26 +225,27 @@ function UserReflection() {
 }
 .userreflection-response-item {
   margin-bottom: 1.2rem;
-  background: #f7f8fa;
-  border-radius: 10px;
+  background: #f8fafc;
+  border-radius: 12px;
   padding: 0.8rem 1rem;
-  box-shadow: 0 2px 8px rgba(0,139,139,0.07);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0;
 }
 .userreflection-response-meta {
   display: flex;
   justify-content: flex-end;
-  font-size: 0.92rem;
-  color: #888;
+  font-size: 0.9rem;
+  color: #475467;
   margin-bottom: 0.2rem;
 }
 .userreflection-response-admin {
   font-size: 1rem;
-  color: #006d6d;
+  color: #0f172a;
   margin-bottom: 0.2rem;
 }
 .userreflection-response-text {
   font-size: 1rem;
-  color: #234;
+  color: #0f172a;
 }
 .TopBar-fixed {
   position: fixed;
@@ -238,13 +253,40 @@ function UserReflection() {
   left: 0;
   width: 100vw;
   z-index: 100;
-  background: #008b8b;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #0b62d6;
+  box-shadow: 0 2px 10px rgba(11,98,214,0.25);
+}
+.userreflection-back-btn {
+  position: absolute;
+  right: 20px;
+  top: 78px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #0b62d6;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(11, 98, 214, 0.25);
+}
+.userreflection-back-btn:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+@media (max-width: 700px) {
+  .userreflection-back-btn {
+    top: 72px;
+    right: 14px;
+    padding: 0.4rem 0.75rem;
+  }
 }
 @media (max-width: 700px) {
   .userreflection-main {
-    padding: 0.5rem;
-    gap: 1rem;
+    padding: 0.65rem;
+    gap: 0.9rem;
   }
   .userreflection-verse-card,
   .userreflection-form,
@@ -252,22 +294,22 @@ function UserReflection() {
     max-width: 98vw;
     min-width: 0;
     width: 100%;
-    border-radius: 14px;
+    border-radius: 12px;
     padding-left: 4vw;
     padding-right: 4vw;
   }
   .userreflection-verse-title {
-    font-size: 1.3rem;
-    padding-top: 0.7rem;
+    font-size: 1.25rem;
+    padding-top: 0.4rem;
   }
   .userreflection-verse-text {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
   .userreflection-form {
-    padding: 1.2rem 4vw 1rem 4vw;
+    padding: 1rem 4vw 0.9rem 4vw;
   }
   .userreflection-left {
-    padding: 1.2rem 4vw 1rem 4vw;
+    padding: 1rem 4vw 0.9rem 4vw;
     max-height: 220px;
   }
   .userreflection-left-list {
@@ -276,15 +318,49 @@ function UserReflection() {
   }
 }
       `}</style>
-      <div className="TopBar-fixed">
-        <TopBar
-          title="Reflection & Journal"
-          menuItems={[
-            { label: "Profile", link: "/profile" },
-            { label: "About", link: "/about" },
-          ]}
-        />
-      </div>
+
+
+      <style>{`
+        .reflection-back-btn {
+          position: fixed;
+          top: 12px;
+          right: 12px;
+          left: auto;
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
+          color: #ffffff;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 12px;
+          font-size: 0.95rem;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(11, 98, 214, 0.25);
+          transition: all 0.2s ease;
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          min-height: 44px;
+          touch-action: manipulation;
+        }
+        .reflection-back-btn:hover {
+          background: linear-gradient(135deg, #044a9f 0%, #033d82 100%);
+          transform: translateY(-2px);
+        }
+        .reflection-back-btn:active {
+          transform: scale(0.97);
+        }
+      `}</style>
+      <button
+        className="reflection-back-btn"
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back
+      </button>
 
       <div className="userreflection-main">
         {/* 1. Reflection & Journal sent by admin */}
