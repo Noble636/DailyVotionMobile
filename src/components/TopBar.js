@@ -88,9 +88,9 @@ const TopBar = ({ menuItems }) => {
           position: absolute;
           top: 50px;
           right: 20px;
-          background: #008b8b;
+          background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
           border-radius: 8px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.18);
+          box-shadow: 0 4px 16px rgba(4, 74, 159, 0.18);
           z-index: 100;
           min-width: 160px;
         }

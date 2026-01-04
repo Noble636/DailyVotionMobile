@@ -24,7 +24,7 @@ function TopBar({ menuItems }) {
     <header className="topbar-container">
       <style>{`
 .topbar-container {
-  background-color: #008b8b;
+  background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -90,7 +90,7 @@ function TopBar({ menuItems }) {
   position: absolute;
   top: 50px;
   right: 20px;
-  background: #008b8b;
+  background: linear-gradient(135deg, #0b62d6 0%, #044a9f 100%);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,139,139,0.18);
   z-index: 100;

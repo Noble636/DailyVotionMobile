@@ -73,142 +73,213 @@ function Gallery() {
       <style>{`
         .gallery-container {
           min-height: 100vh;
-          width: 100vw;
-          background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
-          position: relative;
-          overflow: hidden;
+          width: 100%;
+          background: #f0f4f8;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
-          font-family: Arial, sans-serif;
+          padding: 0;
+          padding-top: 80px;
+          color: #1a1a1a;
         }
+
         .gallery-back-btn {
-          position: absolute;
-          top: 32px;
-          left: 32px;
-          background: rgba(255,255,255,0.7);
+          position: fixed;
+          top: 90px;
+          right: 20px;
+          z-index: 100;
+          background: #2c5aa0;
+          color: white;
           border: none;
-          border-radius: 18px;
-          padding: 0.7rem 1.5rem;
-          font-size: 1.1rem;
-          font-weight: bold;
-          color: #008b8b;
+          border-radius: 8px;
+          padding: 0.6rem 1.2rem;
+          font-size: 0.95rem;
+          font-weight: 600;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          z-index: 2;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          transition: all 0.2s ease;
+          min-height: 44px;
+          display: inline-flex !important;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
         }
+
+        .gallery-back-btn:active {
+          transform: scale(0.95);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-main-content {
+          width: 100%;
+          max-width: 480px;
+          padding: 1rem;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .gallery-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #1a3a52;
+          text-align: center;
+          margin: 0;
+          padding-top: 0.5rem;
+        }
+
         .gallery-albums {
           display: flex;
-          flex-wrap: wrap;
-          gap: 2rem;
-          justify-content: center;
-          align-items: center;
-          margin-top: 120px;
-          z-index: 1;
+          flex-direction: column;
+          gap: 0.75rem;
+          width: 100%;
         }
+
         .gallery-album-card {
-          background: rgba(255,255,255,0.55);
-          border-radius: 32px;
-          box-shadow: 0 4px 16px rgba(0,139,139,0.10);
-          padding: 2.5rem 3.5rem;
+          background: #ffffff;
+          border: 1px solid #d0d7de;
+          border-left: 4px solid #2c5aa0;
+          border-radius: 12px;
+          padding: 1rem 1.25rem;
           cursor: pointer;
-          font-size: 1.3rem;
-          font-weight: bold;
-          color: #008b8b;
-          transition: transform 0.2s, box-shadow 0.2s;
-          text-align: center;
-          z-index: 1;
+          font-size: 1rem;
+          font-weight: 600;
+          color: #1a1a1a;
+          transition: all 0.2s ease;
+          text-align: left;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          min-height: 54px;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          -webkit-tap-highlight-color: transparent;
         }
-        .gallery-album-card:hover {
-          transform: translateY(-8px) scale(1.04);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+
+        .gallery-album-card:active {
+          transform: scale(0.98);
+          background: #f8fafc;
+          box-shadow: 0 1px 4px rgba(44, 90, 160, 0.15);
         }
+
         .gallery-album-title {
-          margin-bottom: 0;
+          margin: 0;
+          flex: 1;
         }
+
+        .gallery-album-icon {
+          font-size: 1.5rem;
+        }
+
         .gallery-images {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 0.7rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
           width: 100%;
-          max-width: 440px;
-          margin: 0 auto 1rem auto;
-          height: calc(100vh - 120px);
-          overflow-y: auto;
-          padding: 3.5rem 8px 1rem 8px; /* increased top padding for desktop */
-          background: transparent;
-          position: relative;
+          padding-bottom: 1rem;
         }
+
         .gallery-img-thumb {
           width: 100%;
-          aspect-ratio: 1.2/1;
+          aspect-ratio: 1/1;
           object-fit: cover;
-          border-radius: 14px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
           cursor: pointer;
-          transition: transform 0.2s, box-shadow 0.2s;
-          background: #fff;
+          transition: all 0.2s ease;
+          background: #ffffff;
+          border: 1px solid #e0e0e0;
         }
-        .gallery-img-thumb:hover {
-          transform: scale(1.08);
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
+
+        .gallery-img-thumb:active {
+          transform: scale(0.95);
+          box-shadow: 0 4px 12px rgba(44, 90, 160, 0.2);
         }
+
         .gallery-fullscreen {
           position: fixed;
           left: 0;
           top: 0;
           width: 100vw;
           height: 100vh;
-          background: rgba(40,0,60,0.45);
+          background: rgba(0, 0, 0, 0.85);
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 100;
+          z-index: 1000;
           cursor: pointer;
+          padding: 1rem;
+          box-sizing: border-box;
         }
+
         .gallery-full-img {
-          max-width: 90vw;
+          max-width: 95vw;
           max-height: 90vh;
-          border-radius: 24px;
-          box-shadow: 0 8px 32px rgba(156,39,176,0.18);
-          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          background: #ffffff;
         }
-        @media (max-width: 600px) {
+
+        .gallery-back-in-gallery {
+          position: fixed;
+          top: 90px;
+          left: 20px;
+        }
+
+        @media (max-width: 700px) {
+          .gallery-container {
+            padding-top: 80px;
+          }
+          
           .gallery-images {
-            max-width: 98vw;
-            width: 98vw;
-            padding: 6rem 2vw 1rem 2vw; /* increased top padding for mobile */
             gap: 0.5rem;
           }
         }
       `}</style>
-      <button className="gallery-back-btn" onClick={() => setSelectedAlbum(null)} style={{ display: selectedAlbum !== null ? "block" : "none" }}>
-        ← Back
-      </button>
+
       <button
         className="gallery-back-btn"
-        style={{ top: "32px", right: "32px", left: "auto", background: "rgba(255,255,255,0.7)", display: selectedAlbum === null ? "block" : "none" }}
-        onClick={() => window.location.href = "/about"}
+        onClick={() => setSelectedAlbum(null)}
+        style={{ display: selectedAlbum !== null ? "inline-flex" : "none" }}
+      >
+        ← Back
+      </button>
+
+      <button
+        className="gallery-back-btn"
+        onClick={() => navigate("/about")}
+        style={{ display: selectedAlbum === null ? "inline-flex" : "none" }}
       >
         ← Back to About
       </button>
-      {selectedAlbum === null && (
-        <div className="gallery-albums">
-          {albums.map((album, idx) => (
-            <div className="gallery-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
-              <div className="gallery-album-title">{album.name}</div>
+
+      <div className="gallery-main-content">
+        {selectedAlbum === null && (
+          <>
+            <h1 className="gallery-title">🖼️ Gallery</h1>
+            <div className="gallery-albums">
+              {albumList.map((album, idx) => (
+                <div className="gallery-album-card" key={album.id} onClick={() => setSelectedAlbum(idx)}>
+                  <span className="gallery-album-icon">📷</span>
+                  <div className="gallery-album-title">{album.name}</div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
-      {selectedAlbum !== null && !fullscreenImg && (
-        <div className="gallery-images">
-          {images.map((img, i) => (
-            <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
-          ))}
-        </div>
-      )}
+          </>
+        )}
+        {selectedAlbum !== null && !fullscreenImg && (
+          <>
+            <h2 className="gallery-title">{albumList[selectedAlbum]?.name}</h2>
+            <div className="gallery-images">
+              {images.map((img, i) => (
+                <GalleryImageThumb key={img.id} img={img} onClick={() => handleThumbClick(img)} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
       {fullscreenImg && (
         <div className="gallery-fullscreen" onClick={() => setFullscreenImg(null)}>
           <img src={fullscreenImg} alt={fullscreenImgName || "Full"} className="gallery-full-img" />

@@ -85,7 +85,7 @@ const DailyVotion = () => {
       lineHeight: 1.1,
     },
     dailyVotionBrand: {
-      color: '#f7b733',
+      color: '#010f5fff', // from Updates
       fontWeight: 900,
     },
     bibleVerse: {
@@ -106,8 +106,8 @@ const DailyVotion = () => {
       width: 220,
       fontSize: 20,
       fontWeight: 700,
-      color: '#fff',
-      background: 'linear-gradient(90deg, #f7b733, #fc4a1a)',
+      color: '#fff', // white text for button
+      background: 'linear-gradient(90deg, rgba(125, 168, 248, 0.81), rgba(0, 29, 82, 1))',
       border: 'none',
       borderRadius: 10,
       cursor: 'pointer',

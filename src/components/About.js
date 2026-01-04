@@ -9,8 +9,8 @@ function About() {
     <div className="aboutpage-container">
       <style>{`
         .aboutpage-container {
-          font-family: Arial, sans-serif;
-          background: linear-gradient(135deg, #b3e5fc 60%, #b39ddb 100%);
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          background: #f0f4f8;
           min-height: 100vh;
           display: flex;
           flex-direction: column;
@@ -30,7 +30,7 @@ function About() {
           padding-right: 16px;
         }
         .aboutpage-text {
-          background: rgba(255,255,255,0.85);
+          background: #ffffff;
           border-radius: 24px;
           box-shadow: 0 4px 16px rgba(0,139,139,0.10);
           padding: 1.5rem 1rem;
@@ -41,16 +41,17 @@ function About() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          border: 1px solid #d0d7de;
         }
         .aboutpage-text h2 {
-          color: #008b8b;
+          color: #1a3a52;
           margin-bottom: 1rem;
           text-align: center;
           width: 100%;
         }
         .aboutpage-text p {
           font-size: 1.1rem;
-          color: #333;
+          color: #2d2d2d;
           margin-bottom: 1rem;
           text-align: center;
           width: 100%;
@@ -68,8 +69,9 @@ function About() {
           aspect-ratio: 1.2/1;
           object-fit: cover;
           border-radius: 14px;
-          box-shadow: 0 2px 8px rgba(0,139,139,0.10);
-          background: #fff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          background: #ffffff;
+          border: 1px solid #e0e0e0;
         }
         .aboutpage-text button {
           margin-top: 0.2rem !important;
@@ -108,13 +110,13 @@ function About() {
               alignSelf: "center",
               padding: "0.7rem 2rem",
               borderRadius: "24px",
-              background: "#008b8b",
+              background: "#2c5aa0",
               color: "#fff",
               border: "none",
               fontSize: "1.1rem",
               fontWeight: "bold",
               cursor: "pointer",
-              boxShadow: "0 2px 8px rgba(0,139,139,0.10)"
+              boxShadow: "0 2px 8px rgba(44, 90, 160, 0.2)"
             }}
             onClick={() => window.location.href = "/gallery"}
           >
