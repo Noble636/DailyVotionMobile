@@ -74,12 +74,12 @@ function Login() {
         body, html {
           margin: 0;
           padding: 0;
-          background: #08a3ad;
+          background: #fff; /* White background */
           font-family: Arial, sans-serif;
         }
         .userlogin-outer {
           font-family: Arial, sans-serif;
-          background: linear-gradient(120deg, #08a3ad 0%, #43e9f6 25%, #00c6b2 50%, #008b8b 75%, #005e5e 100%);
+          background: #fff; /* White background */
           min-height: 100vh;
           display: block;
           box-sizing: border-box;
@@ -95,10 +95,28 @@ function Login() {
           max-width: 400px;
           margin: 0 auto 1rem auto;
           display: flex;
-          flex-direction: column;
-          align-items: center;
+          flex-direction: row;
+          align-items: stretch;
           z-index: 2;
           box-sizing: border-box;
+          background: #fff;
+          border-radius: 14px;
+          box-shadow: 0 4px 24px rgba(11,98,214,0.08);
+          overflow: hidden;
+        }
+        .userlogin-form-glass::before {
+          content: "";
+          display: block;
+          width: 32px;
+          min-width: 32px;
+          background: linear-gradient(180deg, #0b62d6 0%, #044a9f 100%);
+        }
+        .userlogin-form-content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 1.2rem;
         }
         .userlogin-title {
           color: #222;
@@ -106,12 +124,6 @@ function Login() {
           font-weight: bold;
           margin-bottom: 2rem;
           text-align: center;
-        }
-        .userlogin-form-content {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
         .userlogin-form {
           width: 100%;
@@ -153,12 +165,12 @@ function Login() {
           font-size: 0.95rem;
         }
         .userlogin-remember input[type="checkbox"] {
-          accent-color: #08a3ad;
+          accent-color: #0b62d6;
           margin-right: 4px;
         }
         .userlogin-forgot {
           background: none;
-          color: #08a3ad;
+          color: #0b62d6;
           border: none;
           padding: 0;
           font-size: 1rem;
@@ -167,10 +179,10 @@ function Login() {
           transition: color 0.2s;
         }
         .userlogin-forgot:hover {
-          color: #006d6d;
+          color: #044a9f;
         }
         .userlogin-loginbtn {
-          background: #08a3ad;
+          background: #0b62d6;
           color: #fff;
           border: none;
           padding: 0.8rem 0;
@@ -182,7 +194,7 @@ function Login() {
           transition: background 0.2s;
         }
         .userlogin-loginbtn:hover {
-          background: #006d6d;
+          background: #044a9f;
         }
         .userlogin-divider {
           width: 100%;
@@ -197,19 +209,21 @@ function Login() {
           gap: 0.7rem;
         }
         .userlogin-createbtn {
-          background: #08a3ad;
-          color: #fff;
-          border: none;
+          background: #fff;
+          color: #0b62d6;
+          border: 2px solid #0b62d6;
           padding: 0.7rem 0;
           border-radius: 7px;
           font-size: 1rem;
           font-weight: 500;
           cursor: pointer;
           width: 100%;
-          transition: background 0.2s;
+          transition: background 0.2s, color 0.2s, border 0.2s;
         }
         .userlogin-createbtn:hover {
-          background: #006d6d;
+          background: #0b62d6;
+          color: #fff;
+          border-color: #044a9f;
         }
         .userlogin-warning {
           color: #d32f2f;
@@ -219,18 +233,24 @@ function Login() {
           font-size: 1rem;
         }
         @media (max-width: 600px) {
-            
           .userlogin-form-glass {
-            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+            flex-direction: row;
+            padding: 0;
             border-radius: 14px;
-            background: radial-gradient(circle at 20% 20%, rgba(220,220,220,0.85) 0%, rgba(220,220,220,0.75) 60%, rgba(200,200,200,0.6) 100%);
-            box-shadow: 12px 18px 40px 0 rgba(0,0,0,0.32), 4px 8px 16px 0 rgba(0,139,139,0.18);
+            background: #fff;
+            box-shadow: 12px 18px 40px 0 rgba(11,98,214,0.12), 4px 8px 16px 0 rgba(4,74,159,0.10);
             margin: 0 auto 1rem auto;
             z-index: 2;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             box-sizing: border-box;
+          }
+          .userlogin-form-glass::before {
+            width: 18px;
+            min-width: 18px;
+          }
+          .userlogin-form-content {
+            padding: 1.2rem 0.5rem 1.2rem 0.5rem;
           }
           .userlogin-title {
             font-size: 1.2rem;

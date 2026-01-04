@@ -85,7 +85,7 @@ const DailyVotion = () => {
       lineHeight: 1.1,
     },
     dailyVotionBrand: {
-      color: '#f7b733',
+      color: '#0a2342', // dark blue
       fontWeight: 900,
     },
     bibleVerse: {
@@ -106,8 +106,8 @@ const DailyVotion = () => {
       width: 220,
       fontSize: 20,
       fontWeight: 700,
-      color: '#fff',
-      background: 'linear-gradient(90deg, #f7b733, #fc4a1a)',
+      color: '#111', // black text
+      background: '#fff', // white background
       border: 'none',
       borderRadius: 10,
       cursor: 'pointer',
@@ -136,6 +136,8 @@ const DailyVotion = () => {
         width: '90vw',
         maxWidth: 320,
         fontSize: 18,
+        background: '#fff', // white background for mobile
+        color: '#111', // black text for mobile
       },
       logoImage: {
         width: '70vw',
